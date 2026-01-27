@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "tests": [
+    {
+      "id": "js_basics",
+      "title": "Основы JavaScript",
+      "theory": [
+        {
+          "id": "b_t1",
+          "type": "single",
+          "question": "Какой тип данных у значения NaN?",
+          "options": [
+            { "id": "a", "text": "number" },
+            { "id": "b", "text": "NaN" },
+            { "id": "c", "text": "undefined" },
+            { "id": "d", "text": "object" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "b_t2",
+          "type": "multi",
+          "question": "Какие значения в JavaScript являются falsy?",
+          "options": [
+            { "id": "a", "text": "0" },
+            { "id": "b", "text": "\"0\"" },
+            { "id": "c", "text": "null" },
+            { "id": "d", "text": "undefined" },
+            { "id": "e", "text": "\"\"" }
+          ],
+          "correct": ["a", "c", "d", "e"]
+        },
+        {
+          "id": "b_t3",
+          "type": "single",
+          "question": "Что вернёт выражение: typeof null ?",
+          "options": [
+            { "id": "a", "text": "\"null\"" },
+            { "id": "b", "text": "\"object\"" },
+            { "id": "c", "text": "\"undefined\"" },
+            { "id": "d", "text": "\"number\"" }
+          ],
+          "correct": ["b"]
+        },
+        {
+          "id": "b_t4",
+          "type": "single",
+          "question": "Какой метод добавляет элемент в конец массива?",
+          "options": [
+            { "id": "a", "text": "push" },
+            { "id": "b", "text": "pop" },
+            { "id": "c", "text": "shift" },
+            { "id": "d", "text": "unshift" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "b_t5",
+          "type": "multi",
+          "question": "Какие способы объявления переменных существуют в JavaScript (ES6+)?",
+          "options": [
+            { "id": "a", "text": "var" },
+            { "id": "b", "text": "let" },
+            { "id": "c", "text": "const" },
+            { "id": "d", "text": "int" }
+          ],
+          "correct": ["a", "b", "c"]
+        }
+      ],
+      "practice": [
+        {
+          "id": "b_p1",
+          "title": "Сумма чисел",
+          "prompt": "Напишите функцию sum(a, b), которая возвращает сумму a и b.\n\nПример:\nsum(2, 3) -> 5",
+          "maxPoints": 5
+        },
+        {
+          "id": "b_p2",
+          "title": "Чётные числа",
+          "prompt": "Дан массив чисел. Верните новый массив только из чётных чисел.\n\nПример:\n[1,2,3,4,5,6] -> [2,4,6]",
+          "maxPoints": 5
+        },
+        {
+          "id": "b_p3",
+          "title": "Подсчёт символов",
+          "prompt": "Напишите функцию countChars(str), которая возвращает объект с количеством каждого символа.\n\nПример:\n\"aab\" -> {\"a\":2,\"b\":1}",
+          "maxPoints": 5
+        }
+      ]
+    },
+    {
+      "id": "js_advanced",
+      "title": "JS Продвинутый",
+      "theory": [
+        {
+          "id": "a_t1",
+          "type": "single",
+          "question": "Что такое замыкание (closure)?",
+          "options": [
+            { "id": "a", "text": "Функция вместе с лексическим окружением, в котором она была создана" },
+            { "id": "b", "text": "Способ объявить переменную внутри блока try/catch" },
+            { "id": "c", "text": "Событие, которое срабатывает при закрытии вкладки" },
+            { "id": "d", "text": "Метод массива для удаления элементов" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "a_t2",
+          "type": "multi",
+          "question": "Какие утверждения про event loop верны?",
+          "options": [
+            { "id": "a", "text": "Microtasks (Promise) обычно выполняются раньше, чем macrotasks (setTimeout)" },
+            { "id": "b", "text": "setTimeout(fn, 0) гарантирует выполнение fn до любых Promise" },
+            { "id": "c", "text": "Call stack должен освободиться, чтобы начались задачи из очереди" },
+            { "id": "d", "text": "JavaScript в браузере всегда многопоточен в одном контексте выполнения" }
+          ],
+          "correct": ["a", "c"]
+        },
+        {
+          "id": "a_t3",
+          "type": "single",
+          "question": "Какой метод создаёт новый промис и сразу переводит его в состояние rejected?",
+          "options": [
+            { "id": "a", "text": "Promise.reject(value)" },
+            { "id": "b", "text": "Promise.error(value)" },
+            { "id": "c", "text": "Promise.fail(value)" },
+            { "id": "d", "text": "Promise.throw(value)" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "a_t4",
+          "type": "multi",
+          "question": "Какие операторы/синтаксисы относятся к деструктуризации?",
+          "options": [
+            { "id": "a", "text": "const {a} = obj" },
+            { "id": "b", "text": "const [x, y] = arr" },
+            { "id": "c", "text": "obj::method()" },
+            { "id": "d", "text": "const a = obj.a" }
+          ],
+          "correct": ["a", "b"]
+        },
+        {
+          "id": "a_t5",
+          "type": "single",
+          "question": "Что вернёт Object.is(NaN, NaN)?",
+          "options": [
+            { "id": "a", "text": "false" },
+            { "id": "b", "text": "true" },
+            { "id": "c", "text": "undefined" },
+            { "id": "d", "text": "NaN" }
+          ],
+          "correct": ["b"]
+        }
+      ],
+      "practice": [
+        {
+          "id": "a_p1",
+          "title": "Debounce",
+          "prompt": "Реализуйте функцию debounce(fn, delay), которая возвращает обёртку. Обёртка откладывает вызов fn до тех пор, пока не пройдёт delay мс с последнего вызова.",
+          "maxPoints": 5
+        },
+        {
+          "id": "a_p2",
+          "title": "Promise.all (упрощённо)",
+          "prompt": "Реализуйте функцию all(promises), которая принимает массив промисов и возвращает промис, резолвящийся массивом результатов, либо реджектящийся при первой ошибке.",
+          "maxPoints": 5
+        },
+        {
+          "id": "a_p3",
+          "title": "Кеширование (memoize)",
+          "prompt": "Реализуйте memoize(fn), которая кеширует результаты вызовов по аргументам (достаточно для примитивов).",
+          "maxPoints": 5
+        }
+      ]
+    }
+  ]
+}
