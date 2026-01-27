@@ -32,7 +32,6 @@
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
       --focus: 0 0 0 3px rgba(79,140,255,0.35);
-
       --maxw: 980px;
     }
 
@@ -61,7 +60,6 @@
     *{box-sizing:border-box}
     html,body{height:100%}
 
-    /* Stable, non "torn" background while scrolling */
     body{
       margin:0;
       font-family: var(--font);
@@ -90,7 +88,6 @@
       padding: 14px 16px 36px;
     }
 
-    /* Header */
     header{
       position: sticky;
       top: 0;
@@ -139,7 +136,6 @@
       gap: 10px;
     }
 
-    /* Layout */
     .stack{display:flex; flex-direction:column; gap: 12px;}
     .card{
       background: color-mix(in oklab, var(--panel), transparent 0%);
@@ -157,7 +153,6 @@
     .muted{color: var(--muted)}
     .divider{height:1px; background: var(--border); margin: 12px 0;}
 
-    /* Controls */
     .btn{
       border: 1px solid var(--border);
       background: var(--panel);
@@ -243,7 +238,6 @@
     input:focus, select:focus, textarea:focus{box-shadow: var(--focus)}
     .help{font-size: 12px; color: var(--muted); margin-top: 6px; line-height:1.4;}
 
-    /* Question cards (Google-like: clean, spacious) */
     .q{
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -316,7 +310,6 @@
 
     .stickybar{ position: sticky; top: 78px; z-index: 50; }
 
-    /* Table */
     .table{
       width:100%;
       border-collapse:collapse;
@@ -341,7 +334,6 @@
     .table tr:last-child td{border-bottom:none}
     .scoreInput{ width: 96px; }
 
-    /* Modal */
     .modalOverlay{
       position: fixed;
       inset: 0;
@@ -392,7 +384,6 @@
       box-shadow: var(--shadow);
     }
 
-    /* Toast */
     .toast{
       position: fixed;
       left: 50%;
@@ -431,7 +422,7 @@
           </div>
           <div>
             <h1>Веб‑тестирование</h1>
-            <span class="sub">Ученик / Преподаватель · импорт/экспорт JSON · 1 час на тест</span>
+            <span class="sub" id="headerSub">Ученик / Преподаватель · импорт/экспорт JSON · 1 час на тест</span>
           </div>
         </div>
 
@@ -454,7 +445,7 @@
       <div class="card">
         <h2>Выберите режим</h2>
         <div class="muted small" style="line-height:1.55">
-          <div><b>Ученик</b> — тест: <b>20</b> вопросов + <b>2</b> задачи, общий таймер 1:00:00.</div>
+          <div><b>Ученик</b> — тест: <b>30</b> вопросов (минимум 1 из каждого топика) + <b>2</b> задачи, таймер <b>1:30:00</b>.</div>
           <div><b>Преподаватель</b> — импорт JSON ученика, проверка практики (0–5), итог.</div>
         </div>
 
@@ -519,16 +510,19 @@
             <select id="testSelect">
               <option value="" selected disabled>Выберите тест…</option>
             </select>
-            <div class="help">Формирование: случайно <b>20</b> вопросов + <b>2</b> задачи. Варианты ответов перемешиваются.</div>
+            <div class="help">
+              Формирование: <b>30</b> вопросов (<b>минимум 1</b> из каждого топика) + <b>2</b> задачи.
+              Варианты ответов перемешиваются.
+            </div>
           </div>
 
           <div class="field">
             <label>Общее время</label>
             <div class="pill" style="justify-content:space-between; width:100%">
               <span class="muted">Таймер</span>
-              <span class="timer" id="studentTimer">01:00:00</span>
+              <span class="timer" id="studentTimer">01:30:00</span>
             </div>
-            <div class="help">Ровно 1 час. По истечении — авто‑завершение и формирование JSON.</div>
+            <div class="help">Ровно 1 час 30 минут. По истечении — авто‑завершение и формирование JSON.</div>
           </div>
         </div>
 
@@ -559,7 +553,7 @@
               <div class="pill" style="box-shadow:none">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-16h-2v6l5.25 3.15 1-1.73-4.25-2.52V6z"/></svg>
                 <span class="muted">Осталось</span>
-                <strong class="timer" id="studentTimerSticky">01:00:00</strong>
+                <strong class="timer" id="studentTimerSticky">01:30:00</strong>
               </div>
 
               <div class="pill" style="box-shadow:none">
@@ -577,12 +571,12 @@
         </div>
 
         <div class="card">
-          <h2>Часть 1: Теория (20 вопросов)</h2>
+          <h2 id="theoryTitle">Часть 1: Теория (30 вопросов)</h2>
           <div id="theoryList" class="stack"></div>
         </div>
 
         <div class="card">
-          <h2>Часть 2: Практика (2 задачи)</h2>
+          <h2 id="practiceTitle">Часть 2: Практика (2 задачи)</h2>
           <div class="muted small" style="margin:-2px 0 10px; line-height:1.45">
             Решения вводите текстом. Баллы выставит преподаватель.
           </div>
@@ -737,10 +731,10 @@
 
           <h2 style="margin-top:0">Генерация теста</h2>
           <div class="muted small" style="line-height:1.55">
-            <div><b>Теория:</b> случайно <b>20</b> вопросов.</div>
+            <div><b>Теория:</b> <b>30</b> вопросов. Минимум 1 вопрос из каждого топика (определяется по префиксу id).</div>
             <div><b>Практика:</b> случайно <b>2</b> задачи.</div>
             <div><b>Ответы:</b> варианты всегда перемешиваются.</div>
-            <div><b>Билет:</b> <b>не генерируется автоматически</b> — решает преподаватель.</div>
+            <div><b>Билет:</b> не генерируется автоматически — решает преподаватель.</div>
           </div>
         </div>
       </div>
@@ -863,6 +857,7 @@
         if(!t.id || !t.title) throw new Error("data.json: у теста должны быть id и title");
         if(!Array.isArray(t.theory)) t.theory = [];
         if(!Array.isArray(t.practice)) t.practice = [];
+
         for(const q of t.theory){
           if(!q.id || !q.type || !q.question) throw new Error(`data.json: theory должен иметь id/type/question (test=${t.id})`);
           if(!["single","multi"].includes(q.type)) throw new Error(`data.json: theory.type single|multi (question=${q.id})`);
@@ -872,6 +867,7 @@
             if(!o.id || o.text == null) throw new Error(`data.json: option должен иметь id/text (question=${q.id})`);
           }
         }
+
         for(const p of t.practice){
           if(!p.id || !p.title || !p.prompt) throw new Error(`data.json: practice должен иметь id/title/prompt (test=${t.id})`);
           if(p.maxPoints == null) p.maxPoints = 5;
@@ -920,12 +916,74 @@
       }
     }
 
-    // Student state
-    const ONE_HOUR_SEC = 3600;
-    const THEORY_COUNT = 20;
+    // ---------------------------
+    // New rules:
+    // - theory: 30 questions
+    // - practice: 2 tasks
+    // - total time: 1.5 hours (5400 sec)
+    // - generation: ensure min 1 question per topic (topic inferred from question.id)
+    //
+    // Topic detection rule (IMPORTANT):
+    // We detect topic number from id pattern: "...topic<NUM>..."  e.g. b_t_topic14_q3
+    // If some old questions don't follow this pattern, they fall into topic "unknown".
+    // To guarantee topic coverage, your bank should use b_t_topicX_... ids.
+    // ---------------------------
+
+    const TEST_TOTAL_SECONDS = 5400; // 1h 30m
+    const THEORY_COUNT = 30;
     const PRACTICE_COUNT = 2;
 
     const STUDENT = { active:false, startedAt:null, endsAt:null, timerInt:null, attempt:null, test:null };
+
+    function getTopicFromQuestionId(id){
+      const m = String(id).match(/topic(\d+)/i);
+      return m ? String(Number(m[1])) : "unknown";
+    }
+
+    function groupByTopic(questions){
+      const map = new Map();
+      for(const q of questions){
+        const t = getTopicFromQuestionId(q.id);
+        if(!map.has(t)) map.set(t, []);
+        map.get(t).push(q);
+      }
+      return map;
+    }
+
+    function pickTheoryWithMinPerTopic(bankTheory, totalCount){
+      const topics = groupByTopic(bankTheory);
+
+      // Exclude "unknown" from mandatory list to keep logic predictable
+      const mandatoryTopics = [...topics.keys()].filter(t => t !== "unknown").sort((a,b)=>Number(a)-Number(b));
+
+      if(mandatoryTopics.length > totalCount){
+        throw new Error(`Невозможно: топиков (${mandatoryTopics.length}) больше, чем вопросов в тесте (${totalCount}).`);
+      }
+
+      const chosen = [];
+      const chosenIds = new Set();
+
+      // Step 1: pick 1 from each topic
+      for(const t of mandatoryTopics){
+        const pool = topics.get(t);
+        if(!pool || pool.length === 0) continue;
+        const pick = sampleN(pool, 1)[0];
+        chosen.push(pick);
+        chosenIds.add(pick.id);
+      }
+
+      // Step 2: fill remaining from all questions (including unknown), excluding already chosen
+      const remaining = totalCount - chosen.length;
+      const allPool = bankTheory.filter(q => !chosenIds.has(q.id));
+
+      if(allPool.length < remaining){
+        // Not enough questions; return everything we have
+        return chosen.concat(allPool);
+      }
+
+      const rest = sampleN(allPool, remaining);
+      return chosen.concat(rest);
+    }
 
     function setStudentTimerDisplay(remainingSec){
       const text = formatHMS(Math.max(0, remainingSec));
@@ -933,7 +991,7 @@
       $("#studentTimerSticky").textContent = text;
 
       const pill = $("#studentTimerSticky").closest(".pill");
-      if(remainingSec <= 5*60){
+      if(remainingSec <= 10*60){
         pill.style.borderColor = "rgba(255,79,99,0.40)";
       } else {
         pill.style.borderColor = "";
@@ -967,7 +1025,7 @@
       $("#practiceList").innerHTML = "";
       $("#activeTestName").textContent = "—";
 
-      setStudentTimerDisplay(ONE_HOUR_SEC);
+      setStudentTimerDisplay(TEST_TOTAL_SECONDS);
     }
 
     function updateStudentProgress(){
@@ -983,11 +1041,16 @@
     }
 
     function buildStudentAttempt(test, studentName, studentGroup){
-      const pickedTheory = sampleN(test.theory, THEORY_COUNT).map(q => {
+      // Theory: ensure min 1 per topic
+      const pickedTheoryRaw = pickTheoryWithMinPerTopic(test.theory, THEORY_COUNT);
+
+      // Shuffle options per question
+      const pickedTheory = pickedTheoryRaw.map(q => {
         const opts = shuffleInPlace(q.options.slice()).map(o => ({id:o.id, text:o.text}));
         return {
           id: q.id,
           type: q.type,
+          topic: getTopicFromQuestionId(q.id),
           question: q.question,
           options: opts,
           correct: q.correct,
@@ -997,6 +1060,7 @@
         };
       });
 
+      // Practice: 2 random tasks
       const pickedPractice = sampleN(test.practice, PRACTICE_COUNT).map(p => ({
         id: p.id,
         title: p.title,
@@ -1007,19 +1071,25 @@
       }));
 
       return {
-        schema: "studentAttempt.v3",
+        schema: "studentAttempt.v4",
         attemptId: uid("attempt"),
         createdAt: nowIso(),
         student: { name: studentName || "", group: studentGroup || "" },
         test: { id: test.id, title: test.title },
+
         generation: {
           rules: {
             theoryCount: THEORY_COUNT,
             practiceCount: PRACTICE_COUNT,
-            shuffleOptions: true
-          }
+            shuffleOptions: true,
+            timeSeconds: TEST_TOTAL_SECONDS,
+            minOnePerTopic: true,
+            topicDetection: "question.id contains topic<N> (regex /topic(\\d+)/i)"
+          },
+          topicsUsed: [...new Set(pickedTheory.map(q=>q.topic))].sort()
         },
-        timing: { startedAt: nowIso(), durationSeconds: ONE_HOUR_SEC, endedAt: null, autoFinished: false },
+
+        timing: { startedAt: nowIso(), durationSeconds: TEST_TOTAL_SECONDS, endedAt: null, autoFinished: false },
         sections: { theory: pickedTheory, practice: pickedPractice },
         totals: {
           theoryAuto: { points: 0, max: pickedTheory.length },
@@ -1038,9 +1108,10 @@
       head.className = "qhead";
 
       const title = document.createElement("div");
+      const topicText = (q.topic && q.topic !== "unknown") ? `Топик: <span class="mono">${escapeHtml(q.topic)}</span> · ` : "";
       title.innerHTML = `
         <div class="qtitle">${idx+1}. ${escapeHtml(q.question)}</div>
-        <div class="qmeta">Тип: <span class="mono">${q.type === "single" ? "один ответ" : "несколько ответов"}</span></div>
+        <div class="qmeta">${topicText}Тип: <span class="mono">${q.type === "single" ? "один ответ" : "несколько ответов"}</span></div>
       `;
 
       const badge = document.createElement("div");
@@ -1098,7 +1169,7 @@
       const title = document.createElement("div");
       title.innerHTML = `
         <div class="qtitle">${idx+1}. ${escapeHtml(p.title)}</div>
-        <div class="qmeta">Оценка преподавателем: <b>0–${p.maxPoints}</b></div>
+        <div class="qmeta">Оценка преподавателем: <span class="mono">0–${escapeHtml(String(p.maxPoints))}</span></div>
       `;
 
       const badge = document.createElement("div");
@@ -1218,7 +1289,6 @@
       $("#tTestName").textContent = attempt.test?.title ? attempt.test.title : "—";
       $("#tDuration").textContent = formatDuration(attempt);
 
-      // Practice grading table
       const wrap = $("#teacherPracticeTableWrap");
       wrap.innerHTML = "";
 
@@ -1280,7 +1350,6 @@
 
       wrap.appendChild(table);
 
-      // Theory review
       const thWrap = $("#teacherTheoryReview");
       thWrap.innerHTML = "";
 
@@ -1423,22 +1492,37 @@
       const test = getTestById(testId);
       if(!test){ toast("Тест не найден в data.json."); return; }
 
-      if((test.theory?.length || 0) < 2){
+      const bankTheoryCount = test.theory?.length || 0;
+      const bankPracticeCount = test.practice?.length || 0;
+
+      if(bankTheoryCount < 2){
         toast("В банке теории должно быть минимум 2 вопроса.");
         return;
       }
 
-      if((test.theory?.length || 0) < THEORY_COUNT){
-        toast(`Внимание: в банке теории меньше ${THEORY_COUNT}. Будет взято ${Math.min(THEORY_COUNT, test.theory.length)}.`);
+      // Check topic coverage possibility
+      const topics = [...groupByTopic(test.theory).keys()].filter(t => t !== "unknown");
+      if(topics.length === 0){
+        toast("Вопросы не содержат topic<N> в id. Минимум 1 из каждого топика обеспечить нельзя. Пример id: b_t_topic7_q1");
+        return;
       }
-      if((test.practice?.length || 0) < PRACTICE_COUNT){
-        toast(`Внимание: в банке практики меньше ${PRACTICE_COUNT}. Будет взято ${Math.min(PRACTICE_COUNT, test.practice.length)}.`);
+      if(topics.length > THEORY_COUNT){
+        toast(`Слишком много топиков (${topics.length}) для ${THEORY_COUNT} вопросов. Увеличьте THEORY_COUNT или сократите топики.`);
+        return;
       }
 
+      if(bankTheoryCount < THEORY_COUNT){
+        toast(`Внимание: в банке теории меньше ${THEORY_COUNT}. Будет взято ${Math.min(THEORY_COUNT, bankTheoryCount)}.`);
+      }
+      if(bankPracticeCount < PRACTICE_COUNT){
+        toast(`Внимание: в банке практики меньше ${PRACTICE_COUNT}. Будет взято ${Math.min(PRACTICE_COUNT, bankPracticeCount)}.`);
+      }
+
+      // Start
       STUDENT.active = true;
       STUDENT.test = test;
       STUDENT.startedAt = Date.now();
-      STUDENT.endsAt = STUDENT.startedAt + ONE_HOUR_SEC*1000;
+      STUDENT.endsAt = STUDENT.startedAt + TEST_TOTAL_SECONDS*1000;
       STUDENT.attempt = buildStudentAttempt(test, studentName, studentGroup);
 
       $("#activeTestName").textContent = test.title;
@@ -1449,6 +1533,9 @@
       $("#btnExportStudentJson").classList.add("hidden");
       $("#btnStartTest").classList.add("hidden");
 
+      $("#theoryTitle").textContent = `Часть 1: Теория (${STUDENT.attempt.sections.theory.length} вопросов)`;
+      $("#practiceTitle").textContent = `Часть 2: Практика (${STUDENT.attempt.sections.practice.length} задачи)`;
+
       $("#theoryList").innerHTML = "";
       $("#practiceList").innerHTML = "";
 
@@ -1458,7 +1545,7 @@
       $$("#studentTestArea input, #studentTestArea textarea").forEach(el => el.disabled = false);
 
       updateStudentProgress();
-      setStudentTimerDisplay(ONE_HOUR_SEC);
+      setStudentTimerDisplay(TEST_TOTAL_SECONDS);
       startStudentTimer();
 
       window.scrollTo({top:0, behavior:"instant"});
@@ -1495,6 +1582,7 @@
           throw new Error("Неверная структура attempt.sections.");
         }
 
+        // Normalize
         for(const p of obj.sections.practice){
           if(typeof p.maxPoints !== "number") p.maxPoints = 5;
           if(p.teacherPoints !== null && typeof p.teacherPoints !== "number") p.teacherPoints = null;
@@ -1540,6 +1628,7 @@
       const saved = localStorage.getItem("theme");
       setTheme(saved === "light" ? "light" : "dark");
 
+      $("#headerSub").textContent = "Ученик / Преподаватель · импорт/экспорт JSON · 1 час 30 минут на тест";
       updateDataStatus();
       populateTestsSelect();
       resetStudentUI();
