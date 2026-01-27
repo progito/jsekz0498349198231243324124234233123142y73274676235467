@@ -2673,7 +2673,7 @@
         },
       
         {
-          "id": "b_t_topic14_math_q17",
+          "id": "b_t_topic14_q17",
           "type": "single",
           "question": "Что вернёт выражение: Math.trunc(3.9) ?",
           "options": [
@@ -2689,7 +2689,7 @@
           "correct": ["a"]
         },
         {
-          "id": "b_t_topic14_math_q18",
+          "id": "b_t_topic14_q18",
           "type": "single",
           "question": "Что вернёт выражение: Math.abs(-7) ?",
           "options": [
@@ -2705,7 +2705,7 @@
           "correct": ["a"]
         },
         {
-          "id": "b_t_topic14_math_q19",
+          "id": "b_t_topic14_q19",
           "type": "single",
           "question": "Что вернёт выражение: Math.max(2, 10, 3) ?",
           "options": [
@@ -2721,7 +2721,7 @@
           "correct": ["a"]
         },
         {
-          "id": "b_t_topic14_math_q20",
+          "id": "b_t_topic14_q20",
           "type": "single",
           "question": "Что вернёт выражение: Math.sqrt(9) ?",
           "options": [
@@ -3218,7 +3218,169 @@
           ],
           "correct": ["a"]
         },
-      
+
+        {
+          "id": "b_t_topic17_q1",
+          "type": "single",
+          "question": "Для чего обычно используют try...catch в JavaScript?",
+          "options": [
+            { "id": "a", "text": "Для перехвата и обработки исключений во время выполнения" },
+            { "id": "b", "text": "Для объявления переменных с блочной областью видимости" },
+            { "id": "c", "text": "Для ускорения вычислений без оптимизатора" },
+            { "id": "d", "text": "Для изменения правил сравнения типов" },
+            { "id": "e", "text": "Для импорта модулей по условию" },
+            { "id": "f", "text": "Для создания JSON из объекта" },
+            { "id": "g", "text": "Для запрета использования функций" },
+            { "id": "h", "text": "Для отключения сборщика мусора" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "b_t_topic17_q2",
+          "type": "single",
+          "question": "Когда выполняется блок finally в конструкции try...catch...finally?",
+          "options": [
+            { "id": "a", "text": "Обычно выполняется всегда: и при ошибке, и без ошибки" },
+            { "id": "b", "text": "Выполняется только если была ошибка" },
+            { "id": "c", "text": "Выполняется только если ошибки не было" },
+            { "id": "d", "text": "Выполняется только в строгом режиме" },
+            { "id": "e", "text": "Не выполняется, если есть return в try" },
+            { "id": "f", "text": "Выполняется только в браузере" },
+            { "id": "g", "text": "Выполняется только в Node.js" },
+            { "id": "h", "text": "Выполняется только при SyntaxError" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "b_t_topic17_q3",
+          "type": "single",
+          "question": "Как корректно выбросить ошибку вручную?",
+          "options": [
+            { "id": "a", "text": "throw new Error(\"msg\")" },
+            { "id": "b", "text": "return new Error(\"msg\")" },
+            { "id": "c", "text": "catch new Error(\"msg\")" },
+            { "id": "d", "text": "raise new Error(\"msg\")" },
+            { "id": "e", "text": "error(\"msg\")" },
+            { "id": "f", "text": "stop(\"msg\")" },
+            { "id": "g", "text": "break new Error(\"msg\")" },
+            { "id": "h", "text": "throwError(\"msg\")" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "b_t_topic17_q4",
+          "type": "multi",
+          "question": "Какие утверждения про объект Error обычно верны?",
+          "options": [
+            { "id": "a", "text": "У Error обычно есть поле message" },
+            { "id": "b", "text": "У Error часто есть поле stack (зависит от среды)" },
+            { "id": "c", "text": "Error можно наследовать через class extends Error" },
+            { "id": "d", "text": "Error существует только в браузере" },
+            { "id": "e", "text": "Error всегда сериализуется JSON.stringify как полный объект" },
+            { "id": "f", "text": "Error можно бросать через throw" },
+            { "id": "g", "text": "Error заменяет оператор if" },
+            { "id": "h", "text": "Error запрещает выполнение finally" }
+          ],
+          "correct": ["a", "b", "c", "f"]
+        },
+        {
+          "id": "b_t_topic17_q5",
+          "type": "single",
+          "question": "Как корректно объявить пользовательскую ошибку через наследование?",
+          "options": [
+            { "id": "a", "text": "class MyError extends Error {}" },
+            { "id": "b", "text": "class MyError extends Exception {}" },
+            { "id": "c", "text": "class MyError implements Error {}" },
+            { "id": "d", "text": "function MyError extends Error {}" },
+            { "id": "e", "text": "class MyError inherits Error {}" },
+            { "id": "f", "text": "class MyError extends String {}" },
+            { "id": "g", "text": "class MyError from Error {}" },
+            { "id": "h", "text": "class Error extends MyError {}" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "b_t_topic17_q6",
+          "type": "single",
+          "question": "Что произойдёт, если в catch снова выполнить throw err?",
+          "options": [
+            { "id": "a", "text": "Ошибка будет проброшена выше по стеку обработчиков" },
+            { "id": "b", "text": "Ошибка автоматически превратится в undefined" },
+            { "id": "c", "text": "Ошибка будет проигнорирована" },
+            { "id": "d", "text": "catch выполнится повторно бесконечно" },
+            { "id": "e", "text": "finally не выполнится" },
+            { "id": "f", "text": "Код продолжит работу как будто ошибки не было" },
+            { "id": "g", "text": "Ошибка станет SyntaxError" },
+            { "id": "h", "text": "Программа перезапустится" }
+          ],
+          "correct": ["a"]
+        },
+        {
+          "id": "b_t_topic17_q7",
+          "type": "multi",
+          "question": "Какие встроенные типы ошибок (subclasses) есть в JavaScript?",
+          "options": [
+            { "id": "a", "text": "TypeError" },
+            { "id": "b", "text": "ReferenceError" },
+            { "id": "c", "text": "SyntaxError" },
+            { "id": "d", "text": "RangeError" },
+            { "id": "e", "text": "NetworkError" },
+            { "id": "f", "text": "DatabaseError" },
+            { "id": "g", "text": "RequestError" },
+            { "id": "h", "text": "CompileError" }
+          ],
+          "correct": ["a", "b", "c", "d"]
+        },
+        {
+          "id": "b_t_topic17_q8",
+          "type": "multi",
+          "question": "Какие внешние библиотеки/сервисы часто используют для мониторинга и сбора ошибок в JS-проектах?",
+          "options": [
+            { "id": "a", "text": "Sentry" },
+            { "id": "b", "text": "Rollbar" },
+            { "id": "c", "text": "Bugsnag" },
+            { "id": "d", "text": "Airbrake" },
+            { "id": "e", "text": "Webpack" },
+            { "id": "f", "text": "ESLint" },
+            { "id": "g", "text": "Prettier" },
+            { "id": "h", "text": "Jest" }
+          ],
+          "correct": ["a", "b", "c", "d"]
+        },
+        {
+          "id": "b_t_topic17_q9",
+          "type": "multi",
+          "question": "Какие инструменты относятся к логированию ошибок/логов в Node.js-среде (внешние пакеты)?",
+          "options": [
+            { "id": "a", "text": "winston" },
+            { "id": "b", "text": "pino" },
+            { "id": "c", "text": "bunyan" },
+            { "id": "d", "text": "debug" },
+            { "id": "e", "text": "nodemon" },
+            { "id": "f", "text": "npm" },
+            { "id": "g", "text": "vite" },
+            { "id": "h", "text": "ts-node" }
+          ],
+          "correct": ["a", "b", "c", "d"]
+        },
+        {
+          "id": "b_t_topic17_q10",
+          "type": "single",
+          "question": "Зачем часто используют finally в обработке ошибок?",
+          "options": [
+            { "id": "a", "text": "Чтобы выполнить очистку ресурсов независимо от результата" },
+            { "id": "b", "text": "Чтобы скрыть все ошибки и не логировать их" },
+            { "id": "c", "text": "Чтобы всегда преобразовать ошибку в строку" },
+            { "id": "d", "text": "Чтобы запретить return в функции" },
+            { "id": "e", "text": "Чтобы автоматически исправлять исключения" },
+            { "id": "f", "text": "Чтобы изменить правила сравнения объектов" },
+            { "id": "g", "text": "Чтобы ускорить выполнение кода" },
+            { "id": "h", "text": "Чтобы включить режим module в браузере" }
+          ],
+          "correct": ["a"]
+        },
+
+           
         {
           "id": "b_t_topic18_q1",
           "type": "single",
@@ -3784,7 +3946,7 @@
           "prompt": "Напишите функцию countChars(str), которая возвращает объект с количеством каждого символа.\n\nПример:\n\"aab\" -> {\"a\":2,\"b\":1}",
           "maxPoints": 5
         }
-      ],
+      ]
         },
     {
       "id": "js_advanced",
