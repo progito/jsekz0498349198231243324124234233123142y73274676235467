@@ -5,68 +5,3766 @@
       "id": "js_basics",
       "title": "Основы JavaScript",
       "theory": [
-        {
-          "id": "b_t1",
-          "type": "single",
-          "question": "Какой тип данных у значения NaN?",
-          "options": [
-            { "id": "a", "text": "number" },
-            { "id": "b", "text": "NaN" },
-            { "id": "c", "text": "undefined" },
-            { "id": "d", "text": "object" }
-          ],
-          "correct": ["a"]
-        },
-        {
-          "id": "b_t2",
-          "type": "multi",
-          "question": "Какие значения в JavaScript являются falsy?",
-          "options": [
-            { "id": "a", "text": "0" },
-            { "id": "b", "text": "\"0\"" },
-            { "id": "c", "text": "null" },
-            { "id": "d", "text": "undefined" },
-            { "id": "e", "text": "\"\"" }
-          ],
-          "correct": ["a", "c", "d", "e"]
-        },
-        {
-          "id": "b_t3",
-          "type": "single",
-          "question": "Что вернёт выражение: typeof null ?",
-          "options": [
-            { "id": "a", "text": "\"null\"" },
-            { "id": "b", "text": "\"object\"" },
-            { "id": "c", "text": "\"undefined\"" },
-            { "id": "d", "text": "\"number\"" }
-          ],
-          "correct": ["b"]
-        },
-        {
-          "id": "b_t4",
-          "type": "single",
-          "question": "Какой метод добавляет элемент в конец массива?",
-          "options": [
-            { "id": "a", "text": "push" },
-            { "id": "b", "text": "pop" },
-            { "id": "c", "text": "shift" },
-            { "id": "d", "text": "unshift" }
-          ],
-          "correct": ["a"]
-        },
-        {
-          "id": "b_t5",
-          "type": "multi",
-          "question": "Какие способы объявления переменных существуют в JavaScript (ES6+)?",
-          "options": [
-            { "id": "a", "text": "var" },
-            { "id": "b", "text": "let" },
-            { "id": "c", "text": "const" },
-            { "id": "d", "text": "int" }
-          ],
-          "correct": ["a", "b", "c"]
-        }
-      ],
+  {
+    "id": "b_t_topic1_q1",
+    "type": "single",
+    "question": "Что такое ECMAScript (ECMA-262) в контексте JavaScript?",
+    "options": [
+      { "id": "a", "text": "Спецификация языка (стандарт), описывающая синтаксис и поведение JavaScript" },
+      { "id": "b", "text": "Библиотека для работы с DOM, встроенная во все браузеры" },
+      { "id": "c", "text": "Протокол обмена данными между браузером и сервером" },
+      { "id": "d", "text": "Движок JavaScript в браузере (например, V8)" },
+      { "id": "e", "text": "Набор API браузера (Browser API), включая DOM и Web APIs" },
+      { "id": "f", "text": "Язык разметки для описания интерфейса веб‑страниц" },
+      { "id": "g", "text": "Среда выполнения JavaScript вне браузера (например, Node.js)" },
+      { "id": "h", "text": "Система модулей в JavaScript (import/export)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic1_q2",
+    "type": "single",
+    "question": "Какая организация связана со стандартом ECMAScript?",
+    "options": [
+      { "id": "a", "text": "ECMA International" },
+      { "id": "b", "text": "W3C" },
+      { "id": "c", "text": "IETF" },
+      { "id": "d", "text": "WHATWG" },
+      { "id": "e", "text": "ISO/IEC JTC1 (как единственный владелец стандарта JavaScript)" },
+      { "id": "f", "text": "Mozilla Foundation" },
+      { "id": "g", "text": "Google Web Platform Team" },
+      { "id": "h", "text": "OpenJS Foundation (как автор ECMAScript)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic1_q3",
+    "type": "multi",
+    "question": "Какие утверждения про «JavaScript» и «ECMAScript» верны?",
+    "options": [
+      { "id": "a", "text": "ECMAScript — это спецификация, JavaScript — реализация/язык на её основе" },
+      { "id": "b", "text": "ECMAScript описывает только DOM-API (querySelector, addEventListener и т.п.)" },
+      { "id": "c", "text": "Браузерные API (DOM, fetch, setTimeout) не являются частью ECMAScript" },
+      { "id": "d", "text": "ECMAScript определяет поведение типов, операторов, функций, объектов и т.п." },
+      { "id": "e", "text": "JavaScript и ECMAScript — полностью разные языки без пересечений" },
+      { "id": "f", "text": "Разные среды (браузер/Node.js) могут добавлять свои API поверх ECMAScript" },
+      { "id": "g", "text": "Спецификация ECMAScript относится только к CSS" },
+      { "id": "h", "text": "Если функция доступна в DevTools, значит она обязательно часть ECMAScript" }
+    ],
+    "correct": ["a", "c", "d", "f"]
+  },
+  {
+    "id": "b_t_topic1_q4",
+    "type": "multi",
+    "question": "Какие панели (разделы) обычно относятся к DevTools в браузерах (Chrome/Edge/Firefox) и используются при отладке?",
+    "options": [
+      { "id": "a", "text": "Console" },
+      { "id": "b", "text": "Sources (Debugger)" },
+      { "id": "c", "text": "Network" },
+      { "id": "d", "text": "Elements (Inspector)" },
+      { "id": "e", "text": "Performance" },
+      { "id": "f", "text": "Application / Storage" },
+      { "id": "g", "text": "Terminal (встроенный bash в DevTools как стандартная вкладка)" },
+      { "id": "h", "text": "Package Manager (npm/yarn как вкладка DevTools)" }
+    ],
+    "correct": ["a", "b", "c", "d", "e", "f"]
+  },
+  {
+    "id": "b_t_topic1_q5",
+    "type": "single",
+    "question": "Для чего чаще всего используется вкладка Network в DevTools?",
+    "options": [
+      { "id": "a", "text": "Анализ сетевых запросов: заголовки, ответы, статус-коды, тайминги, размеры" },
+      { "id": "b", "text": "Редактирование HTML-структуры страницы и CSS-стилей в реальном времени" },
+      { "id": "c", "text": "Профилирование производительности JS по call stack без информации о запросах" },
+      { "id": "d", "text": "Управление git-репозиторием и просмотр коммитов" },
+      { "id": "e", "text": "Компиляция TypeScript в JavaScript" },
+      { "id": "f", "text": "Управление установленными расширениями браузера" },
+      { "id": "g", "text": "Запуск unit-тестов через встроенный тест-раннер" },
+      { "id": "h", "text": "Мониторинг температуры процессора и напряжения видеокарты" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic1_q6",
+    "type": "single",
+    "question": "Какой способ постановки точки останова (breakpoint) наиболее типичен в вкладке Sources/Debugger?",
+    "options": [
+      { "id": "a", "text": "Клик по номеру строки в файле исходного кода" },
+      { "id": "b", "text": "Переименование переменной в коде на \"breakpoint\"" },
+      { "id": "c", "text": "Добавление CSS-класса .breakpoint к элементу DOM" },
+      { "id": "d", "text": "Изменение MIME-типа скрипта на breakpoint/js" },
+      { "id": "e", "text": "Вставка в HTML тега <breakpoint>" },
+      { "id": "f", "text": "Переустановка браузера с включенной отладкой" },
+      { "id": "g", "text": "Сохранение страницы как PDF" },
+      { "id": "h", "text": "Включение режима инкогнито" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic1_q7",
+    "type": "multi",
+    "question": "Какие действия относятся к отладке JavaScript с помощью DevTools?",
+    "options": [
+      { "id": "a", "text": "Step over / Step into / Step out (пошаговое выполнение)" },
+      { "id": "b", "text": "Просмотр Call Stack (стека вызовов)" },
+      { "id": "c", "text": "Просмотр Scope/Variables (области видимости и переменные)" },
+      { "id": "d", "text": "Установка conditional breakpoint (точка останова с условием)" },
+      { "id": "e", "text": "Просмотр и изменение Local Storage / Session Storage" },
+      { "id": "f", "text": "Автоматическое исправление логики программы без изменения кода" },
+      { "id": "g", "text": "Поиск утечек памяти и анализ heap snapshot" },
+      { "id": "h", "text": "Переименование всех функций проекта автоматически (refactor by DevTools)" }
+    ],
+    "correct": ["a", "b", "c", "d", "e", "g"]
+  },
+  {
+    "id": "b_t_topic1_q8",
+    "type": "single",
+    "question": "Что делает выражение debugger; в JavaScript-коде (при открытых DevTools)?",
+    "options": [
+      { "id": "a", "text": "Останавливает выполнение на этой строке, как точка останова" },
+      { "id": "b", "text": "Удаляет все точки останова и очищает консоль" },
+      { "id": "c", "text": "Принудительно завершает вкладку браузера" },
+      { "id": "d", "text": "Преобразует скрипт в исходники TypeScript" },
+      { "id": "e", "text": "Включает строгий режим выполнения кода" },
+      { "id": "f", "text": "Отключает оптимизации JS-движка навсегда" },
+      { "id": "g", "text": "Отправляет лог в Network как отдельный запрос" },
+      { "id": "h", "text": "Запускает сборку проекта" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic1_q9",
+    "type": "multi",
+    "question": "Какие способы вывода информации в DevTools Console существуют (стандартный console.*)?",
+    "options": [
+      { "id": "a", "text": "console.log()" },
+      { "id": "b", "text": "console.warn()" },
+      { "id": "c", "text": "console.error()" },
+      { "id": "d", "text": "console.table()" },
+      { "id": "e", "text": "console.group() / console.groupEnd()" },
+      { "id": "f", "text": "console.assert()" },
+      { "id": "g", "text": "console.install()" },
+      { "id": "h", "text": "console.connect()" }
+    ],
+    "correct": ["a", "b", "c", "d", "e", "f"]
+  },
+  {
+    "id": "b_t_topic1_q10",
+    "type": "single",
+    "question": "Что обычно показывает вкладка Sources/Debugger в DevTools?",
+    "options": [
+      { "id": "a", "text": "Исходные файлы (JS/карты исходников), точки останова, стек, scope и управление шагами" },
+      { "id": "b", "text": "Только список установленных расширений браузера" },
+      { "id": "c", "text": "Только историю HTTP-запросов и статус-коды" },
+      { "id": "d", "text": "Только HTML и CSS текущей страницы" },
+      { "id": "e", "text": "Только конфигурацию npm-пакетов проекта" },
+      { "id": "f", "text": "Только список вкладок и закладок браузера" },
+      { "id": "g", "text": "Только менеджер задач ОС" },
+      { "id": "h", "text": "Только список системных шрифтов" }
+    ],
+    "correct": ["a"]
+  },
+
+  {
+    "id": "b_t_topic2_q1",
+    "type": "single",
+    "question": "Что такое «строгий режим» (\"use strict\") в JavaScript?",
+    "options": [
+      { "id": "a", "text": "Специальный режим выполнения кода, который делает ряд ошибок «фатальными» и запрещает некоторые небезопасные конструкции" },
+      { "id": "b", "text": "Режим, который автоматически оптимизирует код под максимальную скорость" },
+      { "id": "c", "text": "Режим, который превращает JavaScript в TypeScript" },
+      { "id": "d", "text": "Режим, который отключает сборщик мусора" },
+      { "id": "e", "text": "Режим, который запрещает использование функций вообще" },
+      { "id": "f", "text": "Режим, который включает поддержку всех экспериментальных возможностей языка" },
+      { "id": "g", "text": "Режим, который делает все переменные глобальными по умолчанию" },
+      { "id": "h", "text": "Режим, который запрещает использование объектов" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic2_q2",
+    "type": "multi",
+    "question": "Какие утверждения про директиву \"use strict\" верны?",
+    "options": [
+      { "id": "a", "text": "\"use strict\" — это строковый литерал, который интерпретируется как директива только в определённых позициях" },
+      { "id": "b", "text": "\"use strict\" может применяться ко всему скрипту, если стоит в самом начале файла" },
+      { "id": "c", "text": "\"use strict\" может применяться только к одной функции, если стоит первой инструкцией в теле функции" },
+      { "id": "d", "text": "\"use strict\" всегда включён по умолчанию во всех JS-файлах, писать его не нужно" },
+      { "id": "e", "text": "Если \"use strict\" написать не в начале (например, после кода), он всё равно включит строгий режим для всего файла" },
+      { "id": "f", "text": "В строгом режиме некоторые ошибки становятся исключениями (например, присваивание необъявленной переменной)" },
+      { "id": "g", "text": "\"use strict\" — это комментарий, который игнорируется движком" },
+      { "id": "h", "text": "\"use strict\" работает только в Node.js, в браузере не работает" }
+    ],
+    "correct": ["a", "b", "c", "f"]
+  },
+  {
+    "id": "b_t_topic2_q3",
+    "type": "single",
+    "question": "Какой из вариантов является корректным однострочным комментарием в JavaScript?",
+    "options": [
+      { "id": "a", "text": "// комментарий" },
+      { "id": "b", "text": "<!-- комментарий -->" },
+      { "id": "c", "text": "# комментарий" },
+      { "id": "d", "text": "/*/ комментарий */" },
+      { "id": "e", "text": "///\\ комментарий" },
+      { "id": "f", "text": "-- комментарий" },
+      { "id": "g", "text": ":: комментарий" },
+      { "id": "h", "text": "(* комментарий *)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic2_q4",
+    "type": "multi",
+    "question": "Какие виды комментариев есть в JavaScript?",
+    "options": [
+      { "id": "a", "text": "Однострочные: // ..." },
+      { "id": "b", "text": "Многострочные: /* ... */" },
+      { "id": "c", "text": "JSDoc-стиль: /** ... */ (как частный случай многострочного)" },
+      { "id": "d", "text": "XML-комментарии: <!-- ... --> (стандарт JS)" },
+      { "id": "e", "text": "Shell-комментарии: # ... (стандарт JS)" },
+      { "id": "f", "text": "Комментарии-метки: :: ... (стандарт JS)" },
+      { "id": "g", "text": "Комментарии-строки: \"comment: ...\" (специальный синтаксис JS)" },
+      { "id": "h", "text": "Комментарии-закрытия: endcomment (стандарт JS)" }
+    ],
+    "correct": ["a", "b", "c"]
+  },
+  {
+    "id": "b_t_topic2_q5",
+    "type": "single",
+    "question": "Что такое Node.js?",
+    "options": [
+      { "id": "a", "text": "Среда выполнения JavaScript вне браузера (runtime), построенная на движке V8 и системных библиотеках" },
+      { "id": "b", "text": "JavaScript-фреймворк для создания UI-компонентов" },
+      { "id": "c", "text": "Новый стандарт ECMAScript, который заменяет JavaScript" },
+      { "id": "d", "text": "Графический редактор для HTML/CSS" },
+      { "id": "e", "text": "Язык программирования для серверов, не имеющий отношения к JS" },
+      { "id": "f", "text": "База данных, написанная на JavaScript" },
+      { "id": "g", "text": "Пакетный менеджер для JavaScript" },
+      { "id": "h", "text": "IDE, встроенная в браузер" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic2_q6",
+    "type": "single",
+    "question": "Что такое npm?",
+    "options": [
+      { "id": "a", "text": "Менеджер пакетов (и реестр пакетов) для экосистемы Node.js/JavaScript" },
+      { "id": "b", "text": "Командная оболочка Windows для запуска JavaScript" },
+      { "id": "c", "text": "Стандарт модулей, который заменяет import/export" },
+      { "id": "d", "text": "Движок JavaScript в браузере" },
+      { "id": "e", "text": "Протокол HTTP для загрузки библиотек" },
+      { "id": "f", "text": "Система типизации JavaScript (как TypeScript)" },
+      { "id": "g", "text": "Инструмент, который компилирует JS только в C++" },
+      { "id": "h", "text": "Только сайт, не имеющий CLI-утилиты" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic2_q7",
+    "type": "multi",
+    "question": "Какие инструменты можно назвать аналогами npm (менеджеры пакетов для JS)?",
+    "options": [
+      { "id": "a", "text": "Yarn" },
+      { "id": "b", "text": "pnpm" },
+      { "id": "c", "text": "Bun (bun install)" },
+      { "id": "d", "text": "pip" },
+      { "id": "e", "text": "Composer" },
+      { "id": "f", "text": "Cargo" },
+      { "id": "g", "text": "NuGet" },
+      { "id": "h", "text": "RubyGems" }
+    ],
+    "correct": ["a", "b", "c"]
+  },
+  {
+    "id": "b_t_topic2_q8",
+    "type": "multi",
+    "question": "Какие методы объекта console существуют в JavaScript (DevTools/Node.js) и используются чаще всего?",
+    "options": [
+      { "id": "a", "text": "console.log()" },
+      { "id": "b", "text": "console.warn()" },
+      { "id": "c", "text": "console.error()" },
+      { "id": "d", "text": "console.table()" },
+      { "id": "e", "text": "console.group() / console.groupEnd()" },
+      { "id": "f", "text": "console.time() / console.timeEnd()" },
+      { "id": "g", "text": "console.send()" },
+      { "id": "h", "text": "console.upload()" }
+    ],
+    "correct": ["a", "b", "c", "d", "e", "f"]
+  },
+  {
+    "id": "b_t_topic2_q9",
+    "type": "single",
+    "question": "Какая «структура кода» в JavaScript считается базовой на уровне синтаксиса?",
+    "options": [
+      { "id": "a", "text": "Программа состоит из инструкций (statements) и выражений (expressions), разделяемых ; или автоматической расстановкой ;" },
+      { "id": "b", "text": "Программа обязана начинаться с функции main()" },
+      { "id": "c", "text": "Каждый файл обязан быть классом" },
+      { "id": "d", "text": "В JavaScript можно писать только внутри HTML-тегов <script>, иначе код не считается JavaScript" },
+      { "id": "e", "text": "JS-код всегда имеет строго фиксированную структуру: импорт → объявление типов → компиляция → выполнение" },
+      { "id": "f", "text": "JS — это только набор комментариев и директив" },
+      { "id": "g", "text": "JS не имеет инструкций, только выражения" },
+      { "id": "h", "text": "JS не поддерживает блоки кода { }" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic2_q10",
+    "type": "multi",
+    "question": "Какие варианты являются корректными способами запуска/выполнения JavaScript-кода (среды выполнения)?",
+    "options": [
+      { "id": "a", "text": "В браузере, внутри страницы (DevTools Console или <script>)" },
+      { "id": "b", "text": "В Node.js (node file.js)" },
+      { "id": "c", "text": "В Deno" },
+      { "id": "d", "text": "В Bun" },
+      { "id": "e", "text": "Только внутри Java Virtual Machine (JVM) как обязательное требование" },
+      { "id": "f", "text": "Только внутри Microsoft Excel без каких-либо расширений" },
+      { "id": "g", "text": "Внутри WebView/встраиваемых браузерных движков (например, в приложениях)" },
+      { "id": "h", "text": "Только через компиляцию в PHP" }
+    ],
+    "correct": ["a", "b", "c", "d", "g"]
+  },
+ 
+  {
+    "id": "b_t_topic3_q1",
+    "type": "single",
+    "question": "Какое утверждение про var / let / const верное?",
+    "options": [
+      { "id": "a", "text": "var имеет функциональную область видимости, let/const — блочную" },
+      { "id": "b", "text": "let имеет функциональную область видимости, var — блочную" },
+      { "id": "c", "text": "const делает значение переменной неизменяемым для объектов (запрещает менять свойства)" },
+      { "id": "d", "text": "var запрещено объявлять без инициализации, а let можно" },
+      { "id": "e", "text": "let и const можно повторно объявлять в одном и том же блоке" },
+      { "id": "f", "text": "const можно объявить без значения, если потом присвоить" },
+      { "id": "g", "text": "var работает только в строгом режиме" },
+      { "id": "h", "text": "let автоматически становится глобальной переменной" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic3_q2",
+    "type": "single",
+    "question": "Какой оператор в JavaScript означает «строгое равенство» (без приведения типов)?",
+    "options": [
+      { "id": "a", "text": "===" },
+      { "id": "b", "text": "==" },
+      { "id": "c", "text": "=" },
+      { "id": "d", "text": "<=>" },
+      { "id": "e", "text": "eq()" },
+      { "id": "f", "text": "is" },
+      { "id": "g", "text": "equals" },
+      { "id": "h", "text": "::=" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic3_q3",
+    "type": "single",
+    "question": "Что вернёт выражение: typeof null ?",
+    "options": [
+      { "id": "a", "text": "\"null\"" },
+      { "id": "b", "text": "\"object\"" },
+      { "id": "c", "text": "\"undefined\"" },
+      { "id": "d", "text": "\"number\"" },
+      { "id": "e", "text": "\"boolean\"" },
+      { "id": "f", "text": "\"symbol\"" },
+      { "id": "g", "text": "\"function\"" },
+      { "id": "h", "text": "null" }
+    ],
+    "correct": ["b"]
+  },
+  {
+    "id": "b_t_topic3_q4",
+    "type": "multi",
+    "question": "Какие типы данных относятся к примитивам в JavaScript?",
+    "options": [
+      { "id": "a", "text": "string" },
+      { "id": "b", "text": "number" },
+      { "id": "c", "text": "boolean" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "symbol" },
+      { "id": "g", "text": "bigint" },
+      { "id": "h", "text": "object" }
+    ],
+    "correct": ["a", "b", "c", "d", "e", "f", "g"]
+  },
+  {
+    "id": "b_t_topic3_q5",
+    "type": "single",
+    "question": "Какой результат у выражения: 2 + \"2\" ?",
+    "options": [
+      { "id": "a", "text": "\"22\"" },
+      { "id": "b", "text": "4" },
+      { "id": "c", "text": "NaN" },
+      { "id": "d", "text": "\"4\"" },
+      { "id": "e", "text": "Ошибка TypeError" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "\"2+2\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic3_q6",
+    "type": "single",
+    "question": "Какой результат у выражения: \"5\" - 2 ?",
+    "options": [
+      { "id": "a", "text": "3" },
+      { "id": "b", "text": "\"52\"" },
+      { "id": "c", "text": "\"3\"" },
+      { "id": "d", "text": "NaN" },
+      { "id": "e", "text": "Ошибка TypeError" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "0" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic3_q7",
+    "type": "single",
+    "question": "Какой из операторов является оператором присваивания с сложением?",
+    "options": [
+      { "id": "a", "text": "+=" },
+      { "id": "b", "text": "++" },
+      { "id": "c", "text": "=+" },
+      { "id": "d", "text": "=:+" },
+      { "id": "e", "text": "add=" },
+      { "id": "f", "text": "**=" },
+      { "id": "g", "text": "||=" },
+      { "id": "h", "text": "??=" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic3_q8",
+    "type": "single",
+    "question": "Что произойдёт в строгом режиме при выполнении кода: x = 10; (без объявления переменной)?",
+    "options": [
+      { "id": "a", "text": "Будет выброшено исключение (ReferenceError), т.к. переменная не объявлена" },
+      { "id": "b", "text": "Создастся глобальная переменная x автоматически" },
+      { "id": "c", "text": "x станет свойством localStorage" },
+      { "id": "d", "text": "x будет объявлена как const по умолчанию" },
+      { "id": "e", "text": "Код выполнится, но x станет undefined" },
+      { "id": "f", "text": "Код не выполнится только в Node.js, но в браузере выполнится" },
+      { "id": "g", "text": "Будет выброшено исключение SyntaxError на этапе парсинга всегда" },
+      { "id": "h", "text": "x станет равна NaN" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic3_q9",
+    "type": "multi",
+    "question": "Какие утверждения про const верны?",
+    "options": [
+      { "id": "a", "text": "const нельзя переназначить (повторно присвоить другое значение)" },
+      { "id": "b", "text": "const нужно инициализировать при объявлении" },
+      { "id": "c", "text": "const переменная всегда имеет блочную область видимости" },
+      { "id": "d", "text": "const запрещает изменять свойства объектов/элементы массива (делает deep freeze)" },
+      { "id": "e", "text": "const можно объявить без значения, если присвоить позже" },
+      { "id": "f", "text": "const можно повторно объявить в одном блоке без ошибок" },
+      { "id": "g", "text": "const существует только в Node.js" },
+      { "id": "h", "text": "const автоматически становится глобальной переменной" }
+    ],
+    "correct": ["a", "b", "c"]
+  },
+  {
+    "id": "b_t_topic3_q10",
+    "type": "single",
+    "question": "Какой результат у выражения: 0.1 + 0.2 === 0.3 ?",
+    "options": [
+      { "id": "a", "text": "false (из-за особенностей IEEE 754 для чисел с плавающей точкой)" },
+      { "id": "b", "text": "true (в JS точная математика для float)" },
+      { "id": "c", "text": "NaN" },
+      { "id": "d", "text": "Ошибка TypeError" },
+      { "id": "e", "text": "undefined" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "true только в строгом режиме" },
+      { "id": "h", "text": "false только в нестрогом режиме" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic3_q11",
+    "type": "multi",
+    "question": "Какие операторы относятся к арифметическим в JavaScript?",
+    "options": [
+      { "id": "a", "text": "+" },
+      { "id": "b", "text": "-" },
+      { "id": "c", "text": "*" },
+      { "id": "d", "text": "/" },
+      { "id": "e", "text": "%" },
+      { "id": "f", "text": "**" },
+      { "id": "g", "text": "===" },
+      { "id": "h", "text": "??" }
+    ],
+    "correct": ["a", "b", "c", "d", "e", "f"]
+  },
+  {
+    "id": "b_t_topic3_q12",
+    "type": "single",
+    "question": "Какая из переменных будет доступна только внутри блока { ... } ?",
+    "options": [
+      { "id": "a", "text": "let x = 1; (объявлена внутри блока)" },
+      { "id": "b", "text": "var x = 1; (объявлена внутри блока)" },
+      { "id": "c", "text": "function x() {} (объявлена внутри блока всегда глобальна)" },
+      { "id": "d", "text": "x = 1; (без объявления переменной)" },
+      { "id": "e", "text": "this.x = 1; (внутри блока становится локальной)" },
+      { "id": "f", "text": "window.x = 1; (внутри блока становится блочной)" },
+      { "id": "g", "text": "globalThis.x = 1; (внутри блока становится блочной)" },
+      { "id": "h", "text": "import x from \"x\"; (внутри блока запрещено)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic4_q1",
+    "type": "single",
+    "question": "Какой оператор в JavaScript является оператором нулевого слияния (nullish coalescing)?",
+    "options": [
+      { "id": "a", "text": "??" },
+      { "id": "b", "text": "||" },
+      { "id": "c", "text": "&&" },
+      { "id": "d", "text": "?" },
+      { "id": "e", "text": "::" },
+      { "id": "f", "text": "<>" },
+      { "id": "g", "text": "???" },
+      { "id": "h", "text": "|?" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic4_q2",
+    "type": "multi",
+    "question": "В чём основное отличие оператора ?? от оператора || ?",
+    "options": [
+      { "id": "a", "text": "?? использует правую часть только если слева null или undefined" },
+      { "id": "b", "text": "|| использует правую часть если слева любое falsy-значение (0, \"\", false, null, undefined, NaN)" },
+      { "id": "c", "text": "?? работает только со строками" },
+      { "id": "d", "text": "|| работает только с числами" },
+      { "id": "e", "text": "?? и || всегда ведут себя одинаково" },
+      { "id": "f", "text": "?? запрещён в строгом режиме" },
+      { "id": "g", "text": "|| запрещён в модулях" },
+      { "id": "h", "text": "?? выполняет побитовую операцию OR" }
+    ],
+    "correct": ["a", "b"]
+  },
+  {
+    "id": "b_t_topic4_q3",
+    "type": "single",
+    "question": "Что вернёт выражение: 0 || 42 ?",
+    "options": [
+      { "id": "a", "text": "42" },
+      { "id": "b", "text": "0" },
+      { "id": "c", "text": "false" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "\"42\"" },
+      { "id": "h", "text": "Ошибка TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic4_q4",
+    "type": "single",
+    "question": "Что вернёт выражение: 0 ?? 42 ?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "42" },
+      { "id": "c", "text": "false" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "\"0\"" },
+      { "id": "h", "text": "Ошибка SyntaxError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic4_q5",
+    "type": "multi",
+    "question": "Какие операторы относятся к логическим в JavaScript?",
+    "options": [
+      { "id": "a", "text": "&&" },
+      { "id": "b", "text": "||" },
+      { "id": "c", "text": "!" },
+      { "id": "d", "text": "??" },
+      { "id": "e", "text": "&" },
+      { "id": "f", "text": "|" },
+      { "id": "g", "text": "^" },
+      { "id": "h", "text": "~" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+  {
+    "id": "b_t_topic4_q6",
+    "type": "multi",
+    "question": "Какие операторы относятся к логическим присваиваниям (logical assignment) в JavaScript?",
+    "options": [
+      { "id": "a", "text": "||=" },
+      { "id": "b", "text": "&&=" },
+      { "id": "c", "text": "??=" },
+      { "id": "d", "text": "+=" },
+      { "id": "e", "text": "|=" },
+      { "id": "f", "text": "&=" },
+      { "id": "g", "text": "!===" },
+      { "id": "h", "text": "??==" }
+    ],
+    "correct": ["a", "b", "c"]
+  },
+  {
+    "id": "b_t_topic4_q7",
+    "type": "single",
+    "question": "Что означает термин hoisting применительно к var?",
+    "options": [
+      { "id": "a", "text": "Поднятие объявления переменной var в начало функции/скрипта (инициализация остаётся на месте)" },
+      { "id": "b", "text": "Поднятие значения переменной var в начало блока { }" },
+      { "id": "c", "text": "Автоматическое преобразование var в const" },
+      { "id": "d", "text": "Оптимизацию, при которой переменная хранится в кеше процессора" },
+      { "id": "e", "text": "Механизм, который делает var блочной переменной" },
+      { "id": "f", "text": "Автоматический импорт переменной из другого файла" },
+      { "id": "g", "text": "Запрет повторного объявления var" },
+      { "id": "h", "text": "Поднятие только комментариев в начало файла" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic4_q8",
+    "type": "single",
+    "question": "Что произойдёт при выполнении кода: console.log(x); var x = 5; ?",
+    "options": [
+      { "id": "a", "text": "Выведет undefined, потому что объявление var поднято, но присваивание ещё не выполнено" },
+      { "id": "b", "text": "Выведет 5, потому что var инициализируется сразу" },
+      { "id": "c", "text": "Выбросит ReferenceError всегда" },
+      { "id": "d", "text": "Выбросит SyntaxError всегда" },
+      { "id": "e", "text": "Выведет null" },
+      { "id": "f", "text": "Выведет NaN" },
+      { "id": "g", "text": "Выведет \"x\"" },
+      { "id": "h", "text": "Ничего не выведет, так как console.log запрещён в строгом режиме" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic4_q9",
+    "type": "single",
+    "question": "Что произойдёт при выполнении кода: console.log(x); let x = 5; ?",
+    "options": [
+      { "id": "a", "text": "Выбросит ReferenceError из-за Temporal Dead Zone (TDZ)" },
+      { "id": "b", "text": "Выведет undefined (как var)" },
+      { "id": "c", "text": "Выведет 5" },
+      { "id": "d", "text": "Выведет null" },
+      { "id": "e", "text": "Выведет NaN" },
+      { "id": "f", "text": "Выбросит TypeError" },
+      { "id": "g", "text": "Выбросит SyntaxError только в браузере, но не в Node.js" },
+      { "id": "h", "text": "Ничего не произойдёт, потому что console.log игнорируется" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic4_q10",
+    "type": "multi",
+    "question": "Какие операторы относятся к побитовым в JavaScript?",
+    "options": [
+      { "id": "a", "text": "& (AND)" },
+      { "id": "b", "text": "| (OR)" },
+      { "id": "c", "text": "^ (XOR)" },
+      { "id": "d", "text": "~ (NOT)" },
+      { "id": "e", "text": "<< (сдвиг влево)" },
+      { "id": "f", "text": ">> (сдвиг вправо со знаком)" },
+      { "id": "g", "text": ">>> (сдвиг вправо без знака)" },
+      { "id": "h", "text": "&& (логическое AND)" }
+    ],
+    "correct": ["a", "b", "c", "d", "e", "f", "g"]
+  },
+  {
+    "id": "b_t_topic4_q11",
+    "type": "single",
+    "question": "Какое значение имеет выражение: 5 & 3 ? (побитовое AND)",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "7" },
+      { "id": "c", "text": "6" },
+      { "id": "d", "text": "8" },
+      { "id": "e", "text": "0" },
+      { "id": "f", "text": "3" },
+      { "id": "g", "text": "5" },
+      { "id": "h", "text": "Ошибка TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic4_q12",
+    "type": "multi",
+    "question": "Зачем часто использовали IIFE (Immediately Invoked Function Expression) в эпоху var до появления let/const и модулей?",
+    "options": [
+      { "id": "a", "text": "Чтобы создать новую область видимости и изолировать переменные (избежать загрязнения глобальной области)" },
+      { "id": "b", "text": "Чтобы «починить» блочную область видимости var (эмулировать её через функцию)" },
+      { "id": "c", "text": "Чтобы заменить строгий режим (\"use strict\")" },
+      { "id": "d", "text": "Чтобы подключить npm-пакеты прямо в браузере без сборки" },
+      { "id": "e", "text": "Чтобы предотвратить конфликты имён переменных между разными скриптами" },
+      { "id": "f", "text": "Чтобы автоматически включить tree-shaking" },
+      { "id": "g", "text": "Чтобы ускорить работу сборщика мусора в 10 раз" },
+      { "id": "h", "text": "Чтобы отключить hoisting" }
+    ],
+    "correct": ["a", "b", "e"]
+  },
+  {
+    "id": "b_t_topic5_q1",
+    "type": "single",
+    "question": "Что обычно подразумевают под Browser API (Web APIs) в контексте JavaScript в браузере?",
+    "options": [
+      { "id": "a", "text": "Набор возможностей, предоставляемых браузером поверх ECMAScript: DOM, BOM, Web APIs (таймеры, fetch, Storage и т.п.)" },
+      { "id": "b", "text": "Часть стандарта ECMAScript, описывающая HTML и CSS" },
+      { "id": "c", "text": "Только объект Math и методы строк" },
+      { "id": "d", "text": "Только синтаксис import/export" },
+      { "id": "e", "text": "Только Node.js API (fs, path, http)" },
+      { "id": "f", "text": "Только спецификация HTTP/2" },
+      { "id": "g", "text": "Система пакетов npm" },
+      { "id": "h", "text": "Встроенная библиотека React в браузере" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic5_q2",
+    "type": "multi",
+    "question": "Какие примеры относятся к Browser API / Web APIs (не часть ECMAScript)?",
+    "options": [
+      { "id": "a", "text": "DOM (document.querySelector, addEventListener)" },
+      { "id": "b", "text": "fetch" },
+      { "id": "c", "text": "setTimeout / setInterval" },
+      { "id": "d", "text": "localStorage / sessionStorage" },
+      { "id": "e", "text": "Promise" },
+      { "id": "f", "text": "Array.prototype.map" },
+      { "id": "g", "text": "console (в браузере — инструмент среды)" },
+      { "id": "h", "text": "typeof" }
+    ],
+    "correct": ["a", "b", "c", "d", "g"]
+  },
+  {
+    "id": "b_t_topic5_q3",
+    "type": "single",
+    "question": "Зачем нужны Browser API?",
+    "options": [
+      { "id": "a", "text": "Чтобы JS мог взаимодействовать со страницей, сетью, событиями, хранением данных и устройствами в рамках возможностей браузера" },
+      { "id": "b", "text": "Чтобы заменить ECMAScript стандартом W3C" },
+      { "id": "c", "text": "Чтобы запретить использование функций в JS" },
+      { "id": "d", "text": "Чтобы код JavaScript автоматически становился строго типизированным" },
+      { "id": "e", "text": "Чтобы запускать npm без установки Node.js" },
+      { "id": "f", "text": "Чтобы ускорять процессор за счёт оптимизаций браузера" },
+      { "id": "g", "text": "Чтобы компилировать JS в C++ прямо в DevTools" },
+      { "id": "h", "text": "Чтобы делать переменные неизменяемыми по умолчанию" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic5_q4",
+    "type": "single",
+    "question": "Какая функция показывает модальное окно с текстом и полем ввода и возвращает введённую строку (или null)?",
+    "options": [
+      { "id": "a", "text": "prompt()" },
+      { "id": "b", "text": "alert()" },
+      { "id": "c", "text": "confirm()" },
+      { "id": "d", "text": "console.input()" },
+      { "id": "e", "text": "window.message()" },
+      { "id": "f", "text": "dialog()" },
+      { "id": "g", "text": "notify()" },
+      { "id": "h", "text": "ask()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic5_q5",
+    "type": "single",
+    "question": "Какая функция показывает модальное окно с кнопками OK/Cancel и возвращает true/false?",
+    "options": [
+      { "id": "a", "text": "confirm()" },
+      { "id": "b", "text": "prompt()" },
+      { "id": "c", "text": "alert()" },
+      { "id": "d", "text": "console.confirm()" },
+      { "id": "e", "text": "window.accept()" },
+      { "id": "f", "text": "choice()" },
+      { "id": "g", "text": "askBoolean()" },
+      { "id": "h", "text": "popup()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic5_q6",
+    "type": "multi",
+    "question": "Что относится к идее «ниндзя-кода» (по смыслу термина)?",
+    "options": [
+      { "id": "a", "text": "Код намеренно написан так, чтобы его было сложно понимать другим" },
+      { "id": "b", "text": "Избыточные сокращения, хитрые трюки и неочевидные конструкции ради «красоты»" },
+      { "id": "c", "text": "Ясные имена переменных и функций, читабельная структура" },
+      { "id": "d", "text": "Отсутствие комментариев и объяснений при сложной логике" },
+      { "id": "e", "text": "Строгое соблюдение линтеров и единый стиль проекта" },
+      { "id": "f", "text": "Неожиданные побочные эффекты и скрытая логика" },
+      { "id": "g", "text": "Минимизация кода любой ценой в продакшене без причины" },
+      { "id": "h", "text": "Понятные тесты и документация" }
+    ],
+    "correct": ["a", "b", "d", "f", "g"]
+  },
+  {
+    "id": "b_t_topic5_q7",
+    "type": "single",
+    "question": "Что такое полифил (polyfill)?",
+    "options": [
+      { "id": "a", "text": "Код (обычно JS), который добавляет/эмулирует возможность, отсутствующую в старой среде (браузере), чтобы использовать современный API" },
+      { "id": "b", "text": "Инструмент сборки, который уменьшает размер JS-файлов" },
+      { "id": "c", "text": "Новый стандарт ECMAScript, который включается через \"use polyfill\"" },
+      { "id": "d", "text": "Только расширение браузера для DevTools" },
+      { "id": "e", "text": "Запрет на использование устаревших функций" },
+      { "id": "f", "text": "Драйвер видеокарты для ускорения Canvas" },
+      { "id": "g", "text": "Способ шифрования JavaScript-кода" },
+      { "id": "h", "text": "Формат хранения данных, похожий на JSON" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic5_q8",
+    "type": "multi",
+    "question": "Какие утверждения про строгий режим (\"use strict\") верны?",
+    "options": [
+      { "id": "a", "text": "Может предотвращать «тихие» ошибки, превращая их в исключения (например, присваивание необъявленной переменной)" },
+      { "id": "b", "text": "Может быть включён на уровне файла или функции" },
+      { "id": "c", "text": "Делает var блочной переменной" },
+      { "id": "d", "text": "Полностью запрещает использовать this" },
+      { "id": "e", "text": "Может влиять на поведение this в функциях (например, this может быть undefined вместо глобального объекта)" },
+      { "id": "f", "text": "Включает поддержку всех Web API автоматически" },
+      { "id": "g", "text": "Является частью Browser API, а не JavaScript" },
+      { "id": "h", "text": "Автоматически компилирует JS в байткод WebAssembly" }
+    ],
+    "correct": ["a", "b", "e"]
+  },
+  {
+    "id": "b_t_topic6_q1",
+    "type": "single",
+    "question": "Что вернёт оператор typeof для значения 123?",
+    "options": [
+      { "id": "a", "text": "\"number\"" },
+      { "id": "b", "text": "\"string\"" },
+      { "id": "c", "text": "\"boolean\"" },
+      { "id": "d", "text": "\"object\"" },
+      { "id": "e", "text": "\"undefined\"" },
+      { "id": "f", "text": "\"function\"" },
+      { "id": "g", "text": "\"symbol\"" },
+      { "id": "h", "text": "\"bigint\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q2",
+    "type": "single",
+    "question": "Что вернёт оператор typeof для значения undefined?",
+    "options": [
+      { "id": "a", "text": "\"undefined\"" },
+      { "id": "b", "text": "\"null\"" },
+      { "id": "c", "text": "\"object\"" },
+      { "id": "d", "text": "\"number\"" },
+      { "id": "e", "text": "\"string\"" },
+      { "id": "f", "text": "\"boolean\"" },
+      { "id": "g", "text": "\"function\"" },
+      { "id": "h", "text": "\"symbol\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q3",
+    "type": "single",
+    "question": "Что вернёт оператор typeof для значения null?",
+    "options": [
+      { "id": "a", "text": "\"object\"" },
+      { "id": "b", "text": "\"null\"" },
+      { "id": "c", "text": "\"undefined\"" },
+      { "id": "d", "text": "\"number\"" },
+      { "id": "e", "text": "\"string\"" },
+      { "id": "f", "text": "\"boolean\"" },
+      { "id": "g", "text": "\"function\"" },
+      { "id": "h", "text": "\"symbol\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q4",
+    "type": "single",
+    "question": "Что вернёт оператор typeof для значения NaN?",
+    "options": [
+      { "id": "a", "text": "\"number\"" },
+      { "id": "b", "text": "\"NaN\"" },
+      { "id": "c", "text": "\"undefined\"" },
+      { "id": "d", "text": "\"object\"" },
+      { "id": "e", "text": "\"string\"" },
+      { "id": "f", "text": "\"boolean\"" },
+      { "id": "g", "text": "\"function\"" },
+      { "id": "h", "text": "\"symbol\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q5",
+    "type": "single",
+    "question": "Какой результат у выражения: Number(\"10\")?",
+    "options": [
+      { "id": "a", "text": "10" },
+      { "id": "b", "text": "\"10\"" },
+      { "id": "c", "text": "NaN" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "true" },
+      { "id": "g", "text": "false" },
+      { "id": "h", "text": "0" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q6",
+    "type": "single",
+    "question": "Какой результат у выражения: Number(\"10a\")?",
+    "options": [
+      { "id": "a", "text": "NaN" },
+      { "id": "b", "text": "10" },
+      { "id": "c", "text": "\"10a\"" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "true" },
+      { "id": "g", "text": "false" },
+      { "id": "h", "text": "0" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q7",
+    "type": "single",
+    "question": "Какой результат у выражения: String(123)?",
+    "options": [
+      { "id": "a", "text": "\"123\"" },
+      { "id": "b", "text": "123" },
+      { "id": "c", "text": "NaN" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "true" },
+      { "id": "g", "text": "false" },
+      { "id": "h", "text": "\"\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q8",
+    "type": "single",
+    "question": "Какой результат у выражения: Boolean(0)?",
+    "options": [
+      { "id": "a", "text": "false" },
+      { "id": "b", "text": "true" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "\"0\"" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "\"false\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q9",
+    "type": "single",
+    "question": "Какой результат у выражения: Boolean(\"0\")?",
+    "options": [
+      { "id": "a", "text": "true" },
+      { "id": "b", "text": "false" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "\"0\"" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "\"true\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q10",
+    "type": "single",
+    "question": "Какой результат у выражения: \"2\" * \"3\"?",
+    "options": [
+      { "id": "a", "text": "6" },
+      { "id": "b", "text": "\"6\"" },
+      { "id": "c", "text": "\"23\"" },
+      { "id": "d", "text": "NaN" },
+      { "id": "e", "text": "undefined" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "true" },
+      { "id": "h", "text": "false" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q11",
+    "type": "single",
+    "question": "Какой результат у выражения: \"2\" + 3?",
+    "options": [
+      { "id": "a", "text": "\"23\"" },
+      { "id": "b", "text": "5" },
+      { "id": "c", "text": "\"5\"" },
+      { "id": "d", "text": "NaN" },
+      { "id": "e", "text": "undefined" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "true" },
+      { "id": "h", "text": "false" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q12",
+    "type": "single",
+    "question": "Какой результат у выражения: \"\" == 0 ?",
+    "options": [
+      { "id": "a", "text": "true" },
+      { "id": "b", "text": "false" },
+      { "id": "c", "text": "NaN" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "\"true\"" },
+      { "id": "g", "text": "\"false\"" },
+      { "id": "h", "text": "0" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q13",
+    "type": "single",
+    "question": "Какой результат у выражения: \"\" === 0 ?",
+    "options": [
+      { "id": "a", "text": "false" },
+      { "id": "b", "text": "true" },
+      { "id": "c", "text": "NaN" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "\"true\"" },
+      { "id": "g", "text": "\"false\"" },
+      { "id": "h", "text": "0" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic6_q14",
+    "type": "multi",
+    "question": "Какие примеры являются явным (explicit) преобразованием типов?",
+    "options": [
+      { "id": "a", "text": "Number(value)" },
+      { "id": "b", "text": "String(value)" },
+      { "id": "c", "text": "Boolean(value)" },
+      { "id": "d", "text": "value + \"\"" },
+      { "id": "e", "text": "\"10\" - 1" },
+      { "id": "f", "text": "value == 0" },
+      { "id": "g", "text": "!!value" },
+      { "id": "h", "text": "\"1\" + 2" }
+    ],
+    "correct": ["a", "b", "c", "g"]
+  },
+
+  {
+    "id": "b_t_topic7_q1",
+    "type": "single",
+    "question": "Какой синтаксис является корректным для условного оператора if в JavaScript?",
+    "options": [
+      { "id": "a", "text": "if (cond) { doSomething(); }" },
+      { "id": "b", "text": "if cond then doSomething()" },
+      { "id": "c", "text": "if [cond] doSomething()" },
+      { "id": "d", "text": "if: (cond) => doSomething()" },
+      { "id": "e", "text": "if (cond) : doSomething()" },
+      { "id": "f", "text": "if (cond) doSomething() end" },
+      { "id": "g", "text": "if {cond} (doSomething())" },
+      { "id": "h", "text": "if cond { doSomething() } else { }" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic7_q2",
+    "type": "single",
+    "question": "Какой синтаксис является корректным для тернарного оператора в JavaScript?",
+    "options": [
+      { "id": "a", "text": "cond ? a : b" },
+      { "id": "b", "text": "cond ?? a :: b" },
+      { "id": "c", "text": "cond : a ? b" },
+      { "id": "d", "text": "cond => a : b" },
+      { "id": "e", "text": "cond ? a ; b" },
+      { "id": "f", "text": "cond then a else b" },
+      { "id": "g", "text": "cond ?: a , b" },
+      { "id": "h", "text": "cond ? (a, b)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic7_q3",
+    "type": "single",
+    "question": "Что вернёт выражение: (0 ? \"yes\" : \"no\") ?",
+    "options": [
+      { "id": "a", "text": "\"no\"" },
+      { "id": "b", "text": "\"yes\"" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "false" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "\"0\"" },
+      { "id": "h", "text": "NaN" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic7_q4",
+    "type": "multi",
+    "question": "Какие значения считаются falsy в JavaScript и приводят условие if(...) к ветке else?",
+    "options": [
+      { "id": "a", "text": "0" },
+      { "id": "b", "text": "\"\"" },
+      { "id": "c", "text": "null" },
+      { "id": "d", "text": "undefined" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "\"0\"" },
+      { "id": "g", "text": "[]" },
+      { "id": "h", "text": "{}" }
+    ],
+    "correct": ["a", "b", "c", "d", "e"]
+  },
+  {
+    "id": "b_t_topic7_q5",
+    "type": "single",
+    "question": "Какое значение по умолчанию сравнивает switch при записи switch(x) { case ... } ?",
+    "options": [
+      { "id": "a", "text": "Используется строгое сравнение (аналог ===) между выражением switch и значением case" },
+      { "id": "b", "text": "Используется нестрогое сравнение (аналог ==) между выражением switch и значением case" },
+      { "id": "c", "text": "Всегда сравнивает строки, приводя всё к string" },
+      { "id": "d", "text": "Всегда сравнивает числа, приводя всё к number" },
+      { "id": "e", "text": "Сравнивает по ссылке только для примитивов" },
+      { "id": "f", "text": "Сравнивает только по typeof" },
+      { "id": "g", "text": "Сравнивает по JSON-строке объекта" },
+      { "id": "h", "text": "Сравнивает по оператору Object.is и больше никак" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic7_q6",
+    "type": "single",
+    "question": "Зачем обычно ставят break в каждом case в switch?",
+    "options": [
+      { "id": "a", "text": "Чтобы не произошло «проваливания» (fall-through) в следующий case" },
+      { "id": "b", "text": "Чтобы switch работал быстрее" },
+      { "id": "c", "text": "Чтобы case сравнивался по ==" },
+      { "id": "d", "text": "Чтобы default выполнялся всегда" },
+      { "id": "e", "text": "Чтобы можно было использовать return внутри switch" },
+      { "id": "f", "text": "Чтобы запрещать вложенные switch" },
+      { "id": "g", "text": "Чтобы переменные в case стали блочными автоматически" },
+      { "id": "h", "text": "Чтобы включить строгий режим для switch" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic7_q7",
+    "type": "single",
+    "question": "Что произойдёт, если в switch не поставить break в case и не использовать return?",
+    "options": [
+      { "id": "a", "text": "Выполнение продолжится со следующего case (fall-through) до break/return/конца switch" },
+      { "id": "b", "text": "switch автоматически добавит break и остановится" },
+      { "id": "c", "text": "Будет выброшен SyntaxError" },
+      { "id": "d", "text": "Выполнится только default" },
+      { "id": "e", "text": "Будет выброшен TypeError" },
+      { "id": "f", "text": "switch выполнит все case в случайном порядке" },
+      { "id": "g", "text": "Будет выполнен только первый подходящий case и всё" },
+      { "id": "h", "text": "switch всегда пропускает следующий case после совпадения" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic7_q8",
+    "type": "multi",
+    "question": "Какие варианты являются корректными ветками конструкции if/else?",
+    "options": [
+      { "id": "a", "text": "if (cond) stmt; else stmt;" },
+      { "id": "b", "text": "if (cond) { stmt; } else { stmt; }" },
+      { "id": "c", "text": "if cond { stmt } else { stmt }" },
+      { "id": "d", "text": "if (cond) then { stmt }" },
+      { "id": "e", "text": "if (cond) { stmt; } else if (cond2) { stmt; } else { stmt; }" },
+      { "id": "f", "text": "if (cond) -> stmt; else -> stmt;" },
+      { "id": "g", "text": "if [cond] { stmt } else { stmt }" },
+      { "id": "h", "text": "if (cond) { stmt; } elseif (cond2) { stmt; }" }
+    ],
+    "correct": ["a", "b", "e"]
+  },
+  {
+    "id": "b_t_topic7_q9",
+    "type": "single",
+    "question": "В чём преимущество тернарного оператора по сравнению с if/else (в типичном использовании)?",
+    "options": [
+      { "id": "a", "text": "Позволяет записать выбор значения как выражение (можно присваивать/возвращать результат)" },
+      { "id": "b", "text": "Делает код быстрее всегда и без исключений" },
+      { "id": "c", "text": "Позволяет обходиться без фигурных скобок в любом случае" },
+      { "id": "d", "text": "Автоматически обрабатывает ошибки выполнения" },
+      { "id": "e", "text": "Заменяет switch и циклы одним оператором" },
+      { "id": "f", "text": "Запрещает неявные преобразования типов" },
+      { "id": "g", "text": "Всегда возвращает boolean" },
+      { "id": "h", "text": "Позволяет создавать новые переменные без объявления" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic7_q10",
+    "type": "single",
+    "question": "Когда выполняется ветка default в switch?",
+    "options": [
+      { "id": "a", "text": "Когда ни один case не совпал (или нет подходящего перехода к case)" },
+      { "id": "b", "text": "Всегда после каждого case, независимо от совпадений" },
+      { "id": "c", "text": "Только если switch сравнивает строки" },
+      { "id": "d", "text": "Только если case записаны с break" },
+      { "id": "e", "text": "Только если в switch есть минимум 3 case" },
+      { "id": "f", "text": "Только в строгом режиме" },
+      { "id": "g", "text": "Только если выражение switch равно null" },
+      { "id": "h", "text": "Никогда, если case используют ===" }
+    ],
+    "correct": ["a"]
+  },
+
+  {
+    "id": "b_t_topic8_q1",
+    "type": "multi",
+    "question": "Какие конструкции относятся к циклам в JavaScript?",
+    "options": [
+      { "id": "a", "text": "for" },
+      { "id": "b", "text": "while" },
+      { "id": "c", "text": "do...while" },
+      { "id": "d", "text": "for...of" },
+      { "id": "e", "text": "for...in" },
+      { "id": "f", "text": "repeat...until" },
+      { "id": "g", "text": "loop...end" },
+      { "id": "h", "text": "foreach...do" }
+    ],
+    "correct": ["a", "b", "c", "d", "e"]
+  },
+  {
+    "id": "b_t_topic8_q2",
+    "type": "single",
+    "question": "В чём отличие do...while от while?",
+    "options": [
+      { "id": "a", "text": "do...while выполнит тело минимум один раз, а while может не выполнить ни разу" },
+      { "id": "b", "text": "while всегда выполняет тело минимум один раз, а do...while может не выполнить" },
+      { "id": "c", "text": "do...while работает только с массивами" },
+      { "id": "d", "text": "while работает только с числами" },
+      { "id": "e", "text": "do...while не поддерживает break" },
+      { "id": "f", "text": "while не поддерживает continue" },
+      { "id": "g", "text": "do...while запрещён в строгом режиме" },
+      { "id": "h", "text": "Никакого отличия нет" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic8_q3",
+    "type": "single",
+    "question": "Какой цикл чаще всего используют для перебора значений итерируемых объектов (например, массива) по элементам?",
+    "options": [
+      { "id": "a", "text": "for...of" },
+      { "id": "b", "text": "for...in" },
+      { "id": "c", "text": "while...in" },
+      { "id": "d", "text": "do...of" },
+      { "id": "e", "text": "foreach...in" },
+      { "id": "f", "text": "repeat...of" },
+      { "id": "g", "text": "switch...of" },
+      { "id": "h", "text": "if...of" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic8_q4",
+    "type": "single",
+    "question": "Какой цикл чаще всего используют для перебора перечисляемых ключей объекта (properties)?",
+    "options": [
+      { "id": "a", "text": "for...in" },
+      { "id": "b", "text": "for...of" },
+      { "id": "c", "text": "while...in" },
+      { "id": "d", "text": "do...in" },
+      { "id": "e", "text": "for...keys" },
+      { "id": "f", "text": "loop...in" },
+      { "id": "g", "text": "each...in" },
+      { "id": "h", "text": "map...in" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic8_q5",
+    "type": "single",
+    "question": "Что делает оператор break внутри цикла?",
+    "options": [
+      { "id": "a", "text": "Немедленно завершает цикл и продолжает выполнение после цикла" },
+      { "id": "b", "text": "Пропускает только текущую итерацию и переходит к следующей" },
+      { "id": "c", "text": "Завершает всю программу" },
+      { "id": "d", "text": "Сбрасывает счётчик цикла к начальному значению" },
+      { "id": "e", "text": "Заменяет условие цикла на false, но цикл продолжается ещё раз" },
+      { "id": "f", "text": "Создаёт новую область видимости для переменных" },
+      { "id": "g", "text": "Переходит к метке default" },
+      { "id": "h", "text": "Вызывает исключение, если break без аргументов" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic8_q6",
+    "type": "single",
+    "question": "Что делает оператор continue внутри цикла?",
+    "options": [
+      { "id": "a", "text": "Пропускает оставшуюся часть тела текущей итерации и переходит к следующей" },
+      { "id": "b", "text": "Немедленно завершает цикл и продолжает выполнение после цикла" },
+      { "id": "c", "text": "Завершает функцию и возвращает значение" },
+      { "id": "d", "text": "Останавливает выполнение программы до нажатия кнопки" },
+      { "id": "e", "text": "Переводит цикл в бесконечный режим" },
+      { "id": "f", "text": "Удаляет текущий элемент массива" },
+      { "id": "g", "text": "Перезапускает цикл с начальным значением без проверки условия" },
+      { "id": "h", "text": "Работает только в for...of" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic8_q7",
+    "type": "single",
+    "question": "Что делает оператор return, если он выполнен внутри цикла, который находится внутри функции?",
+    "options": [
+      { "id": "a", "text": "Завершает выполнение функции целиком (цикл тоже прекращается)" },
+      { "id": "b", "text": "Завершает только текущую итерацию цикла" },
+      { "id": "c", "text": "Завершает только цикл, но функция продолжит выполнение дальше" },
+      { "id": "d", "text": "Переходит к следующему case в switch" },
+      { "id": "e", "text": "Сбрасывает условие цикла" },
+      { "id": "f", "text": "Возвращает управление в начало цикла" },
+      { "id": "g", "text": "Работает только в стрелочных функциях" },
+      { "id": "h", "text": "Вызывает ошибку, если в цикле" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic8_q8",
+    "type": "single",
+    "question": "Что будет результатом выполнения: let i=0; while(i<3){ i++; } console.log(i); ?",
+    "options": [
+      { "id": "a", "text": "3" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "1" },
+      { "id": "e", "text": "undefined" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "NaN" },
+      { "id": "h", "text": "Ошибка ReferenceError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic8_q9",
+    "type": "single",
+    "question": "Какой риск чаще всего возникает при неверно написанном условии цикла?",
+    "options": [
+      { "id": "a", "text": "Бесконечный цикл (infinite loop)" },
+      { "id": "b", "text": "Автоматическое удаление переменных из памяти" },
+      { "id": "c", "text": "Автоматическая оптимизация кода до нуля" },
+      { "id": "d", "text": "Смена типа данных переменных на BigInt" },
+      { "id": "e", "text": "Отключение строгого режима выполнения" },
+      { "id": "f", "text": "Запрет на использование break" },
+      { "id": "g", "text": "Автоматическая компиляция в WebAssembly" },
+      { "id": "h", "text": "Отключение DOM API" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic8_q10",
+    "type": "multi",
+    "question": "Какие утверждения про for...in и for...of верны?",
+    "options": [
+      { "id": "a", "text": "for...in перебирает перечисляемые ключи (property names) объекта" },
+      { "id": "b", "text": "for...of перебирает значения итерируемого объекта (например, массива)" },
+      { "id": "c", "text": "for...in всегда возвращает значения массива, а не индексы" },
+      { "id": "d", "text": "for...of нельзя применять к массивам" },
+      { "id": "e", "text": "for...of работает с объектами, у которых есть итератор (Symbol.iterator)" },
+      { "id": "f", "text": "for...in работает только с Map и Set" },
+      { "id": "g", "text": "for...of автоматически сортирует элементы" },
+      { "id": "h", "text": "for...in и for...of — это одно и то же" }
+    ],
+    "correct": ["a", "b", "e"]
+  },
+
+  {
+    "id": "b_t_topic9_q1",
+    "type": "single",
+    "question": "Как расшифровывается FD в контексте видов функций JavaScript?",
+    "options": [
+      { "id": "a", "text": "Function Declaration" },
+      { "id": "b", "text": "Function Definition" },
+      { "id": "c", "text": "Function Driver" },
+      { "id": "d", "text": "Fast Declaration" },
+      { "id": "e", "text": "Formal Description" },
+      { "id": "f", "text": "Frame Dispatcher" },
+      { "id": "g", "text": "Final Directive" },
+      { "id": "h", "text": "Function Descriptor" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q2",
+    "type": "single",
+    "question": "Как расшифровывается FE в контексте видов функций JavaScript?",
+    "options": [
+      { "id": "a", "text": "Function Expression" },
+      { "id": "b", "text": "Function Execution" },
+      { "id": "c", "text": "Fast Expression" },
+      { "id": "d", "text": "Final Expression" },
+      { "id": "e", "text": "Function Extension" },
+      { "id": "f", "text": "Frame Expression" },
+      { "id": "g", "text": "Function Engine" },
+      { "id": "h", "text": "File Expression" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q3",
+    "type": "single",
+    "question": "Как расшифровывается AF в контексте видов функций JavaScript?",
+    "options": [
+      { "id": "a", "text": "Arrow Function" },
+      { "id": "b", "text": "Async Function" },
+      { "id": "c", "text": "Atomic Function" },
+      { "id": "d", "text": "Actual Function" },
+      { "id": "e", "text": "Array Function" },
+      { "id": "f", "text": "Auto Function" },
+      { "id": "g", "text": "Anonymous Function" },
+      { "id": "h", "text": "Applied Function" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q4",
+    "type": "multi",
+    "question": "Какие варианты являются корректным Function Declaration (FD)?",
+    "options": [
+      { "id": "a", "text": "function sum(a, b) { return a + b; }" },
+      { "id": "b", "text": "const sum = function(a, b) { return a + b; }" },
+      { "id": "c", "text": "let sum = (a, b) => a + b;" },
+      { "id": "d", "text": "function(a, b) { return a + b; }" },
+      { "id": "e", "text": "const sum = function sum(a, b) { return a + b; }" },
+      { "id": "f", "text": "sum: function(a, b) { return a + b; }" },
+      { "id": "g", "text": "function* gen() { yield 1; }" },
+      { "id": "h", "text": "async function f() { return 1; }" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q5",
+    "type": "multi",
+    "question": "Какие варианты являются корректным Function Expression (FE)?",
+    "options": [
+      { "id": "a", "text": "const f = function(a) { return a; };" },
+      { "id": "b", "text": "let f = function named(a) { return a; };" },
+      { "id": "c", "text": "function f(a) { return a; }" },
+      { "id": "d", "text": "const f = (a) => a;" },
+      { "id": "e", "text": "let f = function(a) { return a; };" },
+      { "id": "f", "text": "function(a) { return a; }" },
+      { "id": "g", "text": "const f = function*(){ yield 1; };" },
+      { "id": "h", "text": "const f = async function(){ return 1; };" }
+    ],
+    "correct": ["a", "b", "e", "g", "h"]
+  },
+  {
+    "id": "b_t_topic9_q6",
+    "type": "multi",
+    "question": "Какие варианты являются корректной Arrow Function (AF)?",
+    "options": [
+      { "id": "a", "text": "const f = (a, b) => a + b;" },
+      { "id": "b", "text": "let f = a => { return a * 2; };" },
+      { "id": "c", "text": "const f = () => ({ x: 1 });" },
+      { "id": "d", "text": "function f() => 1" },
+      { "id": "e", "text": "const f = => 1;" },
+      { "id": "f", "text": "const f = (a, b) -> a + b;" },
+      { "id": "g", "text": "const f = (a) => { a + 1 };" },
+      { "id": "h", "text": "const f = async (a) => a;" }
+    ],
+    "correct": ["a", "b", "c", "h"]
+  },
+  {
+    "id": "b_t_topic9_q7",
+    "type": "single",
+    "question": "Какое утверждение о return в обычной функции верное?",
+    "options": [
+      { "id": "a", "text": "Если return отсутствует, функция возвращает undefined" },
+      { "id": "b", "text": "Если return отсутствует, функция возвращает null" },
+      { "id": "c", "text": "Если return отсутствует, функция возвращает 0" },
+      { "id": "d", "text": "Если return отсутствует, функция всегда выбрасывает ошибку" },
+      { "id": "e", "text": "Если return отсутствует, функция возвращает true" },
+      { "id": "f", "text": "Если return отсутствует, функция возвращает false" },
+      { "id": "g", "text": "Если return отсутствует, функция возвращает пустую строку" },
+      { "id": "h", "text": "Если return отсутствует, функция возвращает NaN" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q8",
+    "type": "single",
+    "question": "Какая запись является вызовом функции f?",
+    "options": [
+      { "id": "a", "text": "f()" },
+      { "id": "b", "text": "f" },
+      { "id": "c", "text": "function f(){}" },
+      { "id": "d", "text": "call f" },
+      { "id": "e", "text": "f[]" },
+      { "id": "f", "text": "f{}" },
+      { "id": "g", "text": "f=>" },
+      { "id": "h", "text": "new f" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q9",
+    "type": "multi",
+    "question": "Какие виды параметров функции существуют в JavaScript?",
+    "options": [
+      { "id": "a", "text": "Параметры по умолчанию (default parameters)" },
+      { "id": "b", "text": "Остаточные параметры (rest parameters)" },
+      { "id": "c", "text": "Позиционные параметры (обычные)" },
+      { "id": "d", "text": "Именованные параметры как отдельный синтаксис языка" },
+      { "id": "e", "text": "Деструктурирующие параметры (destructuring parameters)" },
+      { "id": "f", "text": "Параметры типов (generics) в чистом JS" },
+      { "id": "g", "text": "Параметры, передаваемые через arguments (в обычных функциях)" },
+      { "id": "h", "text": "Параметры, которые объявляются через var внутри списка параметров" }
+    ],
+    "correct": ["a", "b", "c", "e", "g"]
+  },
+  {
+    "id": "b_t_topic9_q10",
+    "type": "single",
+    "question": "Что делает оператор rest в параметрах функции: function f(...args) {} ?",
+    "options": [
+      { "id": "a", "text": "Собирает оставшиеся аргументы в массив args" },
+      { "id": "b", "text": "Разворачивает массив args в отдельные аргументы при вызове" },
+      { "id": "c", "text": "Запрещает передавать любые аргументы" },
+      { "id": "d", "text": "Делает args строкой, объединяя аргументы" },
+      { "id": "e", "text": "Собирает только первый аргумент в args" },
+      { "id": "f", "text": "Автоматически приводит args к числу" },
+      { "id": "g", "text": "Создаёт объект args без индексов" },
+      { "id": "h", "text": "Работает только в стрелочных функциях" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q11",
+    "type": "single",
+    "question": "Что делает spread при вызове функции: f(...arr) ?",
+    "options": [
+      { "id": "a", "text": "Разворачивает элементы массива/итерируемого объекта в отдельные аргументы" },
+      { "id": "b", "text": "Собирает аргументы функции в массив arr" },
+      { "id": "c", "text": "Клонирует функцию f" },
+      { "id": "d", "text": "Превращает массив в строку перед вызовом" },
+      { "id": "e", "text": "Передаёт массив как один аргумент, без изменений" },
+      { "id": "f", "text": "Удаляет последний аргумент при вызове" },
+      { "id": "g", "text": "Работает только с объектами, но не с массивами" },
+      { "id": "h", "text": "Запрещает использование return внутри f" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q12",
+    "type": "single",
+    "question": "Что вернёт функция: function f(a, b = 10){ return a + b; } при вызове f(5)?",
+    "options": [
+      { "id": "a", "text": "15" },
+      { "id": "b", "text": "5" },
+      { "id": "c", "text": "10" },
+      { "id": "d", "text": "NaN" },
+      { "id": "e", "text": "undefined" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "\"15\"" },
+      { "id": "h", "text": "Ошибка TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q13",
+    "type": "single",
+    "question": "Какая конструкция корректно использует деструктуризацию в параметрах функции?",
+    "options": [
+      { "id": "a", "text": "function f({x, y}) { return x + y; }" },
+      { "id": "b", "text": "function f([x, y] => x + y) {}" },
+      { "id": "c", "text": "function f{x, y} { return x + y; }" },
+      { "id": "d", "text": "function f(x, y) {x, y} return x + y;" },
+      { "id": "e", "text": "function f((x, y)) { return x + y; }" },
+      { "id": "f", "text": "function f<{x, y}>(p) { return p; }" },
+      { "id": "g", "text": "function f(x: number, y: number) { return x + y; }" },
+      { "id": "h", "text": "function f(x, y) { return {x, y}; }" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic9_q14",
+    "type": "multi",
+    "question": "Какие утверждения про arguments верны (без учёта this)?",
+    "options": [
+      { "id": "a", "text": "arguments доступен в обычных функциях (не стрелочных) как псевдомассив" },
+      { "id": "b", "text": "arguments — это настоящий Array, у него всегда есть map/filter" },
+      { "id": "c", "text": "arguments содержит фактически переданные аргументы" },
+      { "id": "d", "text": "В стрелочных функциях arguments создаётся автоматически" },
+      { "id": "e", "text": "Rest-параметры (...args) часто используют вместо arguments" },
+      { "id": "f", "text": "arguments всегда пустой, если параметры функции перечислены явно" },
+      { "id": "g", "text": "arguments можно преобразовать в массив (например, Array.from(arguments))" },
+      { "id": "h", "text": "arguments существует только в строгом режиме" }
+    ],
+    "correct": ["a", "c", "e", "g"]
+  },
+
+  {
+    "id": "b_t_topic10_q1",
+    "type": "single",
+    "question": "Что такое рекурсия в JavaScript?",
+    "options": [
+      { "id": "a", "text": "Функция вызывает саму себя (напрямую или через цепочку вызовов) до условия остановки" },
+      { "id": "b", "text": "Функция, которая всегда выполняется только один раз" },
+      { "id": "c", "text": "Функция, которая работает только с массивами" },
+      { "id": "d", "text": "Синтаксис, который заменяет циклы в языке" },
+      { "id": "e", "text": "Механизм преобразования типов во время выполнения" },
+      { "id": "f", "text": "Способ создания модулей без import/export" },
+      { "id": "g", "text": "Автоматическое кэширование результатов движком" },
+      { "id": "h", "text": "Запрет повторного вызова функций" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic10_q2",
+    "type": "multi",
+    "question": "Что обычно необходимо для корректной рекурсивной функции?",
+    "options": [
+      { "id": "a", "text": "Базовый случай (условие остановки)" },
+      { "id": "b", "text": "Рекурсивный шаг (вызов функции с изменённым аргументом)" },
+      { "id": "c", "text": "Обязательное использование try...catch" },
+      { "id": "d", "text": "Обязательное использование setTimeout" },
+      { "id": "e", "text": "Ограничение глубины/контроль, чтобы не переполнить стек вызовов" },
+      { "id": "f", "text": "Обязательная работа только с числами" },
+      { "id": "g", "text": "Обязательное использование async/await" },
+      { "id": "h", "text": "Обязательное объявление функции через var" }
+    ],
+    "correct": ["a", "b", "e"]
+  },
+  {
+    "id": "b_t_topic10_q3",
+    "type": "single",
+    "question": "Что такое замыкание (closure)?",
+    "options": [
+      { "id": "a", "text": "Функция вместе с лексическим окружением, в котором она была создана, и доступом к его переменным" },
+      { "id": "b", "text": "Способ объявить переменную внутри блока try/catch" },
+      { "id": "c", "text": "Команда DevTools для остановки выполнения" },
+      { "id": "d", "text": "Метод массива для удаления элементов" },
+      { "id": "e", "text": "Отдельный тип данных, который заменяет объект" },
+      { "id": "f", "text": "Событие, возникающее при закрытии вкладки" },
+      { "id": "g", "text": "Режим строгого выполнения \"use strict\"" },
+      { "id": "h", "text": "Только синтаксис стрелочных функций" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic10_q4",
+    "type": "single",
+    "question": "Что вернёт обычная функция, если в ней нет оператора return?",
+    "options": [
+      { "id": "a", "text": "undefined" },
+      { "id": "b", "text": "null" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "false" },
+      { "id": "e", "text": "true" },
+      { "id": "f", "text": "\"\"" },
+      { "id": "g", "text": "NaN" },
+      { "id": "h", "text": "Ошибка SyntaxError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic10_q5",
+    "type": "single",
+    "question": "Что делает оператор return внутри функции?",
+    "options": [
+      { "id": "a", "text": "Завершает выполнение функции и возвращает указанное значение вызывающему коду" },
+      { "id": "b", "text": "Завершает только текущую итерацию цикла" },
+      { "id": "c", "text": "Останавливает выполнение всей программы" },
+      { "id": "d", "text": "Переходит в следующую ветку if/else" },
+      { "id": "e", "text": "Превращает функцию в асинхронную" },
+      { "id": "f", "text": "Очищает стек вызовов полностью" },
+      { "id": "g", "text": "Отключает строгий режим в функции" },
+      { "id": "h", "text": "Запрещает дальнейшие объявления переменных" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic10_q6",
+    "type": "single",
+    "question": "Что вернёт выражение: function f(){ return; } f() ?",
+    "options": [
+      { "id": "a", "text": "undefined" },
+      { "id": "b", "text": "null" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "false" },
+      { "id": "e", "text": "true" },
+      { "id": "f", "text": "\"\"" },
+      { "id": "g", "text": "NaN" },
+      { "id": "h", "text": "Ошибка TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic10_q7",
+    "type": "multi",
+    "question": "Какие утверждения про замыкания в JavaScript верны?",
+    "options": [
+      { "id": "a", "text": "Функция может читать переменные из внешней функции даже после завершения внешней функции" },
+      { "id": "b", "text": "Замыкания позволяют «хранить состояние» между вызовами функции" },
+      { "id": "c", "text": "Замыкания существуют только в строгом режиме" },
+      { "id": "d", "text": "Замыкания работают только со стрелочными функциями" },
+      { "id": "e", "text": "Замыкания могут использоваться для инкапсуляции данных" },
+      { "id": "f", "text": "Замыкания запрещены в Node.js" },
+      { "id": "g", "text": "Замыкания могут быть причиной удержания объектов в памяти, если на них есть ссылки" },
+      { "id": "h", "text": "Замыкания существуют только для глобальных переменных" }
+    ],
+    "correct": ["a", "b", "e", "g"]
+  },
+  {
+    "id": "b_t_topic10_q8",
+    "type": "single",
+    "question": "Какой термин лучше всего описывает «функцию-обёртку», которая добавляет поведение вокруг другой функции?",
+    "options": [
+      { "id": "a", "text": "Декоратор" },
+      { "id": "b", "text": "Итератор" },
+      { "id": "c", "text": "Транспайлер" },
+      { "id": "d", "text": "Полифил" },
+      { "id": "e", "text": "Дескриптор" },
+      { "id": "f", "text": "Примитив" },
+      { "id": "g", "text": "Сериализатор" },
+      { "id": "h", "text": "Ассертер" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic10_q9",
+    "type": "multi",
+    "question": "Какие задачи типично решают декораторы (обёртки) функций?",
+    "options": [
+      { "id": "a", "text": "Логирование входных параметров и результата" },
+      { "id": "b", "text": "Кэширование результатов (memoization)" },
+      { "id": "c", "text": "Ограничение частоты вызовов (debounce/throttle)" },
+      { "id": "d", "text": "Автоматическое изменение спецификации ECMAScript" },
+      { "id": "e", "text": "Проверка прав доступа перед выполнением" },
+      { "id": "f", "text": "Перехват ошибок и единая обработка" },
+      { "id": "g", "text": "Удаление переменных из памяти вручную" },
+      { "id": "h", "text": "Изменение порядка выполнения операторов языка" }
+    ],
+    "correct": ["a", "b", "c", "e", "f"]
+  },
+  {
+    "id": "b_t_topic10_q10",
+    "type": "single",
+    "question": "Почему рекурсия может приводить к ошибке RangeError (Maximum call stack size exceeded)?",
+    "options": [
+      { "id": "a", "text": "Слишком глубокая рекурсия переполняет стек вызовов" },
+      { "id": "b", "text": "Рекурсия автоматически создаёт утечку памяти всегда" },
+      { "id": "c", "text": "Рекурсия запрещена в ECMAScript" },
+      { "id": "d", "text": "Рекурсия работает только с массивами и ломается на числах" },
+      { "id": "e", "text": "Рекурсия включает строгий режим и это вызывает ошибку" },
+      { "id": "f", "text": "Рекурсия отключает сборщик мусора" },
+      { "id": "g", "text": "Рекурсия превращает значения в NaN" },
+      { "id": "h", "text": "Рекурсия не может вызывать ошибок выполнения" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic10_q11",
+    "type": "single",
+    "question": "Что вернёт функция: function f(){ return 1; return 2; } f() ?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "undefined" },
+      { "id": "d", "text": "null" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "true" },
+      { "id": "g", "text": "false" },
+      { "id": "h", "text": "Ошибка TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic10_q12",
+    "type": "multi",
+    "question": "Какие утверждения про return верны?",
+    "options": [
+      { "id": "a", "text": "return без выражения возвращает undefined" },
+      { "id": "b", "text": "return завершает выполнение текущей функции" },
+      { "id": "c", "text": "return можно использовать вне функции без ошибок" },
+      { "id": "d", "text": "return может возвращать любое значение (примитив, объект, функцию)" },
+      { "id": "e", "text": "return всегда обязан присутствовать в функции" },
+      { "id": "f", "text": "return работает только в стрелочных функциях" },
+      { "id": "g", "text": "Если return не указан, результатом будет undefined" },
+      { "id": "h", "text": "return автоматически приводит результат к строке" }
+    ],
+    "correct": ["a", "b", "d", "g"]
+  },
+   [
+  {
+    "id": "b_t_topic11_q1",
+    "type": "single",
+    "question": "Какой вариант создаёт объект с двумя свойствами a и b?",
+    "options": [
+      { "id": "a", "text": "const obj = { a: 1, b: 2 }" },
+      { "id": "b", "text": "const obj = ( a: 1, b: 2 )" },
+      { "id": "c", "text": "const obj = [ a: 1, b: 2 ]" },
+      { "id": "d", "text": "const obj = <a=1,b=2>" },
+      { "id": "e", "text": "const obj = new Object(a=1,b=2)" },
+      { "id": "f", "text": "const obj = Object(a:1,b:2)" },
+      { "id": "g", "text": "const obj = { a = 1; b = 2 }" },
+      { "id": "h", "text": "const obj = object { a:1, b:2 }" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q2",
+    "type": "multi",
+    "question": "Какими способами можно получить значение свойства объекта obj по ключу \"x\"?",
+    "options": [
+      { "id": "a", "text": "obj.x" },
+      { "id": "b", "text": "obj[\"x\"]" },
+      { "id": "c", "text": "obj(\"x\")" },
+      { "id": "d", "text": "obj->x" },
+      { "id": "e", "text": "obj.get(\"x\")" },
+      { "id": "f", "text": "obj{ \"x\" }" },
+      { "id": "g", "text": "obj::x" },
+      { "id": "h", "text": "obj[x]" }
+    ],
+    "correct": ["a", "b"]
+  },
+  {
+    "id": "b_t_topic11_q3",
+    "type": "single",
+    "question": "Что такое «вычисляемое свойство» (computed property) в объектном литерале?",
+    "options": [
+      { "id": "a", "text": "Свойство, имя которого вычисляется выражением в квадратных скобках при создании объекта" },
+      { "id": "b", "text": "Свойство, которое всегда содержит результат вычислений Math" },
+      { "id": "c", "text": "Свойство, доступное только через точку, но не через скобки" },
+      { "id": "d", "text": "Свойство, которое автоматически пересчитывается при изменении других свойств" },
+      { "id": "e", "text": "Свойство, которое нельзя перечислить в цикле" },
+      { "id": "f", "text": "Свойство, которое существует только в прототипе" },
+      { "id": "g", "text": "Свойство, которое можно создать только через Object.defineProperty" },
+      { "id": "h", "text": "Свойство, которое может быть только числом" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q4",
+    "type": "single",
+    "question": "Какой синтаксис корректен для вычисляемого свойства в объектном литерале?",
+    "options": [
+      { "id": "a", "text": "const key = \"x\"; const obj = { [key]: 1 }" },
+      { "id": "b", "text": "const key = \"x\"; const obj = { key: 1 }" },
+      { "id": "c", "text": "const key = \"x\"; const obj = { (key): 1 }" },
+      { "id": "d", "text": "const key = \"x\"; const obj = { <key>: 1 }" },
+      { "id": "e", "text": "const key = \"x\"; const obj = { {key}: 1 }" },
+      { "id": "f", "text": "const key = \"x\"; const obj = { ::key: 1 }" },
+      { "id": "g", "text": "const key = \"x\"; const obj = { [\"key\"]: 1 }" },
+      { "id": "h", "text": "const key = \"x\"; const obj = { [1,2,3]: 1 }" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q5",
+    "type": "single",
+    "question": "Что вернёт выражение: \"toString\" in {} ?",
+    "options": [
+      { "id": "a", "text": "true" },
+      { "id": "b", "text": "false" },
+      { "id": "c", "text": "undefined" },
+      { "id": "d", "text": "null" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "0" },
+      { "id": "g", "text": "\"true\"" },
+      { "id": "h", "text": "Ошибка TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q6",
+    "type": "single",
+    "question": "Что проверяет оператор in в выражении \"key\" in obj ?",
+    "options": [
+      { "id": "a", "text": "Существует ли свойство (включая унаследованные) с таким именем в объекте" },
+      { "id": "b", "text": "Равно ли значение свойства true" },
+      { "id": "c", "text": "Содержится ли key как значение среди свойств объекта" },
+      { "id": "d", "text": "Является ли key числом" },
+      { "id": "e", "text": "Является ли key допустимым идентификатором" },
+      { "id": "f", "text": "Существует ли свойство только как собственное (без прототипа)" },
+      { "id": "g", "text": "Есть ли свойство с key в localStorage" },
+      { "id": "h", "text": "Является ли obj массивом" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q7",
+    "type": "multi",
+    "question": "Какие методы относятся к базовым методам Object (статические методы Object.*)?",
+    "options": [
+      { "id": "a", "text": "Object.keys(obj)" },
+      { "id": "b", "text": "Object.values(obj)" },
+      { "id": "c", "text": "Object.entries(obj)" },
+      { "id": "d", "text": "Object.assign(target, source)" },
+      { "id": "e", "text": "Object.create(proto)" },
+      { "id": "f", "text": "Object.freeze(obj)" },
+      { "id": "g", "text": "Object.parse(str)" },
+      { "id": "h", "text": "Object.stringify(obj)" }
+    ],
+    "correct": ["a", "b", "c", "d", "e", "f"]
+  },
+  {
+    "id": "b_t_topic11_q8",
+    "type": "single",
+    "question": "Что возвращает Object.keys(obj)?",
+    "options": [
+      { "id": "a", "text": "Массив строк с собственными перечисляемыми ключами объекта" },
+      { "id": "b", "text": "Массив значений объекта, включая унаследованные" },
+      { "id": "c", "text": "Объект, в котором ключи и значения поменяны местами" },
+      { "id": "d", "text": "Map со всеми ключами объекта" },
+      { "id": "e", "text": "Строку JSON со списком ключей" },
+      { "id": "f", "text": "Массив символов объекта (Symbol keys)" },
+      { "id": "g", "text": "Массив всех методов объекта, включая прототип" },
+      { "id": "h", "text": "null, если объект пустой" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q9",
+    "type": "single",
+    "question": "Что делает Object.assign(target, source)?",
+    "options": [
+      { "id": "a", "text": "Копирует перечисляемые собственные свойства из source в target и возвращает target" },
+      { "id": "b", "text": "Создаёт глубокую копию объекта со всеми вложенными объектами" },
+      { "id": "c", "text": "Сравнивает два объекта на равенство по структуре" },
+      { "id": "d", "text": "Удаляет все свойства объекта" },
+      { "id": "e", "text": "Замораживает объект от изменений" },
+      { "id": "f", "text": "Создаёт новый объект, не изменяя target" },
+      { "id": "g", "text": "Меняет местами ключи и значения" },
+      { "id": "h", "text": "Конвертирует объект в JSON строку" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q10",
+    "type": "single",
+    "question": "Что делает Object.freeze(obj) на базовом уровне?",
+    "options": [
+      { "id": "a", "text": "Запрещает добавление/удаление/изменение свойств верхнего уровня объекта" },
+      { "id": "b", "text": "Делает глубокую заморозку всех вложенных объектов" },
+      { "id": "c", "text": "Удаляет все свойства объекта и делает его пустым" },
+      { "id": "d", "text": "Превращает объект в строку" },
+      { "id": "e", "text": "Автоматически создаёт копию объекта перед заморозкой" },
+      { "id": "f", "text": "Оставляет только перечисляемые свойства" },
+      { "id": "g", "text": "Меняет прототип объекта на null" },
+      { "id": "h", "text": "Включает строгий режим для операций с объектом" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q11",
+    "type": "single",
+    "question": "Какой результат у выражения: ({a:1} === {a:1}) ?",
+    "options": [
+      { "id": "a", "text": "false" },
+      { "id": "b", "text": "true" },
+      { "id": "c", "text": "undefined" },
+      { "id": "d", "text": "null" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "0" },
+      { "id": "g", "text": "\"false\"" },
+      { "id": "h", "text": "Ошибка TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q12",
+    "type": "single",
+    "question": "Что такое this в JavaScript на базовом уровне (без углубления)?",
+    "options": [
+      { "id": "a", "text": "Контекст выполнения: значение, которое обычно зависит от способа вызова функции" },
+      { "id": "b", "text": "Всегда глобальный объект вне зависимости от вызова" },
+      { "id": "c", "text": "Всегда ссылка на объект, где объявлена функция" },
+      { "id": "d", "text": "Всегда равен undefined, если включён строгий режим" },
+      { "id": "e", "text": "Синоним прототипа функции" },
+      { "id": "f", "text": "Ссылка на текущий файл JavaScript" },
+      { "id": "g", "text": "Ссылка на переменную i в цикле" },
+      { "id": "h", "text": "Псевдоним arguments" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q13",
+    "type": "single",
+    "question": "Что обычно происходит с this при вызове метода obj.method()?",
+    "options": [
+      { "id": "a", "text": "this внутри method указывает на obj (контекст вызова)" },
+      { "id": "b", "text": "this всегда равен window" },
+      { "id": "c", "text": "this всегда равен undefined" },
+      { "id": "d", "text": "this равен имени функции как строке" },
+      { "id": "e", "text": "this равен прототипу объекта" },
+      { "id": "f", "text": "this равен первому аргументу функции" },
+      { "id": "g", "text": "this равен последнему аргументу функции" },
+      { "id": "h", "text": "this равен возвращаемому значению функции" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic11_q14",
+    "type": "multi",
+    "question": "Какие операции считаются типичными манипуляциями с объектом?",
+    "options": [
+      { "id": "a", "text": "Добавление свойства: obj.x = 1" },
+      { "id": "b", "text": "Чтение свойства: obj[\"x\"]" },
+      { "id": "c", "text": "Удаление свойства: delete obj.x" },
+      { "id": "d", "text": "Проверка наличия: \"x\" in obj" },
+      { "id": "e", "text": "Перебор ключей: Object.keys(obj)" },
+      { "id": "f", "text": "Компиляция объекта в байткод" },
+      { "id": "g", "text": "Автоматическое изменение протокола HTTP" },
+      { "id": "h", "text": "Переименование файла через Object.rename" }
+    ],
+    "correct": ["a", "b", "c", "d", "e"]
+  },
+
+  {
+    "id": "b_t_topic12_q1",
+    "type": "single",
+    "question": "Что делает оператор опциональной цепочки (?.) при обращении к свойству?",
+    "options": [
+      { "id": "a", "text": "Возвращает undefined, если слева null/undefined" },
+      { "id": "b", "text": "Автоматически создаёт объект, если его нет" },
+      { "id": "c", "text": "Приводит значение к строке перед доступом" },
+      { "id": "d", "text": "Всегда выбрасывает ошибку при отсутствии поля" },
+      { "id": "e", "text": "Удаляет свойство при чтении" },
+      { "id": "f", "text": "Очищает объект и возвращает пустой" },
+      { "id": "g", "text": "Возвращает true, если поле существует" },
+      { "id": "h", "text": "Меняет тип данных на object всегда" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q2",
+    "type": "single",
+    "question": "Что вернёт выражение: const u = null; u?.name ?",
+    "options": [
+      { "id": "a", "text": "undefined" },
+      { "id": "b", "text": "null" },
+      { "id": "c", "text": "false" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "\"\"" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "TypeError" },
+      { "id": "h", "text": "SyntaxError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q3",
+    "type": "single",
+    "question": "Какой вариант корректно использует опциональную цепочку с вычисляемым ключом?",
+    "options": [
+      { "id": "a", "text": "obj?.[key]" },
+      { "id": "b", "text": "obj?[key]" },
+      { "id": "c", "text": "obj?.{key}" },
+      { "id": "d", "text": "obj?{key}" },
+      { "id": "e", "text": "obj??[key]" },
+      { "id": "f", "text": "obj.[key]?" },
+      { "id": "g", "text": "obj?.(key)" },
+      { "id": "h", "text": "obj::[key]" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q4",
+    "type": "single",
+    "question": "Что делает запись obj?.method?.() ?",
+    "options": [
+      { "id": "a", "text": "Вызовет метод, если он существует" },
+      { "id": "b", "text": "Создаст метод method, если его нет" },
+      { "id": "c", "text": "Запретит вызов method всегда" },
+      { "id": "d", "text": "Вызовет method и вернёт true/false" },
+      { "id": "e", "text": "Преобразует method в стрелочную функцию" },
+      { "id": "f", "text": "Выполнит method два раза подряд" },
+      { "id": "g", "text": "Сделает объект неизменяемым" },
+      { "id": "h", "text": "Очистит стек вызовов" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q5",
+    "type": "single",
+    "question": "Что вернёт выражение: const o = { a: { b: 1 } }; o?.a?.b ?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "undefined" },
+      { "id": "c", "text": "null" },
+      { "id": "d", "text": "true" },
+      { "id": "e", "text": "false" },
+      { "id": "f", "text": "\"1\"" },
+      { "id": "g", "text": "NaN" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q6",
+    "type": "single",
+    "question": "Что вернёт выражение: const o = {}; o?.a?.b ?",
+    "options": [
+      { "id": "a", "text": "undefined" },
+      { "id": "b", "text": "null" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "false" },
+      { "id": "e", "text": "true" },
+      { "id": "f", "text": "\"\"" },
+      { "id": "g", "text": "NaN" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q7",
+    "type": "multi",
+    "question": "Какие формы опциональной цепочки считаются корректными?",
+    "options": [
+      { "id": "a", "text": "obj?.prop" },
+      { "id": "b", "text": "obj?.[expr]" },
+      { "id": "c", "text": "obj?.method()" },
+      { "id": "d", "text": "obj?=prop" },
+      { "id": "e", "text": "obj?.{prop}" },
+      { "id": "f", "text": "obj??.prop" },
+      { "id": "g", "text": "obj?->prop" },
+      { "id": "h", "text": "obj?.:prop" }
+    ],
+    "correct": ["a", "b", "c"]
+  },
+  {
+    "id": "b_t_topic12_q8",
+    "type": "single",
+    "question": "Какой метод Object возвращает массив ключей объекта (перечисляемых собственных)?",
+    "options": [
+      { "id": "a", "text": "Object.keys(obj)" },
+      { "id": "b", "text": "Object.values(obj)" },
+      { "id": "c", "text": "Object.entries(obj)" },
+      { "id": "d", "text": "Object.fields(obj)" },
+      { "id": "e", "text": "Object.pairs(obj)" },
+      { "id": "f", "text": "Object.props(obj)" },
+      { "id": "g", "text": "Object.list(obj)" },
+      { "id": "h", "text": "Object.items(obj)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q9",
+    "type": "single",
+    "question": "Какой метод Object возвращает массив значений объекта (перечисляемых собственных)?",
+    "options": [
+      { "id": "a", "text": "Object.values(obj)" },
+      { "id": "b", "text": "Object.keys(obj)" },
+      { "id": "c", "text": "Object.entries(obj)" },
+      { "id": "d", "text": "Object.items(obj)" },
+      { "id": "e", "text": "Object.props(obj)" },
+      { "id": "f", "text": "Object.fields(obj)" },
+      { "id": "g", "text": "Object.value(obj)" },
+      { "id": "h", "text": "Object.get(obj)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q10",
+    "type": "single",
+    "question": "Какой метод Object возвращает массив пар [ключ, значение] (перечисляемых собственных)?",
+    "options": [
+      { "id": "a", "text": "Object.entries(obj)" },
+      { "id": "b", "text": "Object.keys(obj)" },
+      { "id": "c", "text": "Object.values(obj)" },
+      { "id": "d", "text": "Object.pairs(obj)" },
+      { "id": "e", "text": "Object.items(obj)" },
+      { "id": "f", "text": "Object.fields(obj)" },
+      { "id": "g", "text": "Object.lines(obj)" },
+      { "id": "h", "text": "Object.rows(obj)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q11",
+    "type": "single",
+    "question": "Какой метод Object копирует свойства источников в target и возвращает target?",
+    "options": [
+      { "id": "a", "text": "Object.assign(target, source)" },
+      { "id": "b", "text": "Object.copy(target, source)" },
+      { "id": "c", "text": "Object.merge(target, source)" },
+      { "id": "d", "text": "Object.join(target, source)" },
+      { "id": "e", "text": "Object.attach(target, source)" },
+      { "id": "f", "text": "Object.concat(target, source)" },
+      { "id": "g", "text": "Object.append(target, source)" },
+      { "id": "h", "text": "Object.link(target, source)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q12",
+    "type": "single",
+    "question": "Какой метод Object запрещает добавление новых свойств в объект?",
+    "options": [
+      { "id": "a", "text": "Object.preventExtensions(obj)" },
+      { "id": "b", "text": "Object.freeze(obj)" },
+      { "id": "c", "text": "Object.seal(obj)" },
+      { "id": "d", "text": "Object.lock(obj)" },
+      { "id": "e", "text": "Object.stop(obj)" },
+      { "id": "f", "text": "Object.close(obj)" },
+      { "id": "g", "text": "Object.guard(obj)" },
+      { "id": "h", "text": "Object.hold(obj)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q13",
+    "type": "single",
+    "question": "Какой метод Object «запечатывает» объект (нельзя добавлять/удалять свойства)?",
+    "options": [
+      { "id": "a", "text": "Object.seal(obj)" },
+      { "id": "b", "text": "Object.freeze(obj)" },
+      { "id": "c", "text": "Object.preventExtensions(obj)" },
+      { "id": "d", "text": "Object.lock(obj)" },
+      { "id": "e", "text": "Object.stop(obj)" },
+      { "id": "f", "text": "Object.close(obj)" },
+      { "id": "g", "text": "Object.guard(obj)" },
+      { "id": "h", "text": "Object.hold(obj)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q14",
+    "type": "single",
+    "question": "Какой метод Object «замораживает» объект на верхнем уровне (нельзя менять свойства)?",
+    "options": [
+      { "id": "a", "text": "Object.freeze(obj)" },
+      { "id": "b", "text": "Object.seal(obj)" },
+      { "id": "c", "text": "Object.preventExtensions(obj)" },
+      { "id": "d", "text": "Object.lock(obj)" },
+      { "id": "e", "text": "Object.stop(obj)" },
+      { "id": "f", "text": "Object.close(obj)" },
+      { "id": "g", "text": "Object.guard(obj)" },
+      { "id": "h", "text": "Object.hold(obj)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q15",
+    "type": "single",
+    "question": "Какой метод Object проверяет, является ли свойство собственным у объекта (без прототипа)?",
+    "options": [
+      { "id": "a", "text": "Object.hasOwn(obj, key)" },
+      { "id": "b", "text": "Object.has(obj, key)" },
+      { "id": "c", "text": "Object.own(obj, key)" },
+      { "id": "d", "text": "Object.includes(obj, key)" },
+      { "id": "e", "text": "Object.contains(obj, key)" },
+      { "id": "f", "text": "Object.hasKey(obj, key)" },
+      { "id": "g", "text": "Object.isOwn(obj, key)" },
+      { "id": "h", "text": "Object.find(obj, key)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic12_q16",
+    "type": "single",
+    "question": "Почему опциональная цепочка удобна при доступе к вложенным полям?",
+    "options": [
+      { "id": "a", "text": "Помогает избегать ошибок при null/undefined" },
+      { "id": "b", "text": "Всегда делает доступ к полям быстрее" },
+      { "id": "c", "text": "Автоматически добавляет отсутствующие поля" },
+      { "id": "d", "text": "Превращает объект в массив" },
+      { "id": "e", "text": "Заменяет все проверки типов typeof" },
+      { "id": "f", "text": "Сериализует объект без JSON.stringify" },
+      { "id": "g", "text": "Запрещает изменение объекта" },
+      { "id": "h", "text": "Удаляет вложенные свойства при чтении" }
+    ],
+    "correct": ["a"]
+  },
+
+  {
+    "id": "b_t_topic13_q1",
+    "type": "single",
+    "question": "Что в общем случае делает сборщик мусора (Garbage Collector) в JavaScript?",
+    "options": [
+      { "id": "a", "text": "Освобождает память от объектов без достижимых ссылок" },
+      { "id": "b", "text": "Сжимает исходный код и удаляет пробелы" },
+      { "id": "c", "text": "Ускоряет сеть, уменьшая размер запросов" },
+      { "id": "d", "text": "Запрещает создание новых объектов в памяти" },
+      { "id": "e", "text": "Преобразует все данные в примитивы" },
+      { "id": "f", "text": "Переписывает функции в стрелочные автоматически" },
+      { "id": "g", "text": "Удаляет все замыкания после выполнения" },
+      { "id": "h", "text": "Сохраняет переменные в localStorage" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic13_q2",
+    "type": "single",
+    "question": "Какой термин чаще всего используют для описания того, что объект «можно найти из корней» (root) по ссылкам?",
+    "options": [
+      { "id": "a", "text": "Достижимость (reachability)" },
+      { "id": "b", "text": "Синтаксичность (syntaxability)" },
+      { "id": "c", "text": "Непрерывность (continuity)" },
+      { "id": "d", "text": "Проверяемость (checkability)" },
+      { "id": "e", "text": "Модульность (modularity)" },
+      { "id": "f", "text": "Сериализуемость (serializability)" },
+      { "id": "g", "text": "Итерабельность (iterability)" },
+      { "id": "h", "text": "Перечисляемость (enumerability)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic13_q3",
+    "type": "multi",
+    "question": "Какие объекты обычно относят к «корням» (roots), от которых считается достижимость в JS-среде?",
+    "options": [
+      { "id": "a", "text": "Глобальные объекты и их свойства (globalThis / window)" },
+      { "id": "b", "text": "Локальные переменные текущего стека вызовов" },
+      { "id": "c", "text": "Объекты, на которые ссылаются активные таймеры/обработчики событий" },
+      { "id": "d", "text": "Данные, лежащие в DOM-дереве страницы" },
+      { "id": "e", "text": "Любой объект, который когда-то был создан, навсегда" },
+      { "id": "f", "text": "Только значения примитивов (string/number/boolean)" },
+      { "id": "g", "text": "Только объекты, созданные через new Object()" },
+      { "id": "h", "text": "Только объекты, которые были записаны в JSON" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+  {
+    "id": "b_t_topic13_q4",
+    "type": "single",
+    "question": "Какая идея лежит в основе алгоритма «mark-and-sweep» (упрощённо)?",
+    "options": [
+      { "id": "a", "text": "Пометить достижимые объекты и очистить недостижимые" },
+      { "id": "b", "text": "Удалить все объекты, кроме примитивов" },
+      { "id": "c", "text": "Скопировать все объекты в новую память без проверок" },
+      { "id": "d", "text": "Оставить только объекты без ссылок внутри" },
+      { "id": "e", "text": "Сжать строки и заменить их индексами" },
+      { "id": "f", "text": "Сохранить объекты в кеше CPU и отключить сборку" },
+      { "id": "g", "text": "Заменить ссылки на числа и пересчитать адреса" },
+      { "id": "h", "text": "Превратить все функции в байткод WebAssembly" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic13_q5",
+    "type": "multi",
+    "question": "Какие ситуации чаще всего приводят к утечкам памяти в JS-приложениях?",
+    "options": [
+      { "id": "a", "text": "Неудалённые обработчики событий, удерживающие ссылки" },
+      { "id": "b", "text": "Таймеры/интервалы, которые продолжают работать и держат замыкания" },
+      { "id": "c", "text": "Долгоживущие коллекции (кэш, Map) без очистки" },
+      { "id": "d", "text": "Ссылки на DOM-элементы, которые больше не нужны" },
+      { "id": "e", "text": "Использование строгого режима \"use strict\"" },
+      { "id": "f", "text": "Использование оператора typeof" },
+      { "id": "g", "text": "Использование тернарного оператора" },
+      { "id": "h", "text": "Использование только const вместо let" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+  {
+    "id": "b_t_topic13_q6",
+    "type": "single",
+    "question": "Какое утверждение про сборщик мусора в JavaScript верное?",
+    "options": [
+      { "id": "a", "text": "Сборка мусора не гарантирует мгновенное освобождение памяти по моменту" },
+      { "id": "b", "text": "Сборка мусора запускается строго каждые 5 секунд" },
+      { "id": "c", "text": "Сборка мусора удаляет объекты сразу после выхода из функции" },
+      { "id": "d", "text": "Сборка мусора отключается при использовании let" },
+      { "id": "e", "text": "Сборка мусора не работает с объектами, только со строками" },
+      { "id": "f", "text": "Сборка мусора всегда удаляет замыкания автоматически" },
+      { "id": "g", "text": "Сборка мусора вызывается только вручную из кода" },
+      { "id": "h", "text": "Сборка мусора является частью спецификации DOM" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic13_q7",
+    "type": "multi",
+    "question": "Какие практики помогают снижать риск утечек памяти и нагрузку на GC?",
+    "options": [
+      { "id": "a", "text": "Снимать обработчики событий, когда они больше не нужны" },
+      { "id": "b", "text": "Очищать setInterval и отменять таймеры при необходимости" },
+      { "id": "c", "text": "Очищать кэши/Map/массивы, если они растут без ограничений" },
+      { "id": "d", "text": "Не удерживать ссылки на ненужные DOM-элементы" },
+      { "id": "e", "text": "Заменять let на var везде" },
+      { "id": "f", "text": "Всегда отключать оптимизации движка" },
+      { "id": "g", "text": "Вызывать сборщик мусора вручную по таймеру" },
+      { "id": "h", "text": "Заменять все объекты на строки JSON" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+  {
+    "id": "b_t_topic13_q8",
+    "type": "single",
+    "question": "Какой подход чаще всего относится к оптимизациям памяти/GC при работе с большим количеством временных объектов?",
+    "options": [
+      { "id": "a", "text": "Снижать количество аллокаций и переиспользовать структуры, когда это уместно" },
+      { "id": "b", "text": "Создавать как можно больше объектов, чтобы ускорить сборку" },
+      { "id": "c", "text": "Использовать только глобальные переменные, чтобы GC не мешал" },
+      { "id": "d", "text": "Хранить всё в строках, чтобы GC не работал" },
+      { "id": "e", "text": "Везде использовать eval для оптимизации" },
+      { "id": "f", "text": "Отключать обработчики событий браузера" },
+      { "id": "g", "text": "Сохранять временные объекты в localStorage" },
+      { "id": "h", "text": "Менять прототипы объектов в цикле для ускорения" }
+    ],
+    "correct": ["a"]
+  },
+
+  {
+    "id": "b_t_topic14_q1",
+    "type": "single",
+    "question": "Почему в JavaScript можно вызывать методы у примитивов (например, у строки)?",
+    "options": [
+      { "id": "a", "text": "Движок временно оборачивает примитив в объект-обёртку" },
+      { "id": "b", "text": "Все примитивы всегда являются объектами" },
+      { "id": "c", "text": "Методы примитивов приходят из DOM API" },
+      { "id": "d", "text": "Это возможно только в строгом режиме" },
+      { "id": "e", "text": "Это работает только в браузере, но не в Node.js" },
+      { "id": "f", "text": "Методы примитивов добавляются через JSON" },
+      { "id": "g", "text": "Это эффект var hoisting" },
+      { "id": "h", "text": "Это делает оператор typeof автоматически" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q2",
+    "type": "single",
+    "question": "Что возвращает метод строк \"abc\".toUpperCase() ?",
+    "options": [
+      { "id": "a", "text": "\"ABC\"" },
+      { "id": "b", "text": "\"abc\"" },
+      { "id": "c", "text": "\"Abc\"" },
+      { "id": "d", "text": "\"aBC\"" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q3",
+    "type": "single",
+    "question": "Что возвращает метод строк \"abc\".includes(\"b\") ?",
+    "options": [
+      { "id": "a", "text": "true" },
+      { "id": "b", "text": "false" },
+      { "id": "c", "text": "\"b\"" },
+      { "id": "d", "text": "1" },
+      { "id": "e", "text": "0" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "undefined" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q4",
+    "type": "single",
+    "question": "Что вернёт выражение: \"a,b,c\".split(\",\") ?",
+    "options": [
+      { "id": "a", "text": "[\"a\",\"b\",\"c\"]" },
+      { "id": "b", "text": "\"a,b,c\"" },
+      { "id": "c", "text": "\"abc\"" },
+      { "id": "d", "text": "[\"a,b,c\"]" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "undefined" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q5",
+    "type": "single",
+    "question": "Что вернёт выражение: \"hello\".slice(1, 4) ?",
+    "options": [
+      { "id": "a", "text": "\"ell\"" },
+      { "id": "b", "text": "\"hell\"" },
+      { "id": "c", "text": "\"ello\"" },
+      { "id": "d", "text": "\"he\"" },
+      { "id": "e", "text": "\"lo\"" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "undefined" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q6",
+    "type": "single",
+    "question": "Какое значение вернёт выражение: \"hello\".indexOf(\"l\") ?",
+    "options": [
+      { "id": "a", "text": "2" },
+      { "id": "b", "text": "3" },
+      { "id": "c", "text": "1" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "-1" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "undefined" },
+      { "id": "h", "text": "NaN" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q7",
+    "type": "single",
+    "question": "Какой результат у выражения: Number.isNaN(NaN) ?",
+    "options": [
+      { "id": "a", "text": "true" },
+      { "id": "b", "text": "false" },
+      { "id": "c", "text": "\"true\"" },
+      { "id": "d", "text": "\"false\"" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "0" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "undefined" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q8",
+    "type": "single",
+    "question": "Какой результат у выражения: Number.isFinite(Infinity) ?",
+    "options": [
+      { "id": "a", "text": "false" },
+      { "id": "b", "text": "true" },
+      { "id": "c", "text": "\"false\"" },
+      { "id": "d", "text": "\"true\"" },
+      { "id": "e", "text": "Infinity" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "undefined" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q9",
+    "type": "single",
+    "question": "Что вернёт выражение: (12.345).toFixed(2) ?",
+    "options": [
+      { "id": "a", "text": "\"12.35\"" },
+      { "id": "b", "text": "12.35" },
+      { "id": "c", "text": "\"12.34\"" },
+      { "id": "d", "text": "12.34" },
+      { "id": "e", "text": "\"12\"" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "undefined" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q10",
+    "type": "single",
+    "question": "Что вернёт выражение: parseInt(\"10px\", 10) ?",
+    "options": [
+      { "id": "a", "text": "10" },
+      { "id": "b", "text": "\"10\"" },
+      { "id": "c", "text": "NaN" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "px" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "undefined" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q11",
+    "type": "single",
+    "question": "Что вернёт выражение: Math.floor(1.9) ?",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "1.9" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "-1" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "undefined" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q12",
+    "type": "single",
+    "question": "Что вернёт выражение: Math.ceil(1.1) ?",
+    "options": [
+      { "id": "a", "text": "2" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "1.1" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "-2" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "undefined" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q13",
+    "type": "single",
+    "question": "Что вернёт выражение: Math.round(1.5) ?",
+    "options": [
+      { "id": "a", "text": "2" },
+      { "id": "b", "text": "1" },
+      { "id": "c", "text": "1.5" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "-2" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "undefined" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q14",
+    "type": "single",
+    "question": "Какое значение может вернуть Math.random() ?",
+    "options": [
+      { "id": "a", "text": "Число в диапазоне [0, 1)" },
+      { "id": "b", "text": "Число в диапазоне [1, 10]" },
+      { "id": "c", "text": "Число в диапазоне (0, 1] " },
+      { "id": "d", "text": "Только целое число" },
+      { "id": "e", "text": "Всегда 0 или 1" },
+      { "id": "f", "text": "Всегда отрицательное число" },
+      { "id": "g", "text": "Только NaN" },
+      { "id": "h", "text": "Всегда null" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_q15",
+    "type": "multi",
+    "question": "Какие методы относятся к String (методы строк)?",
+    "options": [
+      { "id": "a", "text": "slice" },
+      { "id": "b", "text": "split" },
+      { "id": "c", "text": "includes" },
+      { "id": "d", "text": "toUpperCase" },
+      { "id": "e", "text": "push" },
+      { "id": "f", "text": "map" },
+      { "id": "g", "text": "filter" },
+      { "id": "h", "text": "reduce" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+  {
+    "id": "b_t_topic14_q16",
+    "type": "multi",
+    "question": "Какие элементы относятся к объекту Math (статические методы/свойства)?",
+    "options": [
+      { "id": "a", "text": "Math.max" },
+      { "id": "b", "text": "Math.min" },
+      { "id": "c", "text": "Math.abs" },
+      { "id": "d", "text": "Math.PI" },
+      { "id": "e", "text": "Math.push" },
+      { "id": "f", "text": "Math.map" },
+      { "id": "g", "text": "Math.filter" },
+      { "id": "h", "text": "Math.join" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+
+  {
+    "id": "b_t_topic14_math_q17",
+    "type": "single",
+    "question": "Что вернёт выражение: Math.trunc(3.9) ?",
+    "options": [
+      { "id": "a", "text": "3" },
+      { "id": "b", "text": "4" },
+      { "id": "c", "text": "3.9" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "-3" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "undefined" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_math_q18",
+    "type": "single",
+    "question": "Что вернёт выражение: Math.abs(-7) ?",
+    "options": [
+      { "id": "a", "text": "7" },
+      { "id": "b", "text": "-7" },
+      { "id": "c", "text": "0" },
+      { "id": "d", "text": "NaN" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "true" },
+      { "id": "h", "text": "false" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_math_q19",
+    "type": "single",
+    "question": "Что вернёт выражение: Math.max(2, 10, 3) ?",
+    "options": [
+      { "id": "a", "text": "10" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "3" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "undefined" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic14_math_q20",
+    "type": "single",
+    "question": "Что вернёт выражение: Math.sqrt(9) ?",
+    "options": [
+      { "id": "a", "text": "3" },
+      { "id": "b", "text": "9" },
+      { "id": "c", "text": "81" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "-3" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "null" },
+      { "id": "h", "text": "undefined" }
+    ],
+    "correct": ["a"]
+  },
+
+  {
+    "id": "b_t_topic15_q1",
+    "type": "single",
+    "question": "Какой вариант создаёт массив из трёх элементов 1, 2, 3?",
+    "options": [
+      { "id": "a", "text": "const a = [1, 2, 3]" },
+      { "id": "b", "text": "const a = (1, 2, 3)" },
+      { "id": "c", "text": "const a = {1, 2, 3}" },
+      { "id": "d", "text": "const a = <1,2,3>" },
+      { "id": "e", "text": "const a = new Array(1,2,3,)" },
+      { "id": "f", "text": "const a = Array[1,2,3]" },
+      { "id": "g", "text": "const a = array(1,2,3)" },
+      { "id": "h", "text": "const a = [[1],[2],[3]]" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q2",
+    "type": "single",
+    "question": "Что вернёт выражение: [1, 2, 3].length ?",
+    "options": [
+      { "id": "a", "text": "3" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "1" },
+      { "id": "d", "text": "0" },
+      { "id": "e", "text": "undefined" },
+      { "id": "f", "text": "null" },
+      { "id": "g", "text": "NaN" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q3",
+    "type": "single",
+    "question": "Как получить второй элемент массива arr?",
+    "options": [
+      { "id": "a", "text": "arr[1]" },
+      { "id": "b", "text": "arr[2]" },
+      { "id": "c", "text": "arr.get(2)" },
+      { "id": "d", "text": "arr.second()" },
+      { "id": "e", "text": "arr(1)" },
+      { "id": "f", "text": "arr{1}" },
+      { "id": "g", "text": "arr.1" },
+      { "id": "h", "text": "arr.index(1)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q4",
+    "type": "single",
+    "question": "Какой метод добавляет элемент в конец массива?",
+    "options": [
+      { "id": "a", "text": "push" },
+      { "id": "b", "text": "pop" },
+      { "id": "c", "text": "shift" },
+      { "id": "d", "text": "unshift" },
+      { "id": "e", "text": "slice" },
+      { "id": "f", "text": "splice" },
+      { "id": "g", "text": "map" },
+      { "id": "h", "text": "filter" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q5",
+    "type": "single",
+    "question": "Какой метод удаляет последний элемент массива и возвращает его?",
+    "options": [
+      { "id": "a", "text": "pop" },
+      { "id": "b", "text": "push" },
+      { "id": "c", "text": "shift" },
+      { "id": "d", "text": "unshift" },
+      { "id": "e", "text": "slice" },
+      { "id": "f", "text": "splice" },
+      { "id": "g", "text": "reduce" },
+      { "id": "h", "text": "join" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q6",
+    "type": "single",
+    "question": "Какой метод удаляет первый элемент массива и возвращает его?",
+    "options": [
+      { "id": "a", "text": "shift" },
+      { "id": "b", "text": "unshift" },
+      { "id": "c", "text": "push" },
+      { "id": "d", "text": "pop" },
+      { "id": "e", "text": "slice" },
+      { "id": "f", "text": "splice" },
+      { "id": "g", "text": "map" },
+      { "id": "h", "text": "filter" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q7",
+    "type": "single",
+    "question": "Какой метод добавляет элемент(ы) в начало массива?",
+    "options": [
+      { "id": "a", "text": "unshift" },
+      { "id": "b", "text": "shift" },
+      { "id": "c", "text": "push" },
+      { "id": "d", "text": "pop" },
+      { "id": "e", "text": "slice" },
+      { "id": "f", "text": "splice" },
+      { "id": "g", "text": "join" },
+      { "id": "h", "text": "includes" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q8",
+    "type": "single",
+    "question": "Какой метод создаёт новый массив, применяя функцию к каждому элементу?",
+    "options": [
+      { "id": "a", "text": "map" },
+      { "id": "b", "text": "forEach" },
+      { "id": "c", "text": "filter" },
+      { "id": "d", "text": "reduce" },
+      { "id": "e", "text": "find" },
+      { "id": "f", "text": "some" },
+      { "id": "g", "text": "every" },
+      { "id": "h", "text": "includes" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q9",
+    "type": "single",
+    "question": "Какой метод создаёт новый массив только из элементов, прошедших проверку?",
+    "options": [
+      { "id": "a", "text": "filter" },
+      { "id": "b", "text": "map" },
+      { "id": "c", "text": "forEach" },
+      { "id": "d", "text": "reduce" },
+      { "id": "e", "text": "find" },
+      { "id": "f", "text": "some" },
+      { "id": "g", "text": "every" },
+      { "id": "h", "text": "join" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q10",
+    "type": "single",
+    "question": "Какой метод возвращает первый элемент, удовлетворяющий условию, или undefined?",
+    "options": [
+      { "id": "a", "text": "find" },
+      { "id": "b", "text": "filter" },
+      { "id": "c", "text": "map" },
+      { "id": "d", "text": "reduce" },
+      { "id": "e", "text": "forEach" },
+      { "id": "f", "text": "includes" },
+      { "id": "g", "text": "concat" },
+      { "id": "h", "text": "slice" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q11",
+    "type": "single",
+    "question": "Какой метод проверяет, содержит ли массив заданный элемент?",
+    "options": [
+      { "id": "a", "text": "includes" },
+      { "id": "b", "text": "contain" },
+      { "id": "c", "text": "has" },
+      { "id": "d", "text": "in" },
+      { "id": "e", "text": "find" },
+      { "id": "f", "text": "some" },
+      { "id": "g", "text": "every" },
+      { "id": "h", "text": "index" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q12",
+    "type": "single",
+    "question": "Какой метод возвращает индекс элемента или -1, если элемент не найден?",
+    "options": [
+      { "id": "a", "text": "indexOf" },
+      { "id": "b", "text": "find" },
+      { "id": "c", "text": "includes" },
+      { "id": "d", "text": "search" },
+      { "id": "e", "text": "lookup" },
+      { "id": "f", "text": "where" },
+      { "id": "g", "text": "match" },
+      { "id": "h", "text": "getIndex" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q13",
+    "type": "single",
+    "question": "Какой метод объединяет элементы массива в строку с разделителем?",
+    "options": [
+      { "id": "a", "text": "join" },
+      { "id": "b", "text": "split" },
+      { "id": "c", "text": "concat" },
+      { "id": "d", "text": "combine" },
+      { "id": "e", "text": "merge" },
+      { "id": "f", "text": "append" },
+      { "id": "g", "text": "attach" },
+      { "id": "h", "text": "group" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q14",
+    "type": "single",
+    "question": "Какой метод создаёт новый массив, не изменяя исходный, выбирая часть элементов по индексам?",
+    "options": [
+      { "id": "a", "text": "slice" },
+      { "id": "b", "text": "splice" },
+      { "id": "c", "text": "split" },
+      { "id": "d", "text": "join" },
+      { "id": "e", "text": "push" },
+      { "id": "f", "text": "pop" },
+      { "id": "g", "text": "shift" },
+      { "id": "h", "text": "unshift" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q15",
+    "type": "single",
+    "question": "Какой метод может удалять/вставлять элементы в массив и изменяет исходный массив?",
+    "options": [
+      { "id": "a", "text": "splice" },
+      { "id": "b", "text": "slice" },
+      { "id": "c", "text": "concat" },
+      { "id": "d", "text": "map" },
+      { "id": "e", "text": "filter" },
+      { "id": "f", "text": "reduce" },
+      { "id": "g", "text": "find" },
+      { "id": "h", "text": "every" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q16",
+    "type": "single",
+    "question": "Какой метод создаёт новый массив, добавляя элементы другого массива (не меняя исходный)?",
+    "options": [
+      { "id": "a", "text": "concat" },
+      { "id": "b", "text": "append" },
+      { "id": "c", "text": "merge" },
+      { "id": "d", "text": "join" },
+      { "id": "e", "text": "push" },
+      { "id": "f", "text": "splice" },
+      { "id": "g", "text": "insert" },
+      { "id": "h", "text": "attach" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q17",
+    "type": "single",
+    "question": "Какая форма является примером двумерного массива (матрицы)?",
+    "options": [
+      { "id": "a", "text": "[[1,2],[3,4]]" },
+      { "id": "b", "text": "[1,2,3,4]" },
+      { "id": "c", "text": "{0:1,1:2}" },
+      { "id": "d", "text": "\"[1,2]\"" },
+      { "id": "e", "text": "new Set([1,2])" },
+      { "id": "f", "text": "new Map([[1,2]])" },
+      { "id": "g", "text": "({a:[1,2]})" },
+      { "id": "h", "text": "Array(2,2)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q18",
+    "type": "single",
+    "question": "Как получить элемент 4 из массива [[1,2],[3,4]] ?",
+    "options": [
+      { "id": "a", "text": "arr[1][1]" },
+      { "id": "b", "text": "arr[0][0]" },
+      { "id": "c", "text": "arr[0][1]" },
+      { "id": "d", "text": "arr[1][0]" },
+      { "id": "e", "text": "arr(1,1)" },
+      { "id": "f", "text": "arr.get(1,1)" },
+      { "id": "g", "text": "arr[2][2]" },
+      { "id": "h", "text": "arr[4]" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q19",
+    "type": "single",
+    "question": "Какой метод проверяет, что хотя бы один элемент массива удовлетворяет условию?",
+    "options": [
+      { "id": "a", "text": "some" },
+      { "id": "b", "text": "every" },
+      { "id": "c", "text": "all" },
+      { "id": "d", "text": "any" },
+      { "id": "e", "text": "find" },
+      { "id": "f", "text": "filter" },
+      { "id": "g", "text": "reduce" },
+      { "id": "h", "text": "map" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic15_q20",
+    "type": "single",
+    "question": "Какой метод проверяет, что все элементы массива удовлетворяют условию?",
+    "options": [
+      { "id": "a", "text": "every" },
+      { "id": "b", "text": "some" },
+      { "id": "c", "text": "all" },
+      { "id": "d", "text": "any" },
+      { "id": "e", "text": "find" },
+      { "id": "f", "text": "filter" },
+      { "id": "g", "text": "reduce" },
+      { "id": "h", "text": "map" }
+    ],
+    "correct": ["a"]
+  },
+
+  {
+    "id": "b_t_topic16_q1",
+    "type": "single",
+    "question": "Какой вариант является корректным примером деструктуризации массива?",
+    "options": [
+      { "id": "a", "text": "const [a, b] = [1, 2]" },
+      { "id": "b", "text": "const (a, b) = [1, 2]" },
+      { "id": "c", "text": "const {a, b} = [1, 2]" },
+      { "id": "d", "text": "const [a; b] = [1, 2]" },
+      { "id": "e", "text": "const a, b = [1, 2]" },
+      { "id": "f", "text": "const [a, b] = {1: a, 2: b}" },
+      { "id": "g", "text": "const [a b] = [1, 2]" },
+      { "id": "h", "text": "const <a, b> = [1, 2]" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic16_q2",
+    "type": "single",
+    "question": "Что будет в переменной b после: const [a, b] = [10, 20] ?",
+    "options": [
+      { "id": "a", "text": "20" },
+      { "id": "b", "text": "10" },
+      { "id": "c", "text": "undefined" },
+      { "id": "d", "text": "null" },
+      { "id": "e", "text": "0" },
+      { "id": "f", "text": "NaN" },
+      { "id": "g", "text": "\"20\"" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic16_q3",
+    "type": "single",
+    "question": "Как пропустить первый элемент массива при деструктуризации и взять второй?",
+    "options": [
+      { "id": "a", "text": "const [, second] = arr" },
+      { "id": "b", "text": "const [second] = arr" },
+      { "id": "c", "text": "const [.., second] = arr" },
+      { "id": "d", "text": "const [skip; second] = arr" },
+      { "id": "e", "text": "const {second} = arr" },
+      { "id": "f", "text": "const [second,] = arr" },
+      { "id": "g", "text": "const [second:2] = arr" },
+      { "id": "h", "text": "const (second) = arr" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic16_q4",
+    "type": "single",
+    "question": "Какой синтаксис задаёт значение по умолчанию при деструктуризации массива?",
+    "options": [
+      { "id": "a", "text": "const [a = 5] = []" },
+      { "id": "b", "text": "const [a := 5] = []" },
+      { "id": "c", "text": "const [a ? 5] = []" },
+      { "id": "d", "text": "const [a default 5] = []" },
+      { "id": "e", "text": "const [a => 5] = []" },
+      { "id": "f", "text": "const [a, 5] = []" },
+      { "id": "g", "text": "const [a == 5] = []" },
+      { "id": "h", "text": "const [a + 5] = []" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic16_q5",
+    "type": "single",
+    "question": "Как корректно использовать rest-элемент при деструктуризации массива?",
+    "options": [
+      { "id": "a", "text": "const [a, ...rest] = [1,2,3]" },
+      { "id": "b", "text": "const [...rest, a] = [1,2,3]" },
+      { "id": "c", "text": "const [a, ..rest] = [1,2,3]" },
+      { "id": "d", "text": "const [a, rest...] = [1,2,3]" },
+      { "id": "e", "text": "const {a, ...rest} = [1,2,3]" },
+      { "id": "f", "text": "const [a, rest]... = [1,2,3]" },
+      { "id": "g", "text": "const [a, ...rest, b] = [1,2,3]" },
+      { "id": "h", "text": "const (...rest) = [1,2,3]" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic16_q6",
+    "type": "single",
+    "question": "Какой из вариантов является корректной JSON-строкой?",
+    "options": [
+      { "id": "a", "text": "{\"a\":1,\"b\":2}" },
+      { "id": "b", "text": "{a:1,b:2}" },
+      { "id": "c", "text": "{'a':1,'b':2}" },
+      { "id": "d", "text": "{\"a\":1,}" },
+      { "id": "e", "text": "['a',1]" },
+      { "id": "f", "text": "(\"a\":1)" },
+      { "id": "g", "text": "{\"a\":undefined}" },
+      { "id": "h", "text": "{\"a\":function(){}}" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic16_q7",
+    "type": "multi",
+    "question": "Какие утверждения про JSON верны?",
+    "options": [
+      { "id": "a", "text": "Ключи в объектах JSON должны быть в двойных кавычках" },
+      { "id": "b", "text": "JSON поддерживает тип undefined как значение" },
+      { "id": "c", "text": "JSON не поддерживает функции как значения" },
+      { "id": "d", "text": "JSON поддерживает массивы и объекты" },
+      { "id": "e", "text": "JSON допускает комментарии // и /* */" },
+      { "id": "f", "text": "JSON может содержать числа, строки, boolean, null" },
+      { "id": "g", "text": "JSON допускает висячую запятую в конце объекта" },
+      { "id": "h", "text": "JSON всегда является валидным JavaScript-кодом" }
+    ],
+    "correct": ["a", "c", "d", "f"]
+  },
+  {
+    "id": "b_t_topic16_q8",
+    "type": "single",
+    "question": "Какая функция в JavaScript преобразует объект/массив в JSON-строку?",
+    "options": [
+      { "id": "a", "text": "JSON.stringify" },
+      { "id": "b", "text": "JSON.parse" },
+      { "id": "c", "text": "Object.stringify" },
+      { "id": "d", "text": "String.json" },
+      { "id": "e", "text": "parseJSON" },
+      { "id": "f", "text": "toJSON" },
+      { "id": "g", "text": "encodeJSON" },
+      { "id": "h", "text": "makeJSON" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic16_q9",
+    "type": "single",
+    "question": "Какая функция в JavaScript преобразует JSON-строку в объект/массив?",
+    "options": [
+      { "id": "a", "text": "JSON.parse" },
+      { "id": "b", "text": "JSON.stringify" },
+      { "id": "c", "text": "Object.parse" },
+      { "id": "d", "text": "Parse.json" },
+      { "id": "e", "text": "decodeJSON" },
+      { "id": "f", "text": "fromJSON" },
+      { "id": "g", "text": "readJSON" },
+      { "id": "h", "text": "toObject" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic16_q10",
+    "type": "single",
+    "question": "Что обычно понимают под «матрицей элементов» в JavaScript?",
+    "options": [
+      { "id": "a", "text": "Двумерный массив: массив массивов (например, [[1,2],[3,4]])" },
+      { "id": "b", "text": "Любой объект с ключами и значениями" },
+      { "id": "c", "text": "Строку, в которой числа разделены запятыми" },
+      { "id": "d", "text": "Функцию, возвращающую массив" },
+      { "id": "e", "text": "Одномерный массив без вложенных массивов" },
+      { "id": "f", "text": "Map, где ключи — числа" },
+      { "id": "g", "text": "Set с уникальными значениями" },
+      { "id": "h", "text": "JSON-объект с полем matrix" }
+    ],
+    "correct": ["a"]
+  },
+
+  {
+    "id": "b_t_topic18_q1",
+    "type": "single",
+    "question": "Какой синтаксис используется для экспорта значения по умолчанию (default export) в ES-модулях?",
+    "options": [
+      { "id": "a", "text": "export default value" },
+      { "id": "b", "text": "export value default" },
+      { "id": "c", "text": "default export value" },
+      { "id": "d", "text": "module.exports = value" },
+      { "id": "e", "text": "exports.default(value)" },
+      { "id": "f", "text": "export = value" },
+      { "id": "g", "text": "import default value" },
+      { "id": "h", "text": "require.default(value)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic18_q2",
+    "type": "single",
+    "question": "Какой синтаксис используется для именованного экспорта (named export) константы?",
+    "options": [
+      { "id": "a", "text": "export const x = 1" },
+      { "id": "b", "text": "export default const x = 1" },
+      { "id": "c", "text": "exports const x = 1" },
+      { "id": "d", "text": "module export const x = 1" },
+      { "id": "e", "text": "export x := 1" },
+      { "id": "f", "text": "export (x = 1)" },
+      { "id": "g", "text": "import const x = 1" },
+      { "id": "h", "text": "require const x = 1" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic18_q3",
+    "type": "single",
+    "question": "Как импортировать именованный экспорт x из модуля \"./a.js\"?",
+    "options": [
+      { "id": "a", "text": "import { x } from \"./a.js\"" },
+      { "id": "b", "text": "import x from \"./a.js\"" },
+      { "id": "c", "text": "import (x) from \"./a.js\"" },
+      { "id": "d", "text": "require { x } from \"./a.js\"" },
+      { "id": "e", "text": "include { x } \"./a.js\"" },
+      { "id": "f", "text": "use x from \"./a.js\"" },
+      { "id": "g", "text": "import \"./a.js\" as x" },
+      { "id": "h", "text": "load { x } \"./a.js\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic18_q4",
+    "type": "single",
+    "question": "Как импортировать default export из модуля \"./a.js\"?",
+    "options": [
+      { "id": "a", "text": "import anyName from \"./a.js\"" },
+      { "id": "b", "text": "import { default } from \"./a.js\"" },
+      { "id": "c", "text": "import { anyName } from \"./a.js\"" },
+      { "id": "d", "text": "import default anyName from \"./a.js\"" },
+      { "id": "e", "text": "require anyName from \"./a.js\"" },
+      { "id": "f", "text": "include anyName from \"./a.js\"" },
+      { "id": "g", "text": "import (anyName) \"./a.js\"" },
+      { "id": "h", "text": "use anyName from \"./a.js\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic18_q5",
+    "type": "multi",
+    "question": "Какие варианты являются корректными формами импорта в ES-модулях?",
+    "options": [
+      { "id": "a", "text": "import \"./a.js\"" },
+      { "id": "b", "text": "import { x, y } from \"./a.js\"" },
+      { "id": "c", "text": "import d, { x } from \"./a.js\"" },
+      { "id": "d", "text": "import * as ns from \"./a.js\"" },
+      { "id": "e", "text": "import = require(\"./a.js\")" },
+      { "id": "f", "text": "import { x } = \"./a.js\"" },
+      { "id": "g", "text": "include \"./a.js\"" },
+      { "id": "h", "text": "using \"./a.js\"" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+  {
+    "id": "b_t_topic18_q6",
+    "type": "single",
+    "question": "Что возвращает динамический импорт import(\"./a.js\")?",
+    "options": [
+      { "id": "a", "text": "Promise, который резолвится в объект модуля (module namespace)" },
+      { "id": "b", "text": "Строку с содержимым файла" },
+      { "id": "c", "text": "Массив всех экспортов" },
+      { "id": "d", "text": "Сразу значение default export без Promise" },
+      { "id": "e", "text": "Boolean, успешна ли загрузка" },
+      { "id": "f", "text": "Число, размер модуля" },
+      { "id": "g", "text": "null при ошибке" },
+      { "id": "h", "text": "undefined, если модуль уже загружен" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic18_q7",
+    "type": "single",
+    "question": "Зачем обычно используют динамический импорт?",
+    "options": [
+      { "id": "a", "text": "Чтобы загружать модуль по условию или по требованию (lazy loading)" },
+      { "id": "b", "text": "Чтобы заменить объявление переменных var" },
+      { "id": "c", "text": "Чтобы отключить строгий режим выполнения" },
+      { "id": "d", "text": "Чтобы убрать необходимость экспортировать значения" },
+      { "id": "e", "text": "Чтобы автоматически переименовать экспорты" },
+      { "id": "f", "text": "Чтобы сделать код совместимым с JSON" },
+      { "id": "g", "text": "Чтобы всегда загружать модуль синхронно" },
+      { "id": "h", "text": "Чтобы предотвратить любые ошибки загрузки" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic18_q8",
+    "type": "single",
+    "question": "Какой вариант корректен для реэкспорта (re-export) из другого модуля?",
+    "options": [
+      { "id": "a", "text": "export { x } from \"./a.js\"" },
+      { "id": "b", "text": "export x from \"./a.js\"" },
+      { "id": "c", "text": "reexport { x } \"./a.js\"" },
+      { "id": "d", "text": "export -> { x } from \"./a.js\"" },
+      { "id": "e", "text": "exports { x } from \"./a.js\"" },
+      { "id": "f", "text": "export (x) = \"./a.js\"" },
+      { "id": "g", "text": "import { x } then export" },
+      { "id": "h", "text": "module.export { x } from \"./a.js\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic18_q9",
+    "type": "single",
+    "question": "Какой вариант корректен для импорта всех экспортов как namespace?",
+    "options": [
+      { "id": "a", "text": "import * as ns from \"./a.js\"" },
+      { "id": "b", "text": "import ns* from \"./a.js\"" },
+      { "id": "c", "text": "import ns as * from \"./a.js\"" },
+      { "id": "d", "text": "import { * } from \"./a.js\"" },
+      { "id": "e", "text": "import all ns from \"./a.js\"" },
+      { "id": "f", "text": "require * as ns from \"./a.js\"" },
+      { "id": "g", "text": "include * as ns from \"./a.js\"" },
+      { "id": "h", "text": "use namespace ns from \"./a.js\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic18_q10",
+    "type": "multi",
+    "question": "Какие утверждения про ES-модули обычно верны?",
+    "options": [
+      { "id": "a", "text": "ES-модули имеют собственную область видимости (не засоряют глобальную)" },
+      { "id": "b", "text": "import/export работают только внутри модулей, а не в обычном script без module" },
+      { "id": "c", "text": "Импортируемые значения можно переназначать напрямую как обычные переменные" },
+      { "id": "d", "text": "Модули поддерживают именованные и default экспорты" },
+      { "id": "e", "text": "Динамический import возвращает Promise" },
+      { "id": "f", "text": "export автоматически делает значение глобальным" },
+      { "id": "g", "text": "Модули не могут импортировать другие модули" },
+      { "id": "h", "text": "import всегда выполняется только после всех функций в файле" }
+    ],
+    "correct": ["a", "b", "d", "e"]
+  },
+  {
+    "id": "b_t_topic19_q1",
+    "type": "single",
+    "question": "Какой вариант корректно создаёт объект Date с текущими датой и временем?",
+    "options": [
+      { "id": "a", "text": "new Date()" },
+      { "id": "b", "text": "Date()" },
+      { "id": "c", "text": "new Date.now()" },
+      { "id": "d", "text": "new Time()" },
+      { "id": "e", "text": "Date.new()" },
+      { "id": "f", "text": "new DateTime()" },
+      { "id": "g", "text": "new date()" },
+      { "id": "h", "text": "Date.create()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q2",
+    "type": "single",
+    "question": "Что возвращает Date.now()?",
+    "options": [
+      { "id": "a", "text": "Количество миллисекунд от 1970-01-01T00:00:00Z" },
+      { "id": "b", "text": "Строку с текущей датой в ISO формате" },
+      { "id": "c", "text": "Объект Date с текущей датой" },
+      { "id": "d", "text": "Количество секунд от начала суток" },
+      { "id": "e", "text": "Количество минут от 1970 года" },
+      { "id": "f", "text": "Только текущий год как число" },
+      { "id": "g", "text": "Текущее время как строку локали" },
+      { "id": "h", "text": "undefined при отсутствии таймзоны" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q3",
+    "type": "single",
+    "question": "Каким методом получить год по локальному времени у объекта Date?",
+    "options": [
+      { "id": "a", "text": "getFullYear()" },
+      { "id": "b", "text": "getYear()" },
+      { "id": "c", "text": "getYears()" },
+      { "id": "d", "text": "getUTCYear()" },
+      { "id": "e", "text": "year()" },
+      { "id": "f", "text": "fullYear()" },
+      { "id": "g", "text": "getMonthYear()" },
+      { "id": "h", "text": "getDateYear()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q4",
+    "type": "single",
+    "question": "Каким методом получить месяц (0–11) по локальному времени у объекта Date?",
+    "options": [
+      { "id": "a", "text": "getMonth()" },
+      { "id": "b", "text": "getMonths()" },
+      { "id": "c", "text": "getMonthIndex()" },
+      { "id": "d", "text": "getDate()" },
+      { "id": "e", "text": "getDay()" },
+      { "id": "f", "text": "month()" },
+      { "id": "g", "text": "getUTCMonthIndex()" },
+      { "id": "h", "text": "getFullMonth()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q5",
+    "type": "single",
+    "question": "Какое значение возвращает getDay() у Date (в обычном JS)?",
+    "options": [
+      { "id": "a", "text": "День недели (0–6), где 0 обычно воскресенье" },
+      { "id": "b", "text": "День месяца (1–31)" },
+      { "id": "c", "text": "Номер недели в году" },
+      { "id": "d", "text": "Месяц (1–12)" },
+      { "id": "e", "text": "Год (например, 2026)" },
+      { "id": "f", "text": "Миллисекунды от эпохи" },
+      { "id": "g", "text": "Часы в формате 0–24" },
+      { "id": "h", "text": "Минуты в формате 1–60" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q6",
+    "type": "single",
+    "question": "Какой метод возвращает день месяца (1–31) по локальному времени?",
+    "options": [
+      { "id": "a", "text": "getDate()" },
+      { "id": "b", "text": "getDay()" },
+      { "id": "c", "text": "getMonth()" },
+      { "id": "d", "text": "getFullYear()" },
+      { "id": "e", "text": "getTime()" },
+      { "id": "f", "text": "date()" },
+      { "id": "g", "text": "getDays()" },
+      { "id": "h", "text": "getDayOfMonth()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q7",
+    "type": "single",
+    "question": "Каким методом получить миллисекунды от эпохи (timestamp) из Date-объекта?",
+    "options": [
+      { "id": "a", "text": "getTime()" },
+      { "id": "b", "text": "getTimestamp()" },
+      { "id": "c", "text": "toTime()" },
+      { "id": "d", "text": "value()" },
+      { "id": "e", "text": "time()" },
+      { "id": "f", "text": "getNow()" },
+      { "id": "g", "text": "toMillis()" },
+      { "id": "h", "text": "toMs()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q8",
+    "type": "single",
+    "question": "Какой метод устанавливает год по локальному времени у Date-объекта?",
+    "options": [
+      { "id": "a", "text": "setFullYear(year)" },
+      { "id": "b", "text": "setYear(year)" },
+      { "id": "c", "text": "setYears(year)" },
+      { "id": "d", "text": "setUTCYear(year)" },
+      { "id": "e", "text": "year(year)" },
+      { "id": "f", "text": "setFullMonth(year)" },
+      { "id": "g", "text": "setDateYear(year)" },
+      { "id": "h", "text": "setCalendarYear(year)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q9",
+    "type": "single",
+    "question": "Какой метод устанавливает месяц (0–11) по локальному времени у Date-объекта?",
+    "options": [
+      { "id": "a", "text": "setMonth(month)" },
+      { "id": "b", "text": "setMonths(month)" },
+      { "id": "c", "text": "setMonthIndex(month)" },
+      { "id": "d", "text": "setDate(month)" },
+      { "id": "e", "text": "setDay(month)" },
+      { "id": "f", "text": "month(month)" },
+      { "id": "g", "text": "setFullMonth(month)" },
+      { "id": "h", "text": "setCalendarMonth(month)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q10",
+    "type": "single",
+    "question": "Что вернёт вызов new Date(\"2020-01-01\") (тип результата)?",
+    "options": [
+      { "id": "a", "text": "Объект Date" },
+      { "id": "b", "text": "Строку" },
+      { "id": "c", "text": "Число" },
+      { "id": "d", "text": "Boolean" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "Массив" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q11",
+    "type": "single",
+    "question": "Какой метод обычно используют для получения строки в ISO формате?",
+    "options": [
+      { "id": "a", "text": "toISOString()" },
+      { "id": "b", "text": "toISO()" },
+      { "id": "c", "text": "toStringISO()" },
+      { "id": "d", "text": "formatISO()" },
+      { "id": "e", "text": "toDateISO()" },
+      { "id": "f", "text": "asISO()" },
+      { "id": "g", "text": "makeISO()" },
+      { "id": "h", "text": "getISO()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q12",
+    "type": "single",
+    "question": "Какой метод возвращает строковое представление даты в локальном формате (зависит от окружения)?",
+    "options": [
+      { "id": "a", "text": "toLocaleString()" },
+      { "id": "b", "text": "toLocale()" },
+      { "id": "c", "text": "toLocalString()" },
+      { "id": "d", "text": "toStringLocal()" },
+      { "id": "e", "text": "formatLocal()" },
+      { "id": "f", "text": "toLocal()" },
+      { "id": "g", "text": "localString()" },
+      { "id": "h", "text": "toLanguageString()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q13",
+    "type": "single",
+    "question": "Что возвращает разность двух Date-объектов: d2 - d1 ?",
+    "options": [
+      { "id": "a", "text": "Количество миллисекунд между датами (число)" },
+      { "id": "b", "text": "Строку с разницей времени" },
+      { "id": "c", "text": "Объект Date" },
+      { "id": "d", "text": "Boolean" },
+      { "id": "e", "text": "null" },
+      { "id": "f", "text": "undefined" },
+      { "id": "g", "text": "NaN всегда" },
+      { "id": "h", "text": "TypeError всегда" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q14",
+    "type": "single",
+    "question": "Как корректно получить объект Date из миллисекунд timestamp?",
+    "options": [
+      { "id": "a", "text": "new Date(timestamp)" },
+      { "id": "b", "text": "Date(timestamp)" },
+      { "id": "c", "text": "new Date.now(timestamp)" },
+      { "id": "d", "text": "Date.from(timestamp)" },
+      { "id": "e", "text": "new Time(timestamp)" },
+      { "id": "f", "text": "Date.create(timestamp)" },
+      { "id": "g", "text": "parseDate(timestamp)" },
+      { "id": "h", "text": "toDate(timestamp)" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic19_q15",
+    "type": "multi",
+    "question": "Какие методы относятся к UTC-версиям получения компонентов даты?",
+    "options": [
+      { "id": "a", "text": "getUTCFullYear()" },
+      { "id": "b", "text": "getUTCMonth()" },
+      { "id": "c", "text": "getUTCDate()" },
+      { "id": "d", "text": "getUTCHours()" },
+      { "id": "e", "text": "getFullYearUTC()" },
+      { "id": "f", "text": "getMonthUTC()" },
+      { "id": "g", "text": "getDateUTC()" },
+      { "id": "h", "text": "getHoursUTC()" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+  {
+    "id": "b_t_topic19_q16",
+    "type": "multi",
+    "question": "Какие утверждения про Date в JavaScript обычно верны?",
+    "options": [
+      { "id": "a", "text": "Месяцы в getMonth()/setMonth() имеют диапазон 0–11" },
+      { "id": "b", "text": "Date хранит время как количество миллисекунд от эпохи" },
+      { "id": "c", "text": "toISOString() возвращает строку в UTC формате" },
+      { "id": "d", "text": "Разность двух Date даёт число миллисекунд" },
+      { "id": "e", "text": "getDay() возвращает день месяца 1–31" },
+      { "id": "f", "text": "Date.now() возвращает объект Date" },
+      { "id": "g", "text": "setFullYear() возвращает строку" },
+      { "id": "h", "text": "new Date() всегда создаёт дату только в UTC зоне" }
+    ],
+    "correct": ["a", "b", "c", "d"]
+  },
+
+  {
+    "id": "b_t_topic20_q1",
+    "type": "single",
+    "question": "Какой литерал корректно создаёт BigInt в JavaScript?",
+    "options": [
+      { "id": "a", "text": "123n" },
+      { "id": "b", "text": "n123" },
+      { "id": "c", "text": "BigInt[123]" },
+      { "id": "d", "text": "bigint(123)" },
+      { "id": "e", "text": "\"123n\"" },
+      { "id": "f", "text": "123bn" },
+      { "id": "g", "text": "Big(123)" },
+      { "id": "h", "text": "123.0n" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic20_q2",
+    "type": "single",
+    "question": "Какой результат вернёт оператор typeof для значения 10n?",
+    "options": [
+      { "id": "a", "text": "\"bigint\"" },
+      { "id": "b", "text": "\"number\"" },
+      { "id": "c", "text": "\"object\"" },
+      { "id": "d", "text": "\"string\"" },
+      { "id": "e", "text": "\"symbol\"" },
+      { "id": "f", "text": "\"boolean\"" },
+      { "id": "g", "text": "\"undefined\"" },
+      { "id": "h", "text": "\"function\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic20_q3",
+    "type": "single",
+    "question": "Что произойдёт при попытке выполнить 1n + 1 (BigInt + Number)?",
+    "options": [
+      { "id": "a", "text": "Будет ошибка TypeError" },
+      { "id": "b", "text": "Получится 2n" },
+      { "id": "c", "text": "Получится 2" },
+      { "id": "d", "text": "Получится NaN" },
+      { "id": "e", "text": "Получится \"11\"" },
+      { "id": "f", "text": "Получится undefined" },
+      { "id": "g", "text": "Получится null" },
+      { "id": "h", "text": "Будет ошибка SyntaxError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic20_q4",
+    "type": "single",
+    "question": "Как корректно получить BigInt из строки \"123\"?",
+    "options": [
+      { "id": "a", "text": "BigInt(\"123\")" },
+      { "id": "b", "text": "Number(\"123\")" },
+      { "id": "c", "text": "parseInt(\"123\")" },
+      { "id": "d", "text": "Symbol(\"123\")" },
+      { "id": "e", "text": "\"123\".toBigInt()" },
+      { "id": "f", "text": "BigInt.parse(\"123\")" },
+      { "id": "g", "text": "new BigInt(\"123\")" },
+      { "id": "h", "text": "bigint(\"123\")" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic20_q5",
+    "type": "single",
+    "question": "Как создать Symbol со строковым описанием \"id\"?",
+    "options": [
+      { "id": "a", "text": "Symbol(\"id\")" },
+      { "id": "b", "text": "new Symbol(\"id\")" },
+      { "id": "c", "text": "Symbol.id(\"id\")" },
+      { "id": "d", "text": "Symbol[\"id\"]" },
+      { "id": "e", "text": "symbol(\"id\")" },
+      { "id": "f", "text": "createSymbol(\"id\")" },
+      { "id": "g", "text": "\"id\".toSymbol()" },
+      { "id": "h", "text": "Symbol(\"id\").new()" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic20_q6",
+    "type": "single",
+    "question": "Какой результат у выражения: Symbol(\"x\") === Symbol(\"x\") ?",
+    "options": [
+      { "id": "a", "text": "false" },
+      { "id": "b", "text": "true" },
+      { "id": "c", "text": "undefined" },
+      { "id": "d", "text": "null" },
+      { "id": "e", "text": "NaN" },
+      { "id": "f", "text": "0" },
+      { "id": "g", "text": "\"false\"" },
+      { "id": "h", "text": "TypeError" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic20_q7",
+    "type": "single",
+    "question": "Какой результат вернёт оператор typeof для значения Symbol(\"x\")?",
+    "options": [
+      { "id": "a", "text": "\"symbol\"" },
+      { "id": "b", "text": "\"string\"" },
+      { "id": "c", "text": "\"object\"" },
+      { "id": "d", "text": "\"number\"" },
+      { "id": "e", "text": "\"bigint\"" },
+      { "id": "f", "text": "\"boolean\"" },
+      { "id": "g", "text": "\"undefined\"" },
+      { "id": "h", "text": "\"function\"" }
+    ],
+    "correct": ["a"]
+  },
+  {
+    "id": "b_t_topic20_q8",
+    "type": "multi",
+    "question": "Какие утверждения про BigInt и Symbol обычно верны?",
+    "options": [
+      { "id": "a", "text": "BigInt предназначен для целых чисел большой точности" },
+      { "id": "b", "text": "BigInt и Number можно свободно смешивать в арифметике без ошибок" },
+      { "id": "c", "text": "Symbol создаёт уникальные значения, даже с одинаковым описанием" },
+      { "id": "d", "text": "Symbol можно использовать как ключ свойства объекта" },
+      { "id": "e", "text": "Symbol автоматически сериализуется в JSON.stringify" },
+      { "id": "f", "text": "BigInt поддерживает дробные значения как 1.5n" },
+      { "id": "g", "text": "typeof для BigInt возвращает \"bigint\"" },
+      { "id": "h", "text": "typeof для Symbol возвращает \"symbol\"" }
+    ],
+    "correct": ["a", "c", "d", "g", "h"]
+  }
+],
       "practice": [
         {
           "id": "b_p1",
