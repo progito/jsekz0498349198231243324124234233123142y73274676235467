@@ -611,7 +611,7 @@
               </button>
 
               <button class="btn" id="btnPickDataFileTeacher" title="Если fetch недоступен (file://), выберите файл вручную">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 7V3.5L18.5 9H15z"/></svg>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 7V3.5L18.5 9H15zM8 13h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
                 Выбрать файл…
               </button>
               <input id="dataFileInputTeacher" type="file" accept="application/json" class="hidden" />
@@ -850,25 +850,73 @@
       return json;
     }
 
+    // --- FIX: normalize theory to array, allow both array/object formats ---
+    function normalizeTheory(theoryRaw, testId){
+      // expected new format: array
+      if(Array.isArray(theoryRaw)) return theoryRaw;
+
+      // legacy format: object by topics: { topic1: [..], topic2:[..] }
+      if(theoryRaw && typeof theoryRaw === "object"){
+        const out = [];
+        for(const [k, v] of Object.entries(theoryRaw)){
+          if(!Array.isArray(v)){
+            throw new Error(`data.json: theory.${k} должен быть массивом (test=${testId})`);
+          }
+          out.push(...v);
+        }
+        return out;
+      }
+
+      // missing/invalid -> empty
+      return [];
+    }
+
     function validateData(json){
       if(!json || typeof json !== "object") throw new Error("data.json: неверный JSON");
       if(!Array.isArray(json.tests)) throw new Error("data.json: ожидается поле tests (array)");
+
       for(const t of json.tests){
+        if(!t || typeof t !== "object"){
+          throw new Error("data.json: элемент tests должен быть объектом");
+        }
+
         if(!t.id || !t.title) throw new Error("data.json: у теста должны быть id и title");
-        if(!Array.isArray(t.theory)) t.theory = [];
+
+        // normalize sections
+        t.theory = normalizeTheory(t.theory, t.id);
         if(!Array.isArray(t.practice)) t.practice = [];
 
-        for(const q of t.theory){
-          if(!q.id || !q.type || !q.question) throw new Error(`data.json: theory должен иметь id/type/question (test=${t.id})`);
-          if(!["single","multi"].includes(q.type)) throw new Error(`data.json: theory.type single|multi (question=${q.id})`);
-          if(!Array.isArray(q.options) || q.options.length < 2) throw new Error(`data.json: options >=2 (question=${q.id})`);
-          if(!Array.isArray(q.correct) || q.correct.length < 1) throw new Error(`data.json: correct >=1 (question=${q.id})`);
+        // Validate theory questions
+        for(let i=0; i<t.theory.length; i++){
+          const q = t.theory[i];
+
+          if(!q || typeof q !== "object"){
+            throw new Error(`data.json: theory[${i}] не объект (test=${t.id})`);
+          }
+          if(!q.id || !q.type || !q.question){
+            throw new Error(`data.json: theory должен иметь id/type/question (test=${t.id}, index=${i})`);
+          }
+          if(!["single","multi"].includes(q.type)){
+            throw new Error(`data.json: theory.type single|multi (question=${q.id})`);
+          }
+          if(!Array.isArray(q.options) || q.options.length < 2){
+            throw new Error(`data.json: options >=2 (question=${q.id})`);
+          }
+          if(!Array.isArray(q.correct) || q.correct.length < 1){
+            throw new Error(`data.json: correct >=1 (question=${q.id})`);
+          }
           for(const o of q.options){
-            if(!o.id || o.text == null) throw new Error(`data.json: option должен иметь id/text (question=${q.id})`);
+            if(!o || typeof o !== "object" || !o.id || o.text == null){
+              throw new Error(`data.json: option должен иметь id/text (question=${q.id})`);
+            }
           }
         }
 
+        // Validate practice tasks
         for(const p of t.practice){
+          if(!p || typeof p !== "object"){
+            throw new Error(`data.json: practice элемент должен быть объектом (test=${t.id})`);
+          }
           if(!p.id || !p.title || !p.prompt) throw new Error(`data.json: practice должен иметь id/title/prompt (test=${t.id})`);
           if(p.maxPoints == null) p.maxPoints = 5;
           if(typeof p.maxPoints !== "number" || p.maxPoints < 0 || p.maxPoints > 5) {
@@ -917,18 +965,8 @@
     }
 
     // ---------------------------
-    // New rules:
-    // - theory: 30 questions
-    // - practice: 2 tasks
-    // - total time: 1.5 hours (5400 sec)
-    // - generation: ensure min 1 question per topic (topic inferred from question.id)
-    //
-    // Topic detection rule (IMPORTANT):
-    // We detect topic number from id pattern: "...topic<NUM>..."  e.g. b_t_topic14_q3
-    // If some old questions don't follow this pattern, they fall into topic "unknown".
-    // To guarantee topic coverage, your bank should use b_t_topicX_... ids.
+    // Rules
     // ---------------------------
-
     const TEST_TOTAL_SECONDS = 5400; // 1h 30m
     const THEORY_COUNT = 30;
     const PRACTICE_COUNT = 2;
@@ -953,9 +991,7 @@
     function pickTheoryWithMinPerTopic(bankTheory, totalCount){
       const topics = groupByTopic(bankTheory);
 
-      // Exclude "unknown" from mandatory list to keep logic predictable
       const mandatoryTopics = [...topics.keys()].filter(t => t !== "unknown").sort((a,b)=>Number(a)-Number(b));
-
       if(mandatoryTopics.length > totalCount){
         throw new Error(`Невозможно: топиков (${mandatoryTopics.length}) больше, чем вопросов в тесте (${totalCount}).`);
       }
@@ -963,7 +999,6 @@
       const chosen = [];
       const chosenIds = new Set();
 
-      // Step 1: pick 1 from each topic
       for(const t of mandatoryTopics){
         const pool = topics.get(t);
         if(!pool || pool.length === 0) continue;
@@ -972,12 +1007,10 @@
         chosenIds.add(pick.id);
       }
 
-      // Step 2: fill remaining from all questions (including unknown), excluding already chosen
       const remaining = totalCount - chosen.length;
       const allPool = bankTheory.filter(q => !chosenIds.has(q.id));
 
       if(allPool.length < remaining){
-        // Not enough questions; return everything we have
         return chosen.concat(allPool);
       }
 
@@ -1041,10 +1074,8 @@
     }
 
     function buildStudentAttempt(test, studentName, studentGroup){
-      // Theory: ensure min 1 per topic
       const pickedTheoryRaw = pickTheoryWithMinPerTopic(test.theory, THEORY_COUNT);
 
-      // Shuffle options per question
       const pickedTheory = pickedTheoryRaw.map(q => {
         const opts = shuffleInPlace(q.options.slice()).map(o => ({id:o.id, text:o.text}));
         return {
@@ -1060,7 +1091,6 @@
         };
       });
 
-      // Practice: 2 random tasks
       const pickedPractice = sampleN(test.practice, PRACTICE_COUNT).map(p => ({
         id: p.id,
         title: p.title,
@@ -1500,7 +1530,6 @@
         return;
       }
 
-      // Check topic coverage possibility
       const topics = [...groupByTopic(test.theory).keys()].filter(t => t !== "unknown");
       if(topics.length === 0){
         toast("Вопросы не содержат topic<N> в id. Минимум 1 из каждого топика обеспечить нельзя. Пример id: b_t_topic7_q1");
@@ -1518,7 +1547,6 @@
         toast(`Внимание: в банке практики меньше ${PRACTICE_COUNT}. Будет взято ${Math.min(PRACTICE_COUNT, bankPracticeCount)}.`);
       }
 
-      // Start
       STUDENT.active = true;
       STUDENT.test = test;
       STUDENT.startedAt = Date.now();
@@ -1582,7 +1610,6 @@
           throw new Error("Неверная структура attempt.sections.");
         }
 
-        // Normalize
         for(const p of obj.sections.practice){
           if(typeof p.maxPoints !== "number") p.maxPoints = 5;
           if(p.teacherPoints !== null && typeof p.teacherPoints !== "number") p.teacherPoints = null;
