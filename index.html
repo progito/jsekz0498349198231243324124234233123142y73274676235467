@@ -7,204 +7,156 @@
 
   <style>
     :root{
-      --bg: #0b1020;
-      --bg2:#0a0f1c;
+      --bg:#0f172a;
+      --panel:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --border:#243041;
 
-      --panel: rgba(255,255,255,0.06);
-      --panel2: rgba(255,255,255,0.09);
-      --panel3: rgba(255,255,255,0.12);
+      --primary:#2563eb;
+      --danger:#dc2626;
+      --ok:#16a34a;
+      --warn:#d97706;
 
-      --text: rgba(247,250,255,0.92);
-      --muted: rgba(247,250,255,0.64);
-      --border: rgba(247,250,255,0.12);
-      --shadow: 0 14px 34px rgba(0,0,0,0.46);
-
-      --primary: #4f8cff;
-      --primary2:#2f6dff;
-      --danger: #ff4f63;
-      --ok: #29d67d;
-      --warn:#ffca4a;
-
-      --radius: 16px;
-      --radius-sm: 12px;
-
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
-      --focus: 0 0 0 3px rgba(79,140,255,0.35);
+      --radius: 12px;
       --maxw: 980px;
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --focus: 0 0 0 3px rgba(37,99,235,.35);
     }
 
     [data-theme="light"]{
-      --bg:#f6f7fb;
-      --bg2:#ffffff;
-
+      --bg:#f3f4f6;
       --panel:#ffffff;
-      --panel2:#f3f5fb;
-      --panel3:#eef1fa;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
 
-      --text:#121826;
-      --muted: rgba(18,24,38,0.66);
-      --border: rgba(18,24,38,0.12);
-      --shadow: 0 10px 26px rgba(17,24,39,0.12);
+      --primary:#2563eb;
+      --danger:#dc2626;
+      --ok:#16a34a;
+      --warn:#d97706;
 
-      --primary:#2f6dff;
-      --primary2:#2357d6;
-      --danger:#d83a4f;
-      --ok:#0ea765;
-      --warn:#c69211;
-
-      --focus: 0 0 0 3px rgba(47,109,255,0.25);
+      --focus: 0 0 0 3px rgba(37,99,235,.25);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-
     body{
       margin:0;
       font-family: var(--font);
       color: var(--text);
-      background: linear-gradient(180deg, var(--bg), var(--bg2));
-      min-height: 100%;
-    }
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events:none;
-      background:
-        radial-gradient(900px 520px at 12% 6%, rgba(79,140,255,0.20), transparent 60%),
-        radial-gradient(860px 560px at 88% 14%, rgba(41,214,125,0.12), transparent 62%),
-        radial-gradient(760px 580px at 50% 96%, rgba(255,202,74,0.08), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      filter: saturate(1.05);
+      background: var(--bg);
     }
 
-    a{color:inherit}
     .container{
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 14px 16px 36px;
+      padding: 12px 12px 40px;
     }
 
     header{
       position: sticky;
       top: 0;
-      z-index: 60;
-      padding: 10px 0 14px;
-      background: linear-gradient(180deg, color-mix(in oklab, var(--bg), transparent 0%), transparent);
-      backdrop-filter: blur(10px);
+      z-index: 20;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
     }
     .headerRow{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
+      padding: 10px 0;
     }
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
-      min-width: 240px;
+      gap:10px;
+      min-width: 200px;
     }
     .logo{
-      width:42px;height:42px;border-radius:14px;
-      background: linear-gradient(135deg, var(--primary), rgba(79,140,255,0.14));
-      box-shadow: var(--shadow);
+      width:36px;height:36px;border-radius:10px;
+      background: var(--primary);
       display:grid; place-items:center;
-      border: 1px solid var(--border);
+      flex: 0 0 auto;
     }
-    .logo svg{width:22px;height:22px; fill: #fff}
+    .logo svg{width:20px;height:20px; fill:#fff}
     .brand h1{
-      font-size: 15px;
+      font-size: 14px;
       margin:0;
-      line-height:1.1;
-      letter-spacing: .2px;
-      font-weight: 900;
+      font-weight: 800;
+      line-height:1.2;
     }
     .brand .sub{
       font-size: 12px;
       color: var(--muted);
-      margin-top: 4px;
+      margin-top: 2px;
       display:block;
       line-height: 1.35;
     }
     .top-actions{
       display:flex;
-      align-items:center;
-      gap: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .stack{display:flex; flex-direction:column; gap: 12px;}
     .card{
-      background: color-mix(in oklab, var(--panel), transparent 0%);
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 14px;
+      padding: 12px;
     }
     .card h2{
       margin:0 0 8px;
-      font-size: 15px;
-      letter-spacing: .2px;
-      font-weight: 950;
+      font-size: 14px;
+      font-weight: 800;
     }
     .muted{color: var(--muted)}
     .divider{height:1px; background: var(--border); margin: 12px 0;}
 
     .btn{
       border: 1px solid var(--border);
-      background: var(--panel);
+      background: transparent;
       color: var(--text);
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 10px 12px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap: 10px;
+      gap: 8px;
       cursor:pointer;
       user-select:none;
-      transition: transform .06s ease, background .2s ease, border-color .2s ease, filter .2s ease;
-      box-shadow: var(--shadow);
       text-decoration:none;
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1;
+      min-height: 40px;
     }
-    .btn:hover{background: var(--panel2)}
+    .btn:hover{border-color: color-mix(in oklab, var(--border), #fff 12%)}
     .btn:active{transform: translateY(1px)}
-    .btn:focus{outline:none; box-shadow: var(--shadow), var(--focus)}
-    .btn.primary{
-      background: linear-gradient(180deg, var(--primary), var(--primary2));
-      border-color: rgba(255,255,255,0.18);
-      color: #fff;
-    }
-    .btn.primary:hover{filter: brightness(1.03)}
-    .btn.danger{
-      background: linear-gradient(180deg, var(--danger), color-mix(in oklab, var(--danger), #000 18%));
-      border-color: rgba(255,255,255,0.18);
-      color:#fff;
-    }
-    .icon{
-      width:16px;height:16px;
-      display:inline-block;
-      flex:0 0 auto;
-      fill: currentColor;
-    }
+    .btn:focus{outline:none; box-shadow: var(--focus)}
+
+    .btn.primary{background: var(--primary); border-color: var(--primary); color:#fff;}
+    .btn.danger{background: var(--danger); border-color: var(--danger); color:#fff;}
+
+    .icon{width:16px;height:16px; display:inline-block; flex:0 0 auto; fill: currentColor;}
+
     .pill{
       display:inline-flex;
       align-items:center;
       gap: 8px;
-      padding: 9px 12px;
+      padding: 8px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: var(--panel);
+      background: transparent;
       color: var(--text);
-      box-shadow: var(--shadow);
     }
-    .pill strong{font-weight:950}
+    .pill strong{font-weight:800}
     .pill small{color: var(--muted)}
-    .timer{ font-family: var(--mono); font-weight: 950; letter-spacing: 0.4px; }
+    .timer{ font-family: var(--mono); font-weight: 800; letter-spacing: .2px; }
 
     .row{
       display:flex;
@@ -221,16 +173,16 @@
       display:block;
       margin: 0 0 6px;
     }
-    .field{flex:1; min-width: 240px;}
+    .field{flex:1; min-width: 220px;}
+
     input[type="text"], input[type="number"], select, textarea{
       width:100%;
       padding: 11px 12px;
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid var(--border);
-      background: var(--panel2);
+      background: transparent;
       color: var(--text);
       font-family: var(--font);
-      box-shadow: none;
       outline: none;
     }
     select{cursor:pointer}
@@ -241,8 +193,8 @@
     .q{
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 14px;
-      background: var(--panel2);
+      padding: 12px;
+      background: transparent;
     }
     .qhead{
       display:flex;
@@ -251,54 +203,32 @@
       align-items:flex-start;
       margin-bottom: 10px;
     }
-    .qtitle{
-      font-weight: 950;
-      font-size: 14px;
-      line-height: 1.25;
-      margin:0;
-    }
-    .qmeta{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 6px;
-    }
+    .qtitle{font-weight: 800; font-size: 14px; line-height: 1.25; margin:0;}
+    .qmeta{font-size: 12px; color: var(--muted); margin-top: 6px;}
+
     .badge{
       display:inline-flex; align-items:center; gap:6px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(79,140,255,0.14);
-      border: 1px solid rgba(79,140,255,0.28);
+      border: 1px solid var(--border);
       color: var(--text);
       font-size: 12px;
       white-space:nowrap;
-      font-weight: 800;
+      font-weight: 700;
+      background: transparent;
     }
-    .badge.warn{
-      background: rgba(255,202,74,0.10);
-      border-color: rgba(255,202,74,0.26);
-    }
-    .badge.ok{
-      background: rgba(41,214,125,0.12);
-      border-color: rgba(41,214,125,0.28);
-    }
-    .badge.danger{
-      background: rgba(255,79,99,0.12);
-      border-color: rgba(255,79,99,0.28);
-    }
+    .badge.warn{border-color: color-mix(in oklab, var(--warn), var(--border) 65%); }
+    .badge.ok{border-color: color-mix(in oklab, var(--ok), var(--border) 65%); }
+    .badge.danger{border-color: color-mix(in oklab, var(--danger), var(--border) 65%); }
 
     .opt{
       display:flex;
       gap:10px;
       align-items:flex-start;
-      padding: 10px 10px;
-      border-radius: 12px;
+      padding: 10px;
+      border-radius: 10px;
       border: 1px solid var(--border);
-      background: color-mix(in oklab, var(--panel), transparent 0%);
-      transition: background .15s ease, border-color .15s ease;
-    }
-    .opt:hover{
-      background: color-mix(in oklab, var(--panel3), transparent 0%);
-      border-color: color-mix(in oklab, var(--border), #fff 10%);
+      background: transparent;
     }
     .opt input{margin-top: 3px}
     .opt .ot{font-size: 13px; line-height: 1.35}
@@ -308,7 +238,8 @@
     .mono{font-family: var(--mono)}
     .small{font-size:12px}
 
-    .stickybar{ position: sticky; top: 78px; z-index: 50; }
+    /* sticky bar on wide screens only */
+    .stickybar{ position: sticky; top: 58px; z-index: 10; }
 
     .table{
       width:100%;
@@ -316,7 +247,7 @@
       overflow:hidden;
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      background: var(--panel2);
+      background: transparent;
     }
     .table th, .table td{
       padding: 10px 10px;
@@ -325,34 +256,28 @@
       text-align:left;
       font-size: 13px;
     }
-    .table th{
-      color: var(--muted);
-      font-weight: 950;
-      font-size: 12px;
-      letter-spacing: .2px;
-    }
+    .table th{color: var(--muted); font-weight: 800; font-size: 12px;}
     .table tr:last-child td{border-bottom:none}
     .scoreInput{ width: 96px; }
 
     .modalOverlay{
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,0.55);
       z-index: 9000;
       display:flex;
       align-items:flex-start;
       justify-content:center;
-      padding: 18px 10px;
+      padding: 16px 10px;
     }
-    [data-theme="light"] .modalOverlay{background: rgba(17,24,39,0.22)}
+    [data-theme="light"] .modalOverlay{background: rgba(17,24,39,0.25)}
+
     .modal{
       width: min(var(--maxw), 100%);
-      background: color-mix(in oklab, var(--panel), #000 6%);
+      background: var(--panel);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
       border-radius: var(--radius);
-      padding: 14px;
+      padding: 12px;
     }
     .modalHeader{
       display:flex;
@@ -363,36 +288,34 @@
     .seg{
       display:flex;
       gap:8px;
-      padding: 6px;
+      padding: 4px;
       border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--panel2);
+      border-radius: 12px;
+      background: transparent;
     }
     .seg button{
       border: 1px solid transparent;
       background: transparent;
       color: var(--text);
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 10px 12px;
-      font-weight: 950;
+      font-weight: 800;
       cursor:pointer;
-      min-width: 130px;
+      min-width: 110px;
     }
     .seg button.active{
-      background: var(--panel3);
+      background: var(--panel);
       border-color: var(--border);
-      box-shadow: var(--shadow);
     }
 
     .toast{
       position: fixed;
       left: 50%;
-      bottom: 16px;
+      bottom: 14px;
       transform: translateX(-50%);
       z-index: 9999;
-      background: color-mix(in oklab, var(--panel), #000 6%);
+      background: var(--panel);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
       padding: 10px 12px;
       border-radius: 12px;
       max-width: 760px;
@@ -403,9 +326,11 @@
     .toast .tbtn{margin-left:auto; flex:0 0 auto}
 
     @media (max-width: 720px){
-      .stickybar{ top: 92px; }
       .brand .sub{ display:none; }
-      .seg button{ min-width: 110px; }
+      .stickybar{ position: static; top:auto; }
+      .btn{ width: 100%; }
+      .pill{ width: 100%; justify-content:space-between; }
+      .field{ min-width: 100%; }
     }
   </style>
 </head>
@@ -497,11 +422,6 @@
             <label for="studentName">ФИО / Имя</label>
             <input id="studentName" type="text" placeholder="Например: Иванов Иван" />
           </div>
-
-          <div class="field">
-            <label for="studentGroup">Группа / Класс</label>
-            <input id="studentGroup" type="text" placeholder="Например: 10-А / JS-01" />
-          </div>
         </div>
 
         <div class="row">
@@ -550,13 +470,13 @@
         <div class="stickybar">
           <div class="card" style="padding:12px">
             <div class="row center">
-              <div class="pill" style="box-shadow:none">
+              <div class="pill">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-16h-2v6l5.25 3.15 1-1.73-4.25-2.52V6z"/></svg>
                 <span class="muted">Осталось</span>
                 <strong class="timer" id="studentTimerSticky">01:50:00</strong>
               </div>
 
-              <div class="pill" style="box-shadow:none">
+              <div class="pill">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
                 <span class="muted">Тест</span>
                 <strong id="activeTestName">—</strong>
@@ -616,7 +536,7 @@
               </button>
               <input id="dataFileInputTeacher" type="file" accept="application/json" class="hidden" />
 
-              <div class="pill" style="box-shadow:none">
+              <div class="pill">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
                 <strong>data.json</strong> <small id="dataStatusTeacher">проверка…</small>
               </div>
@@ -633,19 +553,19 @@
 
         <div id="teacherWorkArea" class="hidden stack">
           <div class="row center">
-            <div class="pill" style="box-shadow:none">
+            <div class="pill">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               <span class="muted">Ученик</span>
               <strong id="tStudentName">—</strong>
             </div>
 
-            <div class="pill" style="box-shadow:none">
+            <div class="pill">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
               <span class="muted">Тест</span>
               <strong id="tTestName">—</strong>
             </div>
 
-            <div class="pill" style="box-shadow:none">
+            <div class="pill">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 11H7v-2h6V7h2v6z"/></svg>
               <span class="muted">Длительность</span>
               <strong id="tDuration">—</strong>
@@ -660,26 +580,10 @@
           <div class="card" style="padding:12px">
             <h2 style="margin:0 0 10px">Итоги</h2>
             <div class="row center">
-              <div class="pill" style="box-shadow:none">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span class="muted">Теория</span>
-                <strong id="sumTheory">0/0</strong>
-              </div>
-              <div class="pill" style="box-shadow:none">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <span class="muted">Практика</span>
-                <strong id="sumPractice">0/0</strong>
-              </div>
-              <div class="pill" style="box-shadow:none">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18v2H3v-2zm0-5h18v2H3v-2zm0-5h18v2H3V7z"/></svg>
-                <span class="muted">Итого</span>
-                <strong id="sumTotal">0/0</strong>
-              </div>
-              <div class="pill" style="box-shadow:none">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 15h-2v-2h2Zm1.07-7.75-.9.92A1.5 1.5 0 0 0 12.5 12H11v-.5a2.5 2.5 0 0 1 .73-1.77l1.24-1.26A1.25 1.25 0 1 0 10.75 7H9.25A2.75 2.75 0 1 1 14.07 9.25Z"/></svg>
-                <span class="muted">%</span>
-                <strong id="sumPercent">0%</strong>
-              </div>
+              <div class="pill"><span class="muted">Теория</span> <strong id="sumTheory">0/0</strong></div>
+              <div class="pill"><span class="muted">Практика</span> <strong id="sumPractice">0/0</strong></div>
+              <div class="pill"><span class="muted">Итого</span> <strong id="sumTotal">0/0</strong></div>
+              <div class="pill"><span class="muted">%</span> <strong id="sumPercent">0%</strong></div>
             </div>
           </div>
 
@@ -705,7 +609,7 @@
         <div class="modal">
           <div class="modalHeader">
             <div>
-              <div style="font-weight:1000; margin-bottom:6px">Настройки</div>
+              <div style="font-weight:900; margin-bottom:6px">Настройки</div>
               <div class="muted small">Тема сохраняется в браузере.</div>
             </div>
             <button class="btn" id="btnCloseSettings">
@@ -718,7 +622,7 @@
 
           <div class="row between center">
             <div>
-              <div style="font-weight:950">Тема</div>
+              <div style="font-weight:800">Тема</div>
               <div class="muted small">Светлая / Тёмная</div>
             </div>
             <div class="seg" role="tablist" aria-label="Тема">
@@ -734,7 +638,6 @@
             <div><b>Теория:</b> <b>40</b> вопросов. Минимум 1 вопрос из каждого топика (определяется по префиксу id).</div>
             <div><b>Практика:</b> случайно <b>2</b> задачи.</div>
             <div><b>Ответы:</b> варианты всегда перемешиваются.</div>
-            <div><b>Билет:</b> не генерируется автоматически — решает преподаватель.</div>
           </div>
         </div>
       </div>
@@ -746,7 +649,7 @@
     <div class="trow">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
       <div class="tmsg" id="toastMsg">—</div>
-      <button class="btn tbtn" id="toastClose">
+      <button class="btn tbtn" id="toastClose" aria-label="Закрыть">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
       </button>
     </div>
@@ -850,7 +753,6 @@
       return json;
     }
 
-    // normalize theory to array, allow both array/object formats
     function normalizeTheory(theoryRaw, testId){
       if(Array.isArray(theoryRaw)) return theoryRaw;
       if(theoryRaw && typeof theoryRaw === "object"){
@@ -954,9 +856,7 @@
       }
     }
 
-    // ---------------------------
-    // Rules (UPDATED)
-    // ---------------------------
+    // Rules
     const TEST_TOTAL_SECONDS = 6600; // 1h 50m
     const THEORY_COUNT = 40;
     const PRACTICE_COUNT = 2;
@@ -1000,25 +900,14 @@
       const remaining = totalCount - chosen.length;
       const allPool = bankTheory.filter(q => !chosenIds.has(q.id));
 
-      if(allPool.length < remaining){
-        return chosen.concat(allPool);
-      }
-
-      const rest = sampleN(allPool, remaining);
-      return chosen.concat(rest);
+      if(allPool.length < remaining) return chosen.concat(allPool);
+      return chosen.concat(sampleN(allPool, remaining));
     }
 
     function setStudentTimerDisplay(remainingSec){
       const text = formatHMS(Math.max(0, remainingSec));
       $("#studentTimer").textContent = text;
       $("#studentTimerSticky").textContent = text;
-
-      const pill = $("#studentTimerSticky").closest(".pill");
-      if(remainingSec <= 10*60){
-        pill.style.borderColor = "rgba(255,79,99,0.40)";
-      } else {
-        pill.style.borderColor = "";
-      }
     }
 
     function startStudentTimer(){
@@ -1031,7 +920,7 @@
           toast("Время истекло. Тест завершён автоматически.");
           finishTest(true);
         }
-      }, 250);
+      }, 300);
     }
 
     function resetStudentUI(){
@@ -1063,7 +952,7 @@
         `Теория: ${answeredTheory}/${th.length} · Практика: ${filledPractice}/${pr.length}`;
     }
 
-    function buildStudentAttempt(test, studentName, studentGroup){
+    function buildStudentAttempt(test, studentName){
       const pickedTheoryRaw = pickTheoryWithMinPerTopic(test.theory, THEORY_COUNT);
 
       const pickedTheory = pickedTheoryRaw.map(q => {
@@ -1091,10 +980,10 @@
       }));
 
       return {
-        schema: "studentAttempt.v5",
+        schema: "studentAttempt.v6",
         attemptId: uid("attempt"),
         createdAt: nowIso(),
-        student: { name: studentName || "", group: studentGroup || "" },
+        student: { name: studentName || "" },
         test: { id: test.id, title: test.title },
 
         generation: {
@@ -1136,7 +1025,7 @@
 
       const badge = document.createElement("div");
       badge.className = "badge";
-      badge.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> Теория`;
+      badge.innerHTML = `Теория`;
 
       head.appendChild(title);
       head.appendChild(badge);
@@ -1194,7 +1083,7 @@
 
       const badge = document.createElement("div");
       badge.className = "badge warn";
-      badge.innerHTML = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21h6v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.71 11.29-.71.5V16h-4v-2.21l-.71-.5A4.98 4.98 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.29 4.29z"/></svg> Практика`;
+      badge.textContent = "Практика";
 
       head.appendChild(title);
       head.appendChild(badge);
@@ -1333,7 +1222,7 @@
         tr.innerHTML = `
           <td>${idx+1}</td>
           <td>
-            <div style="font-weight:950">${escapeHtml(p.title)}</div>
+            <div style="font-weight:800">${escapeHtml(p.title)}</div>
             <div class="muted small" style="white-space:pre-wrap; margin-top:6px">${escapeHtml(p.prompt)}</div>
           </td>
           <td><pre class="mono" style="white-space:pre-wrap; margin:0">${escapeHtml((p.answerText||"").trim() || "—")}</pre></td>
@@ -1393,10 +1282,7 @@
                 Правильно: <span class="mono">${escapeHtml((q.correct||[]).join(", ") || "—")}</span>
               </div>
             </div>
-            <div class="badge ${badgeClass}">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-              ${badgeText}
-            </div>
+            <div class="badge ${badgeClass}">${badgeText}</div>
           </div>
           <div class="stack" style="gap:8px">
             ${q.options.map(o=>{
@@ -1503,7 +1389,6 @@
         return;
       }
       const studentName = $("#studentName").value.trim();
-      const studentGroup = $("#studentGroup").value.trim();
       const testId = $("#testSelect").value;
 
       if(!testId){ toast("Выберите тест."); return; }
@@ -1541,7 +1426,7 @@
       STUDENT.test = test;
       STUDENT.startedAt = Date.now();
       STUDENT.endsAt = STUDENT.startedAt + TEST_TOTAL_SECONDS*1000;
-      STUDENT.attempt = buildStudentAttempt(test, studentName, studentGroup);
+      STUDENT.attempt = buildStudentAttempt(test, studentName);
 
       $("#activeTestName").textContent = test.title;
       $("#studentStatus").textContent = "Тест запущен. Заполните ответы и нажмите «Завершить».";
@@ -1565,7 +1450,6 @@
       updateStudentProgress();
       setStudentTimerDisplay(TEST_TOTAL_SECONDS);
       startStudentTimer();
-
       window.scrollTo({top:0, behavior:"instant"});
     });
 
