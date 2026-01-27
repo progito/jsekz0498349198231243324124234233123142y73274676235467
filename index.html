@@ -7,17 +7,17 @@
 
   <style>
     :root{
-      --bg: #070b14;
-      --bg2:#0b1220;
+      --bg: #0b1020;
+      --bg2:#0a0f1c;
 
       --panel: rgba(255,255,255,0.06);
       --panel2: rgba(255,255,255,0.09);
       --panel3: rgba(255,255,255,0.12);
 
       --text: rgba(247,250,255,0.92);
-      --muted: rgba(247,250,255,0.62);
+      --muted: rgba(247,250,255,0.64);
       --border: rgba(247,250,255,0.12);
-      --shadow: 0 12px 34px rgba(0,0,0,0.45);
+      --shadow: 0 14px 34px rgba(0,0,0,0.46);
 
       --primary: #4f8cff;
       --primary2:#2f6dff;
@@ -25,15 +25,19 @@
       --ok: #29d67d;
       --warn:#ffca4a;
 
-      --radius: 14px;
+      --radius: 16px;
+      --radius-sm: 12px;
+
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
       --focus: 0 0 0 3px rgba(79,140,255,0.35);
+
+      --maxw: 980px;
     }
 
     [data-theme="light"]{
-      --bg:#f5f7fb;
+      --bg:#f6f7fb;
       --bg2:#ffffff;
 
       --panel:#ffffff;
@@ -41,7 +45,7 @@
       --panel3:#eef1fa;
 
       --text:#121826;
-      --muted: rgba(18,24,38,0.65);
+      --muted: rgba(18,24,38,0.66);
       --border: rgba(18,24,38,0.12);
       --shadow: 0 10px 26px rgba(17,24,39,0.12);
 
@@ -57,7 +61,7 @@
     *{box-sizing:border-box}
     html,body{height:100%}
 
-    /* Fix "cut gradient" while scrolling: render a stable background using fixed pseudo-element */
+    /* Stable, non "torn" background while scrolling */
     body{
       margin:0;
       font-family: var(--font);
@@ -72,25 +76,34 @@
       z-index: -1;
       pointer-events:none;
       background:
-        radial-gradient(900px 520px at 12% 8%, rgba(79,140,255,0.22), transparent 60%),
-        radial-gradient(760px 520px at 88% 18%, rgba(41,214,125,0.14), transparent 62%),
-        radial-gradient(840px 620px at 52% 95%, rgba(255,202,74,0.10), transparent 58%),
+        radial-gradient(900px 520px at 12% 6%, rgba(79,140,255,0.20), transparent 60%),
+        radial-gradient(860px 560px at 88% 14%, rgba(41,214,125,0.12), transparent 62%),
+        radial-gradient(760px 580px at 50% 96%, rgba(255,202,74,0.08), transparent 60%),
         linear-gradient(180deg, var(--bg), var(--bg2));
+      filter: saturate(1.05);
     }
 
     a{color:inherit}
     .container{
-      max-width: 980px;
+      max-width: var(--maxw);
       margin: 0 auto;
-      padding: 18px 16px 36px;
+      padding: 14px 16px 36px;
     }
 
+    /* Header */
     header{
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      padding: 10px 0 14px;
+      background: linear-gradient(180deg, color-mix(in oklab, var(--bg), transparent 0%), transparent);
+      backdrop-filter: blur(10px);
+    }
+    .headerRow{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
-      padding: 10px 0 18px;
     }
     .brand{
       display:flex;
@@ -99,18 +112,19 @@
       min-width: 240px;
     }
     .logo{
-      width:40px;height:40px;border-radius:12px;
-      background: linear-gradient(135deg, var(--primary), rgba(79,140,255,0.18));
+      width:42px;height:42px;border-radius:14px;
+      background: linear-gradient(135deg, var(--primary), rgba(79,140,255,0.14));
       box-shadow: var(--shadow);
       display:grid; place-items:center;
       border: 1px solid var(--border);
     }
     .logo svg{width:22px;height:22px; fill: #fff}
     .brand h1{
-      font-size: 16px;
+      font-size: 15px;
       margin:0;
       line-height:1.1;
       letter-spacing: .2px;
+      font-weight: 900;
     }
     .brand .sub{
       font-size: 12px;
@@ -119,33 +133,31 @@
       display:block;
       line-height: 1.35;
     }
-
     .top-actions{
       display:flex;
       align-items:center;
       gap: 10px;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
+    /* Layout */
+    .stack{display:flex; flex-direction:column; gap: 12px;}
+    .card{
       background: color-mix(in oklab, var(--panel), transparent 0%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      color: var(--text);
+      padding: 14px;
     }
-    .pill strong{font-weight:800}
-    .pill small{color: var(--muted)}
-    .icon{
-      width:16px;height:16px;
-      display:inline-block;
-      flex:0 0 auto;
-      fill: currentColor;
+    .card h2{
+      margin:0 0 8px;
+      font-size: 15px;
+      letter-spacing: .2px;
+      font-weight: 950;
     }
+    .muted{color: var(--muted)}
+    .divider{height:1px; background: var(--border); margin: 12px 0;}
 
+    /* Controls */
     .btn{
       border: 1px solid var(--border);
       background: var(--panel);
@@ -161,7 +173,8 @@
       transition: transform .06s ease, background .2s ease, border-color .2s ease, filter .2s ease;
       box-shadow: var(--shadow);
       text-decoration:none;
-      font-weight: 700;
+      font-weight: 800;
+      line-height: 1;
     }
     .btn:hover{background: var(--panel2)}
     .btn:active{transform: translateY(1px)}
@@ -177,56 +190,35 @@
       border-color: rgba(255,255,255,0.18);
       color:#fff;
     }
-
-    .card{
-      background: var(--panel);
+    .icon{
+      width:16px;height:16px;
+      display:inline-block;
+      flex:0 0 auto;
+      fill: currentColor;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--text);
       box-shadow: var(--shadow);
-      padding: 14px;
     }
-    .card h2{
-      margin:0 0 10px;
-      font-size: 16px;
-      letter-spacing: 0.2px;
-    }
-    .muted{color: var(--muted)}
+    .pill strong{font-weight:950}
+    .pill small{color: var(--muted)}
+    .timer{ font-family: var(--mono); font-weight: 950; letter-spacing: 0.4px; }
+
     .row{
       display:flex;
       gap: 10px;
       flex-wrap:wrap;
-      align-items:center;
+      align-items:flex-end;
     }
-    .col{
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-
-    .seg{
-      display:flex;
-      gap:8px;
-      padding: 6px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--panel2);
-    }
-    .seg button{
-      flex:1;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--text);
-      border-radius: 12px;
-      padding: 10px 10px;
-      font-weight: 900;
-      cursor:pointer;
-    }
-    .seg button.active{
-      background: var(--panel3);
-      border-color: var(--border);
-      box-shadow: var(--shadow);
-    }
-    .seg button:focus{outline:none; box-shadow: var(--focus)}
+    .row.center{align-items:center}
+    .row.between{justify-content:space-between}
 
     label{
       font-size: 12px;
@@ -234,10 +226,10 @@
       display:block;
       margin: 0 0 6px;
     }
-
+    .field{flex:1; min-width: 240px;}
     input[type="text"], input[type="number"], select, textarea{
       width:100%;
-      padding: 10px 12px;
+      padding: 11px 12px;
       border-radius: 12px;
       border: 1px solid var(--border);
       background: var(--panel2);
@@ -246,59 +238,57 @@
       box-shadow: none;
       outline: none;
     }
-    textarea{min-height: 110px; resize: vertical; font-family: var(--mono)}
-    input:focus, select:focus, textarea:focus{box-shadow: var(--focus)}
     select{cursor:pointer}
+    textarea{min-height: 120px; resize: vertical; font-family: var(--mono); line-height: 1.35;}
+    input:focus, select:focus, textarea:focus{box-shadow: var(--focus)}
+    .help{font-size: 12px; color: var(--muted); margin-top: 6px; line-height:1.4;}
 
-    .help{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 6px;
-      line-height:1.35;
-    }
-
-    .divider{
-      height:1px; background: var(--border);
-      margin: 12px 0;
-    }
-
+    /* Question cards (Google-like: clean, spacious) */
     .q{
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px;
+      border-radius: var(--radius);
+      padding: 14px;
       background: var(--panel2);
     }
-    .q .qhead{
-      display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
+    .qhead{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
       margin-bottom: 10px;
     }
     .qtitle{
-      font-weight: 900;
+      font-weight: 950;
       font-size: 14px;
       line-height: 1.25;
       margin:0;
     }
-
+    .qmeta{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
     .badge{
       display:inline-flex; align-items:center; gap:6px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(79,140,255,0.16);
+      background: rgba(79,140,255,0.14);
       border: 1px solid rgba(79,140,255,0.28);
       color: var(--text);
       font-size: 12px;
       white-space:nowrap;
-    }
-    .badge.ok{
-      background: rgba(41,214,125,0.14);
-      border-color: rgba(41,214,125,0.30);
+      font-weight: 800;
     }
     .badge.warn{
-      background: rgba(255,202,74,0.12);
+      background: rgba(255,202,74,0.10);
       border-color: rgba(255,202,74,0.26);
     }
+    .badge.ok{
+      background: rgba(41,214,125,0.12);
+      border-color: rgba(41,214,125,0.28);
+    }
     .badge.danger{
-      background: rgba(255,79,99,0.14);
+      background: rgba(255,79,99,0.12);
       border-color: rgba(255,79,99,0.28);
     }
 
@@ -306,30 +296,32 @@
       display:flex;
       gap:10px;
       align-items:flex-start;
-      padding: 8px 10px;
+      padding: 10px 10px;
       border-radius: 12px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
+      background: color-mix(in oklab, var(--panel), transparent 0%);
+      transition: background .15s ease, border-color .15s ease;
     }
-    [data-theme="light"] .opt{background: rgba(18,24,38,0.03)}
-    .opt input{margin-top: 2px}
-    .opt .ot{font-size: 13px; line-height: 1.3}
-
-    .stickybar{ position: sticky; top: 10px; z-index: 20; }
-    .timer{ font-family: var(--mono); font-weight: 900; letter-spacing: 0.4px; }
+    .opt:hover{
+      background: color-mix(in oklab, var(--panel3), transparent 0%);
+      border-color: color-mix(in oklab, var(--border), #fff 10%);
+    }
+    .opt input{margin-top: 3px}
+    .opt .ot{font-size: 13px; line-height: 1.35}
 
     .hidden{display:none !important}
     .right{margin-left:auto}
     .mono{font-family: var(--mono)}
     .small{font-size:12px}
-    .danger-text{color: var(--danger)}
-    .ok-text{color: var(--ok)}
 
+    .stickybar{ position: sticky; top: 78px; z-index: 50; }
+
+    /* Table */
     .table{
       width:100%;
       border-collapse:collapse;
       overflow:hidden;
-      border-radius: 14px;
+      border-radius: var(--radius);
       border: 1px solid var(--border);
       background: var(--panel2);
     }
@@ -342,37 +334,32 @@
     }
     .table th{
       color: var(--muted);
-      font-weight: 900;
+      font-weight: 950;
       font-size: 12px;
       letter-spacing: .2px;
     }
     .table tr:last-child td{border-bottom:none}
-    .scoreInput{ width: 88px; }
-
-    .ticket{
-      border: 1px solid rgba(255,202,74,0.28);
-      background: rgba(255,202,74,0.10);
-    }
+    .scoreInput{ width: 96px; }
 
     /* Modal */
     .modalOverlay{
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       z-index: 9000;
       display:flex;
       align-items:flex-start;
       justify-content:center;
       padding: 18px 10px;
     }
-    [data-theme="light"] .modalOverlay{background: rgba(17,24,39,0.25)}
+    [data-theme="light"] .modalOverlay{background: rgba(17,24,39,0.22)}
     .modal{
-      width: min(980px, 100%);
+      width: min(var(--maxw), 100%);
       background: color-mix(in oklab, var(--panel), #000 6%);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      border-radius: 16px;
+      border-radius: var(--radius);
       padding: 14px;
     }
     .modalHeader{
@@ -381,7 +368,31 @@
       align-items:flex-start;
       justify-content:space-between;
     }
+    .seg{
+      display:flex;
+      gap:8px;
+      padding: 6px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel2);
+    }
+    .seg button{
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 950;
+      cursor:pointer;
+      min-width: 130px;
+    }
+    .seg button.active{
+      background: var(--panel3);
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+    }
 
+    /* Toast */
     .toast{
       position: fixed;
       left: 50%;
@@ -399,52 +410,59 @@
     .toast .trow{display:flex; gap:10px; align-items:flex-start}
     .toast .tmsg{font-size: 13px; line-height: 1.35}
     .toast .tbtn{margin-left:auto; flex:0 0 auto}
+
+    @media (max-width: 720px){
+      .stickybar{ top: 92px; }
+      .brand .sub{ display:none; }
+      .seg button{ min-width: 110px; }
+    }
   </style>
 </head>
 
 <body>
   <div class="container" id="app">
     <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true" title="Тестирование">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zm0 14.2L4.24 13 12 16.8 19.76 13 12 17.2z"/>
-          </svg>
+      <div class="headerRow">
+        <div class="brand">
+          <div class="logo" aria-hidden="true" title="Тестирование">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zm0 14.2L4.24 13 12 16.8 19.76 13 12 17.2z"/>
+            </svg>
+          </div>
+          <div>
+            <h1>Веб‑тестирование</h1>
+            <span class="sub">Ученик / Преподаватель · импорт/экспорт JSON · 1 час на тест</span>
+          </div>
         </div>
-        <div>
-          <h1>Веб‑тестирование</h1>
-          <span class="sub">Ученик / Преподаватель · импорт/экспорт JSON · 1 час на тест</span>
+
+        <div class="top-actions">
+          <button class="btn" id="btnSettings" title="Настройки">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94a7.43,7.43,0,0,0,.05-.94,7.43,7.43,0,0,0-.05-.94l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.28,7.28,0,0,0-1.63-.94l-.38-2.65A.5.5,0,0,0,13.8,2H10.2a.5.5,0,0,0-.49.42L9.33,5.07a7.28,7.28,0,0,0-1.63.94l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.86,11.06a7.43,7.43,0,0,0,0,1.88L2.75,14.59a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.28,7.28,0,0,0,1.63.94l.38,2.65a.5.5,0,0,0,.49.42h3.6a.5.5,0,0,0,.49-.42l.38-2.65a7.28,7.28,0,0,0,1.63-.94l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+            Настройки
+          </button>
+
+          <button class="btn" id="btnHome" title="На главный экран">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            Главная
+          </button>
         </div>
-      </div>
-
-      <div class="top-actions">
-        <button class="btn" id="btnSettings" title="Настройки">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94a7.43,7.43,0,0,0,.05-.94,7.43,7.43,0,0,0-.05-.94l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.28,7.28,0,0,0-1.63-.94l-.38-2.65A.5.5,0,0,0,13.8,2H10.2a.5.5,0,0,0-.49.42L9.33,5.07a7.28,7.28,0,0,0-1.63.94l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.86,11.06a7.43,7.43,0,0,0,0,1.88L2.75,14.59a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.28,7.28,0,0,0,1.63.94l.38,2.65a.5.5,0,0,0,.49.42h3.6a.5.5,0,0,0,.49-.42l.38-2.65a7.28,7.28,0,0,0,1.63-.94l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
-          Настройки
-        </button>
-
-        <button class="btn" id="btnHome" title="На главный экран">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-          Главная
-        </button>
       </div>
     </header>
 
     <!-- HOME -->
-    <section id="viewHome">
+    <section id="viewHome" class="stack">
       <div class="card">
         <h2>Выберите режим</h2>
-        <p class="muted" style="margin-top:0; line-height:1.45">
-          <b>Ученик</b> — прохождение теста (теория + практика) с общим таймером 1:00:00.
-          <b>Преподаватель</b> — импорт JSON ответов, проверка практики (0–5 баллов), формирование итогов.
-        </p>
+        <div class="muted small" style="line-height:1.55">
+          <div><b>Ученик</b> — тест: <b>20</b> вопросов + <b>2</b> задачи, общий таймер 1:00:00.</div>
+          <div><b>Преподаватель</b> — импорт JSON ученика, проверка практики (0–5), итог.</div>
+        </div>
 
-        <div class="row" style="margin-top:12px">
+        <div class="row center" style="margin-top:12px">
           <button class="btn primary" id="btnGoStudent">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
             Я Ученик
           </button>
-
           <button class="btn" id="btnGoTeacher">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm-1 7h2v5h-2v-5z"/></svg>
             Я Преподаватель
@@ -453,7 +471,7 @@
 
         <div class="divider"></div>
 
-        <div class="row">
+        <div class="row center">
           <div class="pill" title="Статус данных">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
             <strong>data.json</strong> <small id="dataStatus">проверка…</small>
@@ -461,7 +479,7 @@
 
           <button class="btn" id="btnLoadData">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zM12 2l-5.5 5.5 1.42 1.42L11 5.84V16h2V5.84l3.08 3.08 1.42-1.42L12 2z"/></svg>
-            Перезагрузить data.json
+            Перезагрузить
           </button>
 
           <button class="btn" id="btnPickDataFile" title="Если fetch недоступен (file://), выберите файл вручную">
@@ -471,41 +489,40 @@
           <input id="dataFileInput" type="file" accept="application/json" class="hidden" />
         </div>
 
-        <p class="help">
-          Если открываете <span class="mono">index.html</span> напрямую (<span class="mono">file://</span>),
-          браузер часто блокирует <span class="mono">fetch("./data.json")</span>.
-          Тогда используйте «Выбрать файл…» или запустите локальный сервер.
-        </p>
+        <div class="help">
+          Если открываете <span class="mono">index.html</span> через <span class="mono">file://</span>, браузер может блокировать
+          загрузку <span class="mono">./data.json</span>. Тогда используйте «Выбрать файл…».
+        </div>
       </div>
     </section>
 
     <!-- STUDENT -->
-    <section id="viewStudent" class="hidden">
+    <section id="viewStudent" class="hidden stack">
       <div class="card">
         <h2>Ученик</h2>
 
         <div class="row">
-          <div style="flex:1; min-width: 240px">
+          <div class="field">
             <label for="studentName">ФИО / Имя</label>
             <input id="studentName" type="text" placeholder="Например: Иванов Иван" />
           </div>
 
-          <div style="flex:1; min-width: 240px">
+          <div class="field">
             <label for="studentGroup">Группа / Класс</label>
             <input id="studentGroup" type="text" placeholder="Например: 10-А / JS-01" />
           </div>
         </div>
 
         <div class="row">
-          <div style="flex:1; min-width: 240px">
+          <div class="field">
             <label for="testSelect">Выбор теста</label>
             <select id="testSelect">
               <option value="" selected disabled>Выберите тест…</option>
             </select>
-            <div class="help">Тест формируется случайно: <b>20</b> вопросов + <b>2</b> задачи.</div>
+            <div class="help">Формирование: случайно <b>20</b> вопросов + <b>2</b> задачи. Варианты ответов перемешиваются.</div>
           </div>
 
-          <div style="flex:1; min-width: 240px">
+          <div class="field">
             <label>Общее время</label>
             <div class="pill" style="justify-content:space-between; width:100%">
               <span class="muted">Таймер</span>
@@ -515,99 +532,88 @@
           </div>
         </div>
 
-        <div class="row" style="margin-top:10px">
+        <div class="row center" style="margin-top:10px">
           <button class="btn primary" id="btnStartTest">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-            Начать тест
+            Начать
           </button>
 
           <button class="btn danger hidden" id="btnFinishTest">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z"/></svg>
-            Завершить тест
+            Завершить
           </button>
 
           <button class="btn hidden" id="btnExportStudentJson">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 7V3.5L18.5 9H15zM8 13h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
-            Скачать JSON для преподавателя
+            Скачать JSON
           </button>
 
           <span class="right muted small" id="studentProgressText"></span>
         </div>
+      </div>
 
-        <div class="divider"></div>
-
-        <div id="studentTestArea" class="col hidden">
-          <div class="stickybar">
-            <div class="card" style="padding:12px; background: color-mix(in oklab, var(--panel), #000 6%);">
-              <div class="row" style="align-items:center">
-                <div class="pill" style="box-shadow:none">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-16h-2v6l5.25 3.15 1-1.73-4.25-2.52V6z"/></svg>
-                  <span class="muted">Осталось</span>
-                  <strong class="timer" id="studentTimerSticky">01:00:00</strong>
-                </div>
-
-                <div class="pill" style="box-shadow:none">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
-                  <span class="muted">Тест</span>
-                  <strong id="activeTestName">—</strong>
-                </div>
-
-                <button class="btn danger right" id="btnFinishTestTop">
-                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z"/></svg>
-                  Завершить
-                </button>
+      <div id="studentTestArea" class="hidden stack">
+        <div class="stickybar">
+          <div class="card" style="padding:12px">
+            <div class="row center">
+              <div class="pill" style="box-shadow:none">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-16h-2v6l5.25 3.15 1-1.73-4.25-2.52V6z"/></svg>
+                <span class="muted">Осталось</span>
+                <strong class="timer" id="studentTimerSticky">01:00:00</strong>
               </div>
+
+              <div class="pill" style="box-shadow:none">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
+                <span class="muted">Тест</span>
+                <strong id="activeTestName">—</strong>
+              </div>
+
+              <button class="btn danger right" id="btnFinishTestTop">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z"/></svg>
+                Завершить
+              </button>
             </div>
           </div>
+        </div>
 
-          <div class="card">
-            <h2>Часть 1: Теория (20 вопросов)</h2>
-            <div id="theoryList" class="col"></div>
-          </div>
+        <div class="card">
+          <h2>Часть 1: Теория (20 вопросов)</h2>
+          <div id="theoryList" class="stack"></div>
+        </div>
 
-          <div class="card">
-            <h2>Часть 2: Практика (2 задачи)</h2>
-            <div class="muted small" style="margin: -4px 0 10px">
-              Решения вводите текстом. Баллы выставит преподаватель.
-            </div>
-            <div id="practiceList" class="col"></div>
+        <div class="card">
+          <h2>Часть 2: Практика (2 задачи)</h2>
+          <div class="muted small" style="margin:-2px 0 10px; line-height:1.45">
+            Решения вводите текстом. Баллы выставит преподаватель.
           </div>
+          <div id="practiceList" class="stack"></div>
+        </div>
 
-          <div class="card hidden" id="ticketArea">
-            <h2>Экзаменационный билет (если &lt; 60%)</h2>
-            <div class="muted small" style="margin-top:-6px; line-height:1.45">
-              Этот блок появится после завершения теста, если процент по теории меньше 60%.
-              В билете — 2 теоретических вопроса (без задач). Ответьте текстом.
-            </div>
-            <div id="ticketList" class="col" style="margin-top:10px"></div>
-          </div>
-
-          <div class="card">
-            <h2>Статус</h2>
-            <div id="studentStatus" class="muted small">Ожидание запуска теста…</div>
-          </div>
+        <div class="card">
+          <h2>Статус</h2>
+          <div id="studentStatus" class="muted small">Ожидание запуска теста…</div>
         </div>
       </div>
     </section>
 
     <!-- TEACHER -->
-    <section id="viewTeacher" class="hidden">
+    <section id="viewTeacher" class="hidden stack">
       <div class="card">
         <h2>Преподаватель</h2>
 
         <div class="row">
-          <div style="flex:1; min-width: 280px">
+          <div class="field" style="min-width: 280px">
             <label>Импорт JSON ответов ученика</label>
             <input id="teacherImportFile" type="file" accept="application/json" />
-            <div class="help">Импортируйте файл, который ученик скачал после завершения теста.</div>
+            <div class="help">Импортируйте файл, который ученик скачал после завершения.</div>
           </div>
 
-          <div style="flex:1; min-width: 280px">
+          <div class="field" style="min-width: 280px">
             <label>data.json (необязательно)</label>
-            <div class="row">
+            <div class="row center">
               <button class="btn" id="btnLoadDataTeacher">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zM12 2l-5.5 5.5 1.42 1.42L11 5.84V16h2V5.84l3.08 3.08 1.42-1.42L12 2z"/></svg>
-                Перезагрузить data.json
+                Перезагрузить
               </button>
 
               <button class="btn" id="btnPickDataFileTeacher" title="Если fetch недоступен (file://), выберите файл вручную">
@@ -621,7 +627,6 @@
                 <strong>data.json</strong> <small id="dataStatusTeacher">проверка…</small>
               </div>
             </div>
-
             <div class="help">
               Проверка возможна и без <span class="mono">data.json</span>, т.к. правильные ответы входят в JSON попытки.
             </div>
@@ -630,8 +635,10 @@
 
         <div class="divider"></div>
 
-        <div id="teacherWorkArea" class="hidden">
-          <div class="row" style="align-items:center">
+        <div id="teacherStatus" class="muted small">Импортируйте JSON ученика для начала проверки…</div>
+
+        <div id="teacherWorkArea" class="hidden stack">
+          <div class="row center">
             <div class="pill" style="box-shadow:none">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
               <span class="muted">Ученик</span>
@@ -656,11 +663,9 @@
             </button>
           </div>
 
-          <div class="divider"></div>
-
           <div class="card" style="padding:12px">
             <h2 style="margin:0 0 10px">Итоги</h2>
-            <div class="row">
+            <div class="row center">
               <div class="pill" style="box-shadow:none">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                 <span class="muted">Теория</span>
@@ -684,27 +689,19 @@
             </div>
           </div>
 
-          <div class="divider"></div>
-
-          <h2>Проверка практики (0–5)</h2>
-          <div class="muted small" style="margin-top:-6px; line-height:1.45">
-            Теория оценена автоматически. Здесь выставьте баллы за практику и (при наличии) за билет.
+          <div class="card">
+            <h2>Проверка практики (0–5)</h2>
+            <div class="muted small" style="margin-top:-4px; line-height:1.45">
+              Теория уже оценена автоматически. Здесь выставьте баллы за практику.
+            </div>
+            <div id="teacherPracticeTableWrap" style="margin-top:10px"></div>
           </div>
 
-          <div id="teacherPracticeTableWrap" style="margin-top:10px"></div>
-
-          <div class="divider"></div>
-
-          <h2>Просмотр ответов по теории</h2>
-          <div id="teacherTheoryReview" class="col" style="margin-top:10px"></div>
-
-          <div class="divider"></div>
-
-          <h2>Билет (если был)</h2>
-          <div id="teacherTicketReview" class="col" style="margin-top:10px"></div>
+          <div class="card">
+            <h2>Просмотр ответов по теории</h2>
+            <div id="teacherTheoryReview" class="stack" style="margin-top:10px"></div>
+          </div>
         </div>
-
-        <div id="teacherStatus" class="muted small">Импортируйте JSON ученика для начала проверки…</div>
       </div>
     </section>
 
@@ -725,9 +722,9 @@
 
           <div class="divider"></div>
 
-          <div class="row" style="justify-content:space-between; align-items:center">
+          <div class="row between center">
             <div>
-              <div style="font-weight:900">Тема</div>
+              <div style="font-weight:950">Тема</div>
               <div class="muted small">Светлая / Тёмная</div>
             </div>
             <div class="seg" role="tablist" aria-label="Тема">
@@ -738,12 +735,12 @@
 
           <div class="divider"></div>
 
-          <h2 style="margin-top:0">Правила генерации</h2>
+          <h2 style="margin-top:0">Генерация теста</h2>
           <div class="muted small" style="line-height:1.55">
-            <div><b>Теория:</b> всегда выбирается случайно <b>20</b> вопросов.</div>
-            <div><b>Практика:</b> всегда выбирается случайно <b>2</b> задачи.</div>
-            <div><b>Перемешивание:</b> варианты ответов всегда перемешиваются.</div>
-            <div><b>Билет:</b> если по теории &lt; <b>60%</b>, формируется билет из <b>2</b> теоретических вопросов (ответ текстом).</div>
+            <div><b>Теория:</b> случайно <b>20</b> вопросов.</div>
+            <div><b>Практика:</b> случайно <b>2</b> задачи.</div>
+            <div><b>Ответы:</b> варианты всегда перемешиваются.</div>
+            <div><b>Билет:</b> <b>не генерируется автоматически</b> — решает преподаватель.</div>
           </div>
         </div>
       </div>
@@ -762,9 +759,6 @@
   </div>
 
   <script>
-    // ---------------------------
-    // Utilities
-    // ---------------------------
     const $ = (sel, root=document) => root.querySelector(sel);
     const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
 
@@ -827,21 +821,16 @@
       return copy.slice(0, Math.min(n, copy.length));
     }
 
-    // ---------------------------
     // Theme
-    // ---------------------------
     function setTheme(theme){
       document.documentElement.setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
-
       const isDark = theme === "dark";
       $("#themeDark2").classList.toggle("active", isDark);
       $("#themeLight2").classList.toggle("active", !isDark);
     }
 
-    // ---------------------------
     // Views
-    // ---------------------------
     function showView(name){
       $("#viewHome").classList.toggle("hidden", name !== "home");
       $("#viewStudent").classList.toggle("hidden", name !== "student");
@@ -849,9 +838,7 @@
       window.scrollTo({top:0, behavior:"instant"});
     }
 
-    // ---------------------------
-    // Data loading
-    // ---------------------------
+    // Data
     let DATA = null;
 
     async function loadDataJsonByFetch(){
@@ -876,7 +863,6 @@
         if(!t.id || !t.title) throw new Error("data.json: у теста должны быть id и title");
         if(!Array.isArray(t.theory)) t.theory = [];
         if(!Array.isArray(t.practice)) t.practice = [];
-
         for(const q of t.theory){
           if(!q.id || !q.type || !q.question) throw new Error(`data.json: theory должен иметь id/type/question (test=${t.id})`);
           if(!["single","multi"].includes(q.type)) throw new Error(`data.json: theory.type single|multi (question=${q.id})`);
@@ -886,7 +872,6 @@
             if(!o.id || o.text == null) throw new Error(`data.json: option должен иметь id/text (question=${q.id})`);
           }
         }
-
         for(const p of t.practice){
           if(!p.id || !p.title || !p.prompt) throw new Error(`data.json: practice должен иметь id/title/prompt (test=${t.id})`);
           if(p.maxPoints == null) p.maxPoints = 5;
@@ -935,23 +920,12 @@
       }
     }
 
-    // ---------------------------
-    // Student logic
-    // ---------------------------
+    // Student state
     const ONE_HOUR_SEC = 3600;
     const THEORY_COUNT = 20;
     const PRACTICE_COUNT = 2;
-    const TICKET_THRESHOLD = 0.60; // 60%
-    const TICKET_QUESTIONS = 2;
 
-    const STUDENT = {
-      active:false,
-      startedAt:null,
-      endsAt:null,
-      timerInt:null,
-      attempt:null,
-      test:null
-    };
+    const STUDENT = { active:false, startedAt:null, endsAt:null, timerInt:null, attempt:null, test:null };
 
     function setStudentTimerDisplay(remainingSec){
       const text = formatHMS(Math.max(0, remainingSec));
@@ -980,32 +954,43 @@
     }
 
     function resetStudentUI(){
-      $("#studentTestArea").classList.add("hidden");
       $("#btnFinishTest").classList.add("hidden");
       $("#btnFinishTestTop").classList.add("hidden");
       $("#btnExportStudentJson").classList.add("hidden");
       $("#btnStartTest").classList.remove("hidden");
+
       $("#studentProgressText").textContent = "";
       $("#studentStatus").textContent = "Ожидание запуска теста…";
+
+      $("#studentTestArea").classList.add("hidden");
       $("#theoryList").innerHTML = "";
       $("#practiceList").innerHTML = "";
-      $("#ticketList").innerHTML = "";
-      $("#ticketArea").classList.add("hidden");
       $("#activeTestName").textContent = "—";
+
       setStudentTimerDisplay(ONE_HOUR_SEC);
     }
 
+    function updateStudentProgress(){
+      if(!STUDENT.attempt) return;
+      const th = STUDENT.attempt.sections.theory;
+      const pr = STUDENT.attempt.sections.practice;
+
+      const answeredTheory = th.filter(q => (q.answer||[]).length>0).length;
+      const filledPractice = pr.filter(p => (p.answerText||"").trim().length>0).length;
+
+      $("#studentProgressText").textContent =
+        `Теория: ${answeredTheory}/${th.length} · Практика: ${filledPractice}/${pr.length}`;
+    }
+
     function buildStudentAttempt(test, studentName, studentGroup){
-      // Random selection from bank
       const pickedTheory = sampleN(test.theory, THEORY_COUNT).map(q => {
-        // shuffle options for every attempt
         const opts = shuffleInPlace(q.options.slice()).map(o => ({id:o.id, text:o.text}));
         return {
           id: q.id,
           type: q.type,
           question: q.question,
           options: opts,
-          correct: q.correct,        // ids are stable, shuffling options doesn't break correctness
+          correct: q.correct,
           answer: [],
           autoPoints: 0,
           maxPoints: 1
@@ -1022,55 +1007,26 @@
       }));
 
       return {
-        schema: "studentAttempt.v2",
+        schema: "studentAttempt.v3",
         attemptId: uid("attempt"),
         createdAt: nowIso(),
         student: { name: studentName || "", group: studentGroup || "" },
         test: { id: test.id, title: test.title },
-
         generation: {
           rules: {
             theoryCount: THEORY_COUNT,
             practiceCount: PRACTICE_COUNT,
-            shuffleOptions: true,
-            ticketIfTheoryPercentLessThan: 60,
-            ticketQuestions: TICKET_QUESTIONS
+            shuffleOptions: true
           }
         },
-
         timing: { startedAt: nowIso(), durationSeconds: ONE_HOUR_SEC, endedAt: null, autoFinished: false },
-
-        sections: {
-          theory: pickedTheory,
-          practice: pickedPractice,
-          ticket: {
-            required: false,
-            thresholdPercent: 60,
-            questions: [],
-            teacherPoints: null,
-            maxPoints: 10
-          }
-        },
-
+        sections: { theory: pickedTheory, practice: pickedPractice },
         totals: {
           theoryAuto: { points: 0, max: pickedTheory.length },
           practiceTeacher: { points: 0, max: pickedPractice.reduce((s,x)=>s+(x.maxPoints||5),0) },
-          ticketTeacher: { points: 0, max: 10 },
           total: { points: 0, max: 0, percent: 0 }
         }
       };
-    }
-
-    function updateStudentProgress(){
-      if(!STUDENT.attempt) return;
-      const th = STUDENT.attempt.sections.theory;
-      const pr = STUDENT.attempt.sections.practice;
-
-      const answeredTheory = th.filter(q => (q.answer||[]).length>0).length;
-      const filledPractice = pr.filter(p => (p.answerText||"").trim().length>0).length;
-
-      $("#studentProgressText").textContent =
-        `Теория: ${answeredTheory}/${th.length} · Практика: ${filledPractice}/${pr.length}`;
     }
 
     function renderTheoryQuestion(q, idx){
@@ -1084,9 +1040,7 @@
       const title = document.createElement("div");
       title.innerHTML = `
         <div class="qtitle">${idx+1}. ${escapeHtml(q.question)}</div>
-        <div class="muted small" style="margin-top:6px">
-          Тип: <span class="mono">${q.type === "single" ? "один ответ" : "несколько ответов"}</span>
-        </div>
+        <div class="qmeta">Тип: <span class="mono">${q.type === "single" ? "один ответ" : "несколько ответов"}</span></div>
       `;
 
       const badge = document.createElement("div");
@@ -1097,7 +1051,7 @@
       head.appendChild(badge);
 
       const opts = document.createElement("div");
-      opts.className = "col";
+      opts.className = "stack";
       opts.style.gap = "8px";
 
       for(const opt of q.options){
@@ -1144,7 +1098,7 @@
       const title = document.createElement("div");
       title.innerHTML = `
         <div class="qtitle">${idx+1}. ${escapeHtml(p.title)}</div>
-        <div class="muted small" style="margin-top:6px">Оценка преподавателем: <b>0–${p.maxPoints}</b></div>
+        <div class="qmeta">Оценка преподавателем: <b>0–${p.maxPoints}</b></div>
       `;
 
       const badge = document.createElement("div");
@@ -1180,34 +1134,6 @@
       return wrap;
     }
 
-    function renderTicketQuestion(q, idx){
-      const wrap = document.createElement("div");
-      wrap.className = "q ticket";
-
-      wrap.innerHTML = `
-        <div class="qhead">
-          <div>
-            <div class="qtitle">${idx+1}. ${escapeHtml(q.question)}</div>
-            <div class="muted small" style="margin-top:6px">Ответ текстом</div>
-          </div>
-          <div class="badge warn">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 15h-2v-2h2Zm1.07-7.75-.9.92A1.5 1.5 0 0 0 12.5 12H11v-.5a2.5 2.5 0 0 1 .73-1.77l1.24-1.26A1.25 1.25 0 1 0 10.75 7H9.25A2.75 2.75 0 1 1 14.07 9.25Z"/></svg>
-            Билет
-          </div>
-        </div>
-      `;
-
-      const ta = document.createElement("textarea");
-      ta.placeholder = "Ваш ответ…";
-      ta.addEventListener("input", ()=>{
-        const item = STUDENT.attempt.sections.ticket.questions[idx];
-        item.answerText = ta.value;
-      });
-
-      wrap.appendChild(ta);
-      return wrap;
-    }
-
     function autoGradeTheory(attempt){
       let pts = 0;
       for(const q of attempt.sections.theory){
@@ -1228,62 +1154,14 @@
       const prMax = attempt.sections.practice.reduce((s,x)=>s+(x.maxPoints||5),0);
       const prPts = attempt.sections.practice.reduce((s,x)=> s + (typeof x.teacherPoints === "number" ? x.teacherPoints : 0), 0);
 
-      const tkMax = attempt.sections.ticket?.maxPoints ?? 0;
-      const tkPts = (attempt.sections.ticket && typeof attempt.sections.ticket.teacherPoints === "number") ? attempt.sections.ticket.teacherPoints : 0;
-
       attempt.totals.practiceTeacher.points = prPts;
       attempt.totals.practiceTeacher.max = prMax;
 
-      attempt.totals.ticketTeacher.points = tkPts;
-      attempt.totals.ticketTeacher.max = tkMax;
-
-      const totalPts = thPts + prPts + tkPts;
-      const totalMax = thMax + prMax + tkMax;
+      const totalPts = thPts + prPts;
+      const totalMax = thMax + prMax;
       attempt.totals.total.points = totalPts;
       attempt.totals.total.max = totalMax;
       attempt.totals.total.percent = totalMax > 0 ? Math.round((totalPts/totalMax)*100) : 0;
-    }
-
-    function ensureTicketIfNeeded(attempt, bankTest){
-      const thMax = attempt.totals.theoryAuto.max;
-      const thPts = attempt.totals.theoryAuto.points;
-      const percent = thMax > 0 ? thPts / thMax : 0;
-
-      if(percent >= TICKET_THRESHOLD){
-        attempt.sections.ticket.required = false;
-        attempt.sections.ticket.questions = [];
-        return;
-      }
-
-      // Need ticket: pick 2 random theory questions from full bank, excluding those already used if possible
-      const used = new Set(attempt.sections.theory.map(q=>q.id));
-      const pool = bankTest.theory.slice();
-
-      shuffleInPlace(pool);
-
-      const picked = [];
-      for(const q of pool){
-        if(picked.length >= TICKET_QUESTIONS) break;
-        if(!used.has(q.id)){
-          picked.push(q);
-        }
-      }
-      // If not enough unique, allow reuse
-      if(picked.length < TICKET_QUESTIONS){
-        for(const q of pool){
-          if(picked.length >= TICKET_QUESTIONS) break;
-          if(!picked.includes(q)) picked.push(q);
-        }
-      }
-
-      attempt.sections.ticket.required = true;
-      attempt.sections.ticket.questions = picked.slice(0, TICKET_QUESTIONS).map(q => ({
-        id: q.id,
-        question: q.question,
-        answerText: ""
-      }));
-      // ticket scoring is teacher-only, keep null
-      attempt.sections.ticket.teacherPoints = null;
     }
 
     function finishTest(auto=false){
@@ -1296,50 +1174,25 @@
       STUDENT.attempt.timing.autoFinished = !!auto;
 
       autoGradeTheory(STUDENT.attempt);
-
-      // ticket check based on theory % (before any teacher points)
-      ensureTicketIfNeeded(STUDENT.attempt, STUDENT.test);
-
       computeTotals(STUDENT.attempt);
 
       const thPts = STUDENT.attempt.totals.theoryAuto.points;
       const thMax = STUDENT.attempt.totals.theoryAuto.max;
       const thPercent = thMax ? Math.round((thPts/thMax)*100) : 0;
 
-      let msg = `Тест завершён. Теория: <b>${thPts}/${thMax}</b> (${thPercent}%). Практика проверит преподаватель.`;
-      if(STUDENT.attempt.sections.ticket.required){
-        msg += ` <span class="danger-text"><b>Менее 60%: сформирован билет.</b></span>`;
-      }
-      $("#studentStatus").innerHTML = msg;
-
-      // Show ticket UI if needed
-      if(STUDENT.attempt.sections.ticket.required){
-        $("#ticketArea").classList.remove("hidden");
-        $("#ticketList").innerHTML = "";
-        STUDENT.attempt.sections.ticket.questions.forEach((q, idx)=>{
-          $("#ticketList").appendChild(renderTicketQuestion(q, idx));
-        });
-      }else{
-        $("#ticketArea").classList.add("hidden");
-        $("#ticketList").innerHTML = "";
-      }
+      $("#studentStatus").innerHTML =
+        `Тест завершён. Теория: <b>${thPts}/${thMax}</b> (${thPercent}%). Практика проверит преподаватель.`;
 
       $("#btnExportStudentJson").classList.remove("hidden");
       $("#btnFinishTest").classList.add("hidden");
       $("#btnFinishTestTop").classList.add("hidden");
       $("#btnStartTest").classList.remove("hidden");
 
-      // Disable test inputs; ticket remains editable (student must answer after finish)
       $$("#studentTestArea input, #studentTestArea textarea").forEach(el => el.disabled = true);
-      // Re-enable ticket textareas only (if exist)
-      $$("#ticketList textarea").forEach(el => el.disabled = false);
-
-      toast("Скачайте JSON для преподавателя.");
+      toast("Скачайте JSON и отправьте преподавателю.");
     }
 
-    // ---------------------------
-    // Teacher logic
-    // ---------------------------
+    // Teacher
     const TEACHER = { attempt: null };
 
     function formatDuration(attempt){
@@ -1353,15 +1206,8 @@
     function updateTeacherSummary(attempt){
       $("#sumTheory").textContent = `${attempt.totals.theoryAuto.points}/${attempt.totals.theoryAuto.max}`;
       $("#sumPractice").textContent = `${attempt.totals.practiceTeacher.points}/${attempt.totals.practiceTeacher.max}`;
-      const tkMax = attempt.totals.ticketTeacher?.max ?? 0;
-      const tkPts = attempt.totals.ticketTeacher?.points ?? 0;
       $("#sumTotal").textContent = `${attempt.totals.total.points}/${attempt.totals.total.max}`;
       $("#sumPercent").textContent = `${attempt.totals.total.percent}%`;
-
-      // also show ticket summary if ticket exists
-      if(attempt.sections.ticket?.required){
-        $("#sumPractice").textContent = `${attempt.totals.practiceTeacher.points}/${attempt.totals.practiceTeacher.max} + билет ${tkPts}/${tkMax}`;
-      }
     }
 
     function renderTeacher(attempt){
@@ -1382,7 +1228,7 @@
         <thead>
           <tr>
             <th style="width:52px">№</th>
-            <th>Элемент</th>
+            <th>Задача</th>
             <th>Ответ ученика</th>
             <th style="width:160px">Баллы</th>
             <th style="width:120px">Максимум</th>
@@ -1392,21 +1238,18 @@
       `;
       const tb = table.querySelector("tbody");
 
-      // practice
       attempt.sections.practice.forEach((p, idx)=>{
         const tr = document.createElement("tr");
-
         tr.innerHTML = `
           <td>${idx+1}</td>
           <td>
-            <div style="font-weight:900">${escapeHtml(p.title)}</div>
+            <div style="font-weight:950">${escapeHtml(p.title)}</div>
             <div class="muted small" style="white-space:pre-wrap; margin-top:6px">${escapeHtml(p.prompt)}</div>
           </td>
           <td><pre class="mono" style="white-space:pre-wrap; margin:0">${escapeHtml((p.answerText||"").trim() || "—")}</pre></td>
           <td></td>
           <td>${escapeHtml(String(p.maxPoints ?? 5))}</td>
         `;
-
         const tdScore = tr.children[3];
         const inp = document.createElement("input");
         inp.className = "scoreInput";
@@ -1432,50 +1275,8 @@
           updateTeacherSummary(attempt);
         });
         tdScore.appendChild(inp);
-
         tb.appendChild(tr);
       });
-
-      // ticket (if required)
-      if(attempt.sections.ticket?.required){
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${attempt.sections.practice.length + 1}</td>
-          <td>
-            <div style="font-weight:900">Экзаменационный билет</div>
-            <div class="muted small" style="margin-top:6px">2 вопроса (ответ текстом). Оценка общим баллом.</div>
-          </td>
-          <td><pre class="mono" style="white-space:pre-wrap; margin:0">${escapeHtml(formatTicketAnswers(attempt) || "—")}</pre></td>
-          <td></td>
-          <td>${escapeHtml(String(attempt.sections.ticket.maxPoints ?? 10))}</td>
-        `;
-        const tdScore = tr.children[3];
-        const inp = document.createElement("input");
-        inp.className = "scoreInput";
-        inp.type = "number";
-        inp.min = 0;
-        inp.max = attempt.sections.ticket.maxPoints ?? 10;
-        inp.step = 1;
-        inp.value = (typeof attempt.sections.ticket.teacherPoints === "number") ? String(attempt.sections.ticket.teacherPoints) : "";
-        inp.placeholder = `0..${attempt.sections.ticket.maxPoints ?? 10}`;
-        inp.addEventListener("input", ()=>{
-          const v = inp.value.trim();
-          if(v === ""){
-            attempt.sections.ticket.teacherPoints = null;
-          }else{
-            let n = Number(v);
-            if(!Number.isFinite(n)) n = 0;
-            const max = attempt.sections.ticket.maxPoints ?? 10;
-            n = Math.max(0, Math.min(max, Math.round(n)));
-            attempt.sections.ticket.teacherPoints = n;
-            inp.value = String(n);
-          }
-          computeTotals(attempt);
-          updateTeacherSummary(attempt);
-        });
-        tdScore.appendChild(inp);
-        tb.appendChild(tr);
-      }
 
       wrap.appendChild(table);
 
@@ -1498,7 +1299,7 @@
           <div class="qhead">
             <div>
               <div class="qtitle">${idx+1}. ${escapeHtml(q.question)}</div>
-              <div class="muted small" style="margin-top:6px">
+              <div class="qmeta">
                 Ответ: <span class="mono">${escapeHtml((q.answer||[]).join(", ") || "—")}</span> ·
                 Правильно: <span class="mono">${escapeHtml((q.correct||[]).join(", ") || "—")}</span>
               </div>
@@ -1508,69 +1309,33 @@
               ${badgeText}
             </div>
           </div>
-          <div class="col" style="gap:8px">
+          <div class="stack" style="gap:8px">
             ${q.options.map(o=>{
               const isSel = selected.has(o.id);
               const isCor = correct.has(o.id);
-              const b = isCor ? "ok-text" : (isSel ? "danger-text" : "");
               const marker = isCor ? "✓" : (isSel ? "×" : "•");
-              return `<div class="opt"><div class="ot ${b}"><span class="mono" style="opacity:.85">${escapeHtml(marker)} ${escapeHtml(o.id)}</span> — ${escapeHtml(o.text)}</div></div>`;
+              const color = isCor ? "style='color:var(--ok)'" : (isSel ? "style='color:var(--danger)'" : "");
+              return `<div class="opt"><div class="ot"><span class="mono" ${color}>${escapeHtml(marker)} ${escapeHtml(o.id)}</span> — ${escapeHtml(o.text)}</div></div>`;
             }).join("")}
           </div>
         `;
         thWrap.appendChild(div);
       });
 
-      // Ticket review
-      const tkWrap = $("#teacherTicketReview");
-      tkWrap.innerHTML = "";
-      if(attempt.sections.ticket?.required){
-        attempt.sections.ticket.questions.forEach((q, idx)=>{
-          const div = document.createElement("div");
-          div.className = "q ticket";
-          div.innerHTML = `
-            <div class="qhead">
-              <div>
-                <div class="qtitle">${idx+1}. ${escapeHtml(q.question)}</div>
-                <div class="muted small" style="margin-top:6px">Ответ ученика:</div>
-              </div>
-              <div class="badge warn">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 15h-2v-2h2Zm1.07-7.75-.9.92A1.5 1.5 0 0 0 12.5 12H11v-.5a2.5 2.5 0 0 1 .73-1.77l1.24-1.26A1.25 1.25 0 1 0 10.75 7H9.25A2.75 2.75 0 1 1 14.07 9.25Z"/></svg>
-                Билет
-              </div>
-            </div>
-            <pre class="mono" style="white-space:pre-wrap; margin:0">${escapeHtml((q.answerText||"").trim() || "—")}</pre>
-          `;
-          tkWrap.appendChild(div);
-        });
-      }else{
-        tkWrap.innerHTML = `<div class="muted small">Билета нет.</div>`;
-      }
-
-      // Ensure totals recalculated
       computeTotals(attempt);
       updateTeacherSummary(attempt);
     }
 
-    function formatTicketAnswers(attempt){
-      const qs = attempt.sections.ticket?.questions || [];
-      return qs.map((q,i)=>`${i+1}) ${q.question}\n${(q.answerText||"").trim()}`).join("\n\n").trim();
-    }
-
-    // ---------------------------
     // Events
-    // ---------------------------
     $("#btnGoStudent").addEventListener("click", ()=>{
       showView("student");
       resetStudentUI();
-      if(!DATA) toast("data.json не загружен. Нажмите «Перезагрузить data.json» или «Выбрать файл…» на главной.");
+      if(!DATA) toast("data.json не загружен. На главной нажмите «Перезагрузить» или «Выбрать файл…».");
     });
-
     $("#btnGoTeacher").addEventListener("click", ()=>{
       showView("teacher");
       if(!DATA) toast("Если нужно, загрузите data.json (необязательно).");
     });
-
     $("#btnHome").addEventListener("click", ()=> showView("home"));
 
     $("#btnSettings").addEventListener("click", ()=> $("#settingsModal").classList.remove("hidden"));
@@ -1597,24 +1362,7 @@
       }
     });
 
-    $("#btnLoadDataTeacher").addEventListener("click", async ()=>{
-      try{
-        DATA = await loadDataJsonByFetch();
-        updateDataStatus();
-        populateTestsSelect();
-        toast("data.json загружен (fetch).");
-      }catch(err){
-        console.error(err);
-        DATA = null;
-        updateDataStatus();
-        populateTestsSelect();
-        toast(err?.message || "Ошибка загрузки data.json");
-      }
-    });
-
     $("#btnPickDataFile").addEventListener("click", ()=> $("#dataFileInput").click());
-    $("#btnPickDataFileTeacher").addEventListener("click", ()=> $("#dataFileInputTeacher").click());
-
     $("#dataFileInput").addEventListener("change", async (e)=>{
       const file = e.target.files?.[0];
       if(!file) return;
@@ -1631,6 +1379,19 @@
       }
     });
 
+    $("#btnLoadDataTeacher").addEventListener("click", async ()=>{
+      try{
+        DATA = await loadDataJsonByFetch();
+        updateDataStatus();
+        populateTestsSelect();
+        toast("data.json загружен (fetch).");
+      }catch(err){
+        console.error(err);
+        toast(err?.message || "Ошибка загрузки data.json");
+      }
+    });
+
+    $("#btnPickDataFileTeacher").addEventListener("click", ()=> $("#dataFileInputTeacher").click());
     $("#dataFileInputTeacher").addEventListener("change", async (e)=>{
       const file = e.target.files?.[0];
       if(!file) return;
@@ -1661,10 +1422,12 @@
 
       const test = getTestById(testId);
       if(!test){ toast("Тест не найден в data.json."); return; }
+
       if((test.theory?.length || 0) < 2){
         toast("В банке теории должно быть минимум 2 вопроса.");
         return;
       }
+
       if((test.theory?.length || 0) < THEORY_COUNT){
         toast(`Внимание: в банке теории меньше ${THEORY_COUNT}. Будет взято ${Math.min(THEORY_COUNT, test.theory.length)}.`);
       }
@@ -1679,19 +1442,16 @@
       STUDENT.attempt = buildStudentAttempt(test, studentName, studentGroup);
 
       $("#activeTestName").textContent = test.title;
-      $("#studentStatus").textContent = "Тест запущен. Удачи!";
+      $("#studentStatus").textContent = "Тест запущен. Заполните ответы и нажмите «Завершить».";
       $("#studentTestArea").classList.remove("hidden");
       $("#btnFinishTest").classList.remove("hidden");
       $("#btnFinishTestTop").classList.remove("hidden");
       $("#btnExportStudentJson").classList.add("hidden");
       $("#btnStartTest").classList.add("hidden");
-      $("#ticketArea").classList.add("hidden");
-      $("#ticketList").innerHTML = "";
 
       $("#theoryList").innerHTML = "";
       $("#practiceList").innerHTML = "";
 
-      // Render from generated attempt (not from bank)
       STUDENT.attempt.sections.theory.forEach((q, idx)=> $("#theoryList").appendChild(renderTheoryQuestion(q, idx)));
       STUDENT.attempt.sections.practice.forEach((p, idx)=> $("#practiceList").appendChild(renderPracticeTask(p, idx)));
 
@@ -1714,15 +1474,12 @@
 
     $("#btnExportStudentJson").addEventListener("click", ()=>{
       if(!STUDENT.attempt){ toast("Нет данных для экспорта."); return; }
-      // ticket answers might have been edited after finish
       computeTotals(STUDENT.attempt);
-
       const st = STUDENT.attempt.student?.name ? STUDENT.attempt.student.name.replaceAll(" ","_") : "student";
       const test = STUDENT.attempt.test?.id || "test";
       downloadJson(`attempt_${test}_${st}.json`, STUDENT.attempt);
     });
 
-    // Teacher import
     $("#teacherImportFile").addEventListener("change", async (e)=>{
       const file = e.target.files?.[0];
       if(!file) return;
@@ -1731,14 +1488,13 @@
         const text = await file.text();
         const obj = JSON.parse(text);
 
-        if(!obj || (obj.schema !== "studentAttempt.v2" && obj.schema !== "studentAttempt.v1")){
-          throw new Error("Неверный формат JSON (ожидается schema: studentAttempt.v2).");
+        if(!obj || !obj.schema || !String(obj.schema).startsWith("studentAttempt.")){
+          throw new Error("Неверный формат JSON (ожидается studentAttempt.*).");
         }
         if(!obj.sections || !Array.isArray(obj.sections.theory) || !Array.isArray(obj.sections.practice)){
           throw new Error("Неверная структура attempt.sections.");
         }
 
-        // Normalize
         for(const p of obj.sections.practice){
           if(typeof p.maxPoints !== "number") p.maxPoints = 5;
           if(p.teacherPoints !== null && typeof p.teacherPoints !== "number") p.teacherPoints = null;
@@ -1754,19 +1510,6 @@
           if(!Array.isArray(q.options)) q.options = [];
         }
 
-        // ticket normalize
-        if(!obj.sections.ticket){
-          obj.sections.ticket = { required:false, thresholdPercent:60, questions:[], teacherPoints:null, maxPoints:10 };
-        }else{
-          if(typeof obj.sections.ticket.maxPoints !== "number") obj.sections.ticket.maxPoints = 10;
-          if(obj.sections.ticket.teacherPoints !== null && typeof obj.sections.ticket.teacherPoints !== "number") obj.sections.ticket.teacherPoints = null;
-          if(typeof obj.sections.ticket.teacherPoints === "number"){
-            obj.sections.ticket.teacherPoints = Math.max(0, Math.min(obj.sections.ticket.maxPoints, Math.round(obj.sections.ticket.teacherPoints)));
-          }
-          if(!Array.isArray(obj.sections.ticket.questions)) obj.sections.ticket.questions = [];
-        }
-
-        // Re-grade to avoid tampering
         autoGradeTheory(obj);
         computeTotals(obj);
 
@@ -1792,9 +1535,7 @@
       downloadJson(`reviewed_${test}_${st}.json`, TEACHER.attempt);
     });
 
-    // ---------------------------
     // Init
-    // ---------------------------
     (async function init(){
       const saved = localStorage.getItem("theme");
       setTheme(saved === "light" ? "light" : "dark");
