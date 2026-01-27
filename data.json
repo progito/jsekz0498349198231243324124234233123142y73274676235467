@@ -3765,7 +3765,7 @@
     "correct": ["a", "c", "d", "g", "h"]
   }
 ],
-      "practice": [
+      {"practice": [
         {
           "id": "b_p1",
           "title": "Сумма чисел",
