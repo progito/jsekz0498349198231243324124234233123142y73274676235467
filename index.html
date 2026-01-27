@@ -422,7 +422,7 @@
           </div>
           <div>
             <h1>Веб‑тестирование</h1>
-            <span class="sub" id="headerSub">Ученик / Преподаватель · импорт/экспорт JSON · 1 час на тест</span>
+            <span class="sub" id="headerSub">Ученик / Преподаватель · импорт/экспорт JSON · 1 час 50 минут на тест</span>
           </div>
         </div>
 
@@ -445,7 +445,7 @@
       <div class="card">
         <h2>Выберите режим</h2>
         <div class="muted small" style="line-height:1.55">
-          <div><b>Ученик</b> — тест: <b>30</b> вопросов (минимум 1 из каждого топика) + <b>2</b> задачи, таймер <b>1:30:00</b>.</div>
+          <div><b>Ученик</b> — тест: <b>40</b> вопросов + <b>2</b> задачи, таймер <b>1:50:00</b>.</div>
           <div><b>Преподаватель</b> — импорт JSON ученика, проверка практики (0–5), итог.</div>
         </div>
 
@@ -511,7 +511,7 @@
               <option value="" selected disabled>Выберите тест…</option>
             </select>
             <div class="help">
-              Формирование: <b>30</b> вопросов (<b>минимум 1</b> из каждого топика) + <b>2</b> задачи.
+              Формирование: <b>40</b> вопросов (<b>минимум 1</b> из каждого топика) + <b>2</b> задачи.
               Варианты ответов перемешиваются.
             </div>
           </div>
@@ -520,9 +520,9 @@
             <label>Общее время</label>
             <div class="pill" style="justify-content:space-between; width:100%">
               <span class="muted">Таймер</span>
-              <span class="timer" id="studentTimer">01:30:00</span>
+              <span class="timer" id="studentTimer">01:50:00</span>
             </div>
-            <div class="help">Ровно 1 час 30 минут. По истечении — авто‑завершение и формирование JSON.</div>
+            <div class="help">Ровно 1 час 50 минут. По истечении — авто‑завершение и формирование JSON.</div>
           </div>
         </div>
 
@@ -553,7 +553,7 @@
               <div class="pill" style="box-shadow:none">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-16h-2v6l5.25 3.15 1-1.73-4.25-2.52V6z"/></svg>
                 <span class="muted">Осталось</span>
-                <strong class="timer" id="studentTimerSticky">01:30:00</strong>
+                <strong class="timer" id="studentTimerSticky">01:50:00</strong>
               </div>
 
               <div class="pill" style="box-shadow:none">
@@ -571,7 +571,7 @@
         </div>
 
         <div class="card">
-          <h2 id="theoryTitle">Часть 1: Теория (30 вопросов)</h2>
+          <h2 id="theoryTitle">Часть 1: Теория (40 вопросов)</h2>
           <div id="theoryList" class="stack"></div>
         </div>
 
@@ -731,7 +731,7 @@
 
           <h2 style="margin-top:0">Генерация теста</h2>
           <div class="muted small" style="line-height:1.55">
-            <div><b>Теория:</b> <b>30</b> вопросов. Минимум 1 вопрос из каждого топика (определяется по префиксу id).</div>
+            <div><b>Теория:</b> <b>40</b> вопросов. Минимум 1 вопрос из каждого топика (определяется по префиксу id).</div>
             <div><b>Практика:</b> случайно <b>2</b> задачи.</div>
             <div><b>Ответы:</b> варианты всегда перемешиваются.</div>
             <div><b>Билет:</b> не генерируется автоматически — решает преподаватель.</div>
@@ -850,12 +850,9 @@
       return json;
     }
 
-    // --- FIX: normalize theory to array, allow both array/object formats ---
+    // normalize theory to array, allow both array/object formats
     function normalizeTheory(theoryRaw, testId){
-      // expected new format: array
       if(Array.isArray(theoryRaw)) return theoryRaw;
-
-      // legacy format: object by topics: { topic1: [..], topic2:[..] }
       if(theoryRaw && typeof theoryRaw === "object"){
         const out = [];
         for(const [k, v] of Object.entries(theoryRaw)){
@@ -866,8 +863,6 @@
         }
         return out;
       }
-
-      // missing/invalid -> empty
       return [];
     }
 
@@ -879,17 +874,13 @@
         if(!t || typeof t !== "object"){
           throw new Error("data.json: элемент tests должен быть объектом");
         }
-
         if(!t.id || !t.title) throw new Error("data.json: у теста должны быть id и title");
 
-        // normalize sections
         t.theory = normalizeTheory(t.theory, t.id);
         if(!Array.isArray(t.practice)) t.practice = [];
 
-        // Validate theory questions
         for(let i=0; i<t.theory.length; i++){
           const q = t.theory[i];
-
           if(!q || typeof q !== "object"){
             throw new Error(`data.json: theory[${i}] не объект (test=${t.id})`);
           }
@@ -912,7 +903,6 @@
           }
         }
 
-        // Validate practice tasks
         for(const p of t.practice){
           if(!p || typeof p !== "object"){
             throw new Error(`data.json: practice элемент должен быть объектом (test=${t.id})`);
@@ -965,10 +955,10 @@
     }
 
     // ---------------------------
-    // Rules
+    // Rules (UPDATED)
     // ---------------------------
-    const TEST_TOTAL_SECONDS = 5400; // 1h 30m
-    const THEORY_COUNT = 30;
+    const TEST_TOTAL_SECONDS = 6600; // 1h 50m
+    const THEORY_COUNT = 40;
     const PRACTICE_COUNT = 2;
 
     const STUDENT = { active:false, startedAt:null, endsAt:null, timerInt:null, attempt:null, test:null };
@@ -990,8 +980,8 @@
 
     function pickTheoryWithMinPerTopic(bankTheory, totalCount){
       const topics = groupByTopic(bankTheory);
-
       const mandatoryTopics = [...topics.keys()].filter(t => t !== "unknown").sort((a,b)=>Number(a)-Number(b));
+
       if(mandatoryTopics.length > totalCount){
         throw new Error(`Невозможно: топиков (${mandatoryTopics.length}) больше, чем вопросов в тесте (${totalCount}).`);
       }
@@ -1101,7 +1091,7 @@
       }));
 
       return {
-        schema: "studentAttempt.v4",
+        schema: "studentAttempt.v5",
         attemptId: uid("attempt"),
         createdAt: nowIso(),
         student: { name: studentName || "", group: studentGroup || "" },
@@ -1655,7 +1645,7 @@
       const saved = localStorage.getItem("theme");
       setTheme(saved === "light" ? "light" : "dark");
 
-      $("#headerSub").textContent = "Ученик / Преподаватель · импорт/экспорт JSON · 1 час 30 минут на тест";
+      $("#headerSub").textContent = "Ученик / Преподаватель · импорт/экспорт JSON · 1 час 50 минут на тест";
       updateDataStatus();
       populateTestsSelect();
       resetStudentUI();
