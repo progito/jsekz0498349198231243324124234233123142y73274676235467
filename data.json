@@ -1803,7 +1803,7 @@
           ],
           "correct": ["a", "b", "d", "g"]
         },
-         [
+
         {
           "id": "b_t_topic11_q1",
           "type": "single",
