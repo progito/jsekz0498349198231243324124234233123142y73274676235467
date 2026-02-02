@@ -3927,27 +3927,940 @@
           "correct": ["a", "c", "d", "g", "h"]
         }
       ],
-      "practice": [
-        {
-          "id": "b_p1",
-          "title": "Сумма чисел",
-          "prompt": "Напишите функцию sum(a, b), которая возвращает сумму a и b.\n\nПример:\nsum(2, 3) -> 5",
-          "maxPoints": 5
-        },
-        {
-          "id": "b_p2",
-          "title": "Чётные числа",
-          "prompt": "Дан массив чисел. Верните новый массив только из чётных чисел.\n\nПример:\n[1,2,3,4,5,6] -> [2,4,6]",
-          "maxPoints": 5
-        },
-        {
-          "id": "b_p3",
-          "title": "Подсчёт символов",
-          "prompt": "Напишите функцию countChars(str), которая возвращает объект с количеством каждого символа.\n\nПример:\n\"aab\" -> {\"a\":2,\"b\":1}",
-          "maxPoints": 5
-        }
-      ]
+
+  "practice": [
+    {
+      "id": "b_p1",
+      "title": "buildTree",
+      "prompt": "Реализуйте функцию `buildTree(items)`, где `items` — массив объектов `{id, parentId, title}`. Нужно вернуть корневой массив узлов, где каждый узел `{id, title, children: []}`. `parentId === null` — корень. Элементы могут идти в любом порядке.",
+      "maxPoints": 7
     },
+    {
+      "id": "b_p2",
+      "title": "invertObject",
+      "prompt": "Реализуйте функцию `invertObject(obj)`, которая возвращает новый объект, где ключи и значения поменяны местами (значения приводить к строке). Если несколько ключей имели одинаковое значение — в итоговом объекте хранить массив исходных ключей.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p3",
+      "title": "calcInventory",
+      "prompt": "Реализуйте функцию `calcInventory(products)`, где `products` — массив `{sku, qty}`. Вернуть объект, где ключ — sku, значение — суммарное qty по всем записям.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p4",
+      "title": "flatten1",
+      "prompt": "Реализуйте функцию `flatten1(arr)`, которая \"расплющивает\" массив только на один уровень (например `[1,[2,3],[4]]` -> `[1,2,3,4]`). Не используйте `flat`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p5",
+      "title": "countTypes",
+      "prompt": "Напишите функцию `countTypes(values)`, принимающую массив значений. Верните объект, где ключ — результат `typeof`, а значение — количество. Отдельно посчитайте `null` как `\"null\"` (так как `typeof null === \"object\"`).",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p6",
+      "title": "maxInMatrix",
+      "prompt": "Напишите функцию `maxInMatrix(matrix)`, которая возвращает максимальный элемент матрицы. Если матрица пустая или все строки пустые — вернуть `null`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p7",
+      "title": "flattenMatrix",
+      "prompt": "Реализуйте функцию `flattenMatrix(matrix)`, которая превращает двумерный массив в одномерный (в порядке строк). Не использовать `flat()`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p8",
+      "title": "summarizeCart",
+      "prompt": "Напишите функцию `summarizeCart(cart)`, где `cart` — массив объектов `{title, price, qty}`. Вернуть объект `{itemsCount, totalQty, totalPrice}`. `itemsCount` — количество позиций, `totalQty` — сумма qty, `totalPrice` — сумма price*qty.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p9",
+      "title": "minInMatrix",
+      "prompt": "Напишите функцию `minInMatrix(matrix)`, которая возвращает минимальный элемент. Если матрица пустая — `null`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p10",
+      "title": "filterTruthy",
+      "prompt": "Реализуйте функцию `filterTruthy(values)`, принимающую массив любых значений. Верните объект `{truthy: [...], falsy: [...]}` — два массива, куда разложены элементы по истинности в JS. Использовать `Boolean()` разрешено.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p11",
+      "title": "toggleFlag",
+      "prompt": "Реализуйте функцию `toggleFlag(obj, flagName)`, которая принимает объект и имя булевого поля. Если поле отсутствует — создать со значением `true`, если есть — инвертировать. Вернуть обновлённый объект. Запрещено создавать новый объект — работаем с исходным.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p12",
+      "title": "zip",
+      "prompt": "Реализуйте функцию `zip(a, b)`, которая принимает два массива и возвращает массив пар `[a[i], b[i]]` до минимальной длины.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p13",
+      "title": "evaluateConditions",
+      "prompt": "Реализуйте функцию `evaluateConditions(obj, rules)`, где `rules` — массив функций-предикатов `(obj) => boolean`. Вернуть объект `{passed, failed}` — массивы индексов правил. Нельзя использовать `filter`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p14",
+      "title": "multiplyMatrixByScalarFunc",
+      "prompt": "Реализуйте функцию `multiplyMatrixByScalar(matrix, k)`, которая возвращает новую матрицу, умножая каждый элемент на `k`. Исходную матрицу не мутировать.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p15",
+      "title": "difference",
+      "prompt": "Напишите функцию `difference(a, b)`, возвращающую элементы `a`, которых нет в `b`. Нельзя использовать `Set`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p16",
+      "title": "indexOfLastZero",
+      "prompt": "Реализуйте функцию `indexOfLastZero(arr)`, которая возвращает индекс последнего нуля или `-1`, если нулей нет.",
+      "maxPoints": 3
+    },
+    {
+      "id": "b_p17",
+      "title": "validatePasswords",
+      "prompt": "Реализуйте функцию `validatePasswords(items)`, где `items` — массив объектов `{login, password}`. Вернуть массив объектов `{login, ok, reason}`. Правила: длина >= 8, есть и буква, и цифра. `reason` — текст нарушения или `null`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p18",
+      "title": "runningSum",
+      "prompt": "Реализуйте функцию `runningSum(arr)`, возвращающую массив накопительных сумм. Нечисловые значения приводить к Number; NaN считать как 0.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p19",
+      "title": "average",
+      "prompt": "Напишите функцию `average(arr)`, которая возвращает среднее арифметическое чисел. Если массив пуст — вернуть `null`.",
+      "maxPoints": 3
+    },
+    {
+      "id": "b_p20",
+      "title": "callWithDefaults",
+      "prompt": "Реализуйте функцию `callWithDefaults(fn, defaults)`, где `defaults` — объект значений по умолчанию для параметров, а `fn` ожидает один объект-аргумент. Возвращаемая функция должна объединять переданные значения с defaults (переданные важнее) и вызывать `fn`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p21",
+      "title": "sideDiagonal",
+      "prompt": "Реализуйте функцию `sideDiagonal(matrix)`, которая возвращает массив побочной диагонали квадратной матрицы. Если матрица не квадратная — возвращайте `null`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p22",
+      "title": "removeBy",
+      "prompt": "Напишите функцию `removeBy(predicate, arr)`, которая удаляет из массива (мутирующе) элементы, для которых predicate истинно, и возвращает объект `{removed, left}` где `removed` — массив удалённых, `left` — ссылка на исходный массив после удаления.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p23",
+      "title": "unzipArrays",
+      "prompt": "Реализуйте функцию `unzip(pairs)`, которая из массива пар делает объект `{a: [], b: []}`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p24",
+      "title": "rowSums",
+      "prompt": "Реализуйте функцию `rowSums(matrix)`, которая возвращает массив сумм по каждой строке матрицы.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p25",
+      "title": "diffKeys",
+      "prompt": "Напишите функцию `diffKeys(a, b)`, которая возвращает объект `{onlyInA: [], onlyInB: [], inBoth: []}` по ключам двух объектов. Используйте `in` и `Object.keys`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p26",
+      "title": "evaluateRPN",
+      "prompt": "Реализуйте функцию `evaluateRPN(tokens)`, где `tokens` — массив строк/чисел в обратной польской записи (например `[\"2\",\"3\",\"+\"]`). Поддержать `+ - * /`. Вернуть число. Использовать стек-массив. Ошибки (недостаточно операндов/неизвестный токен) — вернуть `null`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p27",
+      "title": "makeLogger",
+      "prompt": "Напишите функцию `makeLogger(prefix)`, которая возвращает функцию `log(message)`. `log` возвращает объект `{text, length}`, где `text` — строка `prefix + \": \" + message`, `length` — длина `text`. Использовать замыкание.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p28",
+      "title": "applyDiscount",
+      "prompt": "Реализуйте функцию `applyDiscount(cart, percent)`, где `cart` — массив товаров `{price, ...}`. Вернуть новый массив, где у каждого товара добавлено поле `finalPrice` с учётом скидки. Скидка может быть строкой `\"10\"` — нужно корректно привести к числу. Исходные объекты не мутировать.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p29",
+      "title": "indexOfFirstNegative",
+      "prompt": "Реализуйте функцию `indexOfFirstNegative(arr)`, которая возвращает индекс первого отрицательного числа или `-1`, если отрицательных нет.",
+      "maxPoints": 3
+    },
+    {
+      "id": "b_p30",
+      "title": "sortByField",
+      "prompt": "Напишите функцию `sortByField(list, field, order)`, где `order` — `\"asc\"`/`\"desc\"`. Вернуть новый массив, отсортированный по `field`. Если поле отсутствует — считать его `Infinity` при `\"asc\"` и `-Infinity` при `\"desc\"`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p31",
+      "title": "computeTotals",
+      "prompt": "Реализуйте функцию `computeTotals(report)`, где `report` — объект, ключи — отделы, значения — массив чисел продаж. Вернуть объект `{byDept: {...}, total}`: сумма по каждому отделу и общая.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p32",
+      "title": "chunkArray",
+      "prompt": "Напишите функцию `chunk(arr, size)`, которая разбивает массив на подмассивы длины `size` (последний может быть короче).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p33",
+      "title": "matrixSumTotal",
+      "prompt": "Напишите функцию `matrixSum(matrix)`, которая принимает двумерный массив чисел и возвращает сумму всех элементов. Пустые строки (подмассивы) корректно обрабатывайте.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p34",
+      "title": "rotate",
+      "prompt": "Реализуйте функцию `rotate(arr, k)`, которая возвращает новый массив — циклический сдвиг вправо на `k` (k может быть отрицательным). Условие: не использовать `reverse` и не использовать \"готовые\" методы вращения; допускаются `slice`/`concat`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p35",
+      "title": "intersectArrays",
+      "prompt": "Напишите функцию `intersect(a, b)`, которая возвращает массив общих элементов двух массивов (без дублей, без `Set`).",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p36",
+      "title": "pairsToObject",
+      "prompt": "Напишите функцию `pairsToObject(pairs)`, где `pairs` — массив пар `[key, value]`. Вернуть объект. Если ключ повторяется — последнее значение перезаписывает.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p37",
+      "title": "mainDiagonal",
+      "prompt": "Реализуйте функцию `mainDiagonal(matrix)`, которая возвращает массив элементов главной диагонали (индексы `[i][i]`) до минимального размера.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p38",
+      "title": "createCounter",
+      "prompt": "Напишите функцию `createCounter(start)`, которая возвращает функцию-счётчик. Каждый вызов счётчика увеличивает внутреннее значение на 1 и возвращает объект `{value, isEven}`. Используйте замыкание; внешние переменные использовать нельзя.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p39",
+      "title": "pluck",
+      "prompt": "Напишите функцию `pluck(items, path)`, где `items` — массив объектов, `path` — строка вида `\"a.b.c\"`. Верните массив значений по пути для каждого элемента. Если где-то нет свойства — вернуть `undefined` для этого элемента (используйте опциональную цепочку или аккуратные проверки).",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p40",
+      "title": "intersect",
+      "prompt": "Реализуйте функцию `intersect(a, b)`, возвращающую массив общих элементов (строгое сравнение `===`), без дубликатов. Нельзя использовать `Set`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p41",
+      "title": "hasAllKeys",
+      "prompt": "Напишите функцию `hasAllKeys(obj, keys)`, которая проверяет, что все ключи из массива присутствуют в объекте (через `in`). Вернуть boolean.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p42",
+      "title": "calcStats",
+      "prompt": "Напишите функцию `calcStats(nums)`, которая возвращает объект `{count, sum, mean, min, max}` для массива чисел. Если массив пуст — `min/max/mean` должны быть `null`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p43",
+      "title": "mapManual",
+      "prompt": "Реализуйте функцию `mapManual(arr, mapper)`, которая работает как `map`, но написана вручную через цикл и возвращает новый массив.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p44",
+      "title": "compareUsers",
+      "prompt": "Реализуйте функцию `compareUsers(u1, u2)`, где каждый аргумент — объект вида `{name, age, score}`. Функция должна вернуть строку: кто \"лучше\" по правилам: сначала больше `score`, при равенстве — меньше `age`, при равенстве — по алфавиту `name`. Нельзя мутировать входные объекты.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p45",
+      "title": "countEvens",
+      "prompt": "Напишите функцию `countEvens(arr)`, которая считает количество чётных элементов.",
+      "maxPoints": 3
+    },
+    {
+      "id": "b_p46",
+      "title": "calcExpression",
+      "prompt": "Напишите функцию `calcExpression(a, b, c)`, которая принимает три числа и возвращает объект с результатами: `sum` (a+b+c), `avg` (среднее), `min`, `max`, `isAllPositive` (все > 0). Запрещено использовать глобальные переменные. В конце верните именно объект.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p47",
+      "title": "uniqueNumbers",
+      "prompt": "Реализуйте функцию `uniqueNumbers(values)`, принимающую массив, где могут быть числа и строки-числа. Верните массив уникальных чисел (после приведения к Number), исключив `NaN`. Порядок появления сохранить.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p48",
+      "title": "matrixSum",
+      "prompt": "Напишите функцию `matrixSum(matrix)`, где `matrix` — двумерный массив чисел (матрица). Вернуть объект `{sum, rows, cols}`. `cols` — максимальная длина строки. Пустые строки считать длиной 0.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p49",
+      "title": "createAdder",
+      "prompt": "Напишите функцию `createAdder(x)`, которая возвращает функцию `(y) => x + Number(y)`. Если `Number(y)` даёт `NaN`, возвращать `NaN`. Показать замыкание.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p50",
+      "title": "safeAccess",
+      "prompt": "Напишите функцию `safeAccess(obj, keys)`, где `keys` — массив ключей. Вернуть значение или `null`, если путь не найден. Отличие от `deepGet`: здесь вернуть `null` вместо `undefined`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p51",
+      "title": "sumProperties",
+      "prompt": "Напишите функцию `sumProperties(obj)`, которая суммирует все числовые свойства объекта (после Number), игнорируя NaN. Вернуть число.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p52",
+      "title": "countOccurrencesArray",
+      "prompt": "Реализуйте функцию `countOccurrences(arr)`, которая возвращает объект `{значение: количество}` (ключи приводить к строке).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p53",
+      "title": "findInMatrix",
+      "prompt": "Напишите функцию `findInMatrix(matrix, predicate)`, где `predicate(value, r, c)` — функция. Вернуть объект `{value, row, col}` первого совпадения, иначе `null`. Использовать вложенные циклы и ранний выход.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p54",
+      "title": "filterManual",
+      "prompt": "Напишите функцию `filterManual(arr, predicate)`, которая работает как `filter`, но реализована вручную через цикл.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p55",
+      "title": "objectToPairs",
+      "prompt": "Реализуйте функцию `objectToPairs(obj)`, возвращающую массив пар `[key, value]` (аналог `Object.entries`, но вручную). Порядок — как `Object.keys`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p56",
+      "title": "grade",
+      "prompt": "Реализуйте функцию `grade(score)`, где score может быть числом или строкой. Вернуть `\"A\"|\"B\"|\"C\"|\"D\"|\"F\"` по диапазонам (например >=90 A, >=80 B...). Некорректное — `\"Invalid\"`. Использовать `if/else`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p57",
+      "title": "flatten1Array",
+      "prompt": "Реализуйте функцию `flatten1(arr)`, которая \"расплющивает\" массив на один уровень (без `flat()`).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p58",
+      "title": "isPalindromeArray",
+      "prompt": "Напишите функцию `isPalindromeArray(arr)`, которая проверяет, является ли массив палиндромом (сравнение `===`).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p59",
+      "title": "sumBy",
+      "prompt": "Реализуйте функцию `sumBy(list, key)`, где `list` — массив объектов, `key` — имя поля. Суммируйте `Number(item[key])`, игнорируя `NaN`. Верните число.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p60",
+      "title": "findInMatrixFunc",
+      "prompt": "Реализуйте функцию `findInMatrix(matrix, predicate)`, где `predicate(value, row, col)` — функция. Вернуть объект `{value, row, col}` первого совпадения или `null`, если совпадений нет.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p61",
+      "title": "formatUser",
+      "prompt": "Напишите функцию `formatUser(user)`, где `user` — объект `{firstName, lastName, age}`. Вернуть строку `\"LastName FirstName (age)\"`. Если `age` отсутствует — подставить `\"unknown\"`. Все части явно приводить к строке.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p62",
+      "title": "maxEven",
+      "prompt": "Напишите функцию `maxEven(arr)`, которая возвращает максимальный чётный элемент массива чисел. Если чётных нет — вернуть `null`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p63",
+      "title": "once",
+      "prompt": "Реализуйте функцию `once(fn)`, которая принимает функцию и возвращает новую, вызываемую только один раз. При повторных вызовах возвращает результат первого вызова. Демонстрация должна работать с функцией, возвращающей объект.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p64",
+      "title": "rotateLeft",
+      "prompt": "Напишите функцию `rotateLeft(arr, k)`, которая возвращает новый массив, сдвинутый влево на `k` (k может быть больше длины).",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p65",
+      "title": "calcBitFlags",
+      "prompt": "Реализуйте функцию `calcBitFlags(flagsArr)`, где `flagsArr` — массив чисел (степени двойки). Верните одно число — результат побитового OR всех флагов. Дополнительно вернуть объект `{value, has(flag)}` где `has` — функция, проверяющая наличие флага (через `&`).",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p66",
+      "title": "chunk",
+      "prompt": "Напишите функцию `chunk(arr, size)`, которая делит массив на подмассивы длиной `size` (последний может быть короче). Верните массив массивов. `size` приводить к целому числу; если некорректно — вернуть пустой массив.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p67",
+      "title": "slidingWindow",
+      "prompt": "Напишите функцию `slidingWindow(arr, size)`, возвращающую массив \"окон\" — подмассивов длины `size` для каждой позиции. Например `[1,2,3,4], size=3` -> `[[1,2,3],[2,3,4]]`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p68",
+      "title": "paginate",
+      "prompt": "Напишите функцию `paginate(items, page, pageSize)`, возвращающую объект `{page, pageSize, total, pages, data}`. `data` — элементы нужной страницы. `page` и `pageSize` привести к целым, обработать выход за пределы.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p69",
+      "title": "toBooleanMap",
+      "prompt": "Реализуйте функцию `toBooleanMap(obj)`, которая возвращает новый объект, где каждое значение заменено на `!!value`. Ключи сохраняются.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p70",
+      "title": "partition",
+      "prompt": "Напишите функцию `partition(arr, predicate)`, которая возвращает объект `{yes: [], no: []}` по результату `predicate(el, i)`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p71",
+      "title": "deepGet",
+      "prompt": "Реализуйте функцию `deepGet(obj, pathArr)`, где `pathArr` — массив ключей (строки/числа). Верните значение по пути или `undefined`, если путь не существует. Нельзя использовать строковый путь, только массив.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p72",
+      "title": "transpose",
+      "prompt": "Реализуйте функцию `transpose(matrix)`, которая возвращает транспонированную матрицу. Если строки разной длины — отсутствующие элементы заполнять `null`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p73",
+      "title": "sumNested",
+      "prompt": "Реализуйте функцию `sumNested(arr)`, где `arr` — массив, содержащий числа или массивы чисел любой вложенности. Нужно вернуть сумму всех чисел. Решение должно быть рекурсивным (через функцию).",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p74",
+      "title": "contains",
+      "prompt": "Реализуйте функцию `contains(arr, value)`, которая возвращает `true/false`, есть ли `value` в массиве (без `includes`).",
+      "maxPoints": 3
+    },
+    {
+      "id": "b_p75",
+      "title": "omit",
+      "prompt": "Реализуйте функцию `omit(obj, keys)`, возвращающую новый объект без перечисленных ключей. Входной объект не менять.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p76",
+      "title": "sumBetween",
+      "prompt": "Напишите функцию `sumBetween(arr, a, b)`, которая суммирует элементы, которые находятся в диапазоне `[a, b]` включительно.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p77",
+      "title": "indexesOf",
+      "prompt": "Напишите функцию `indexesOf(arr, value)`, которая возвращает массив всех индексов, где встречается `value`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p78",
+      "title": "removeAll",
+      "prompt": "Реализуйте функцию `removeAll(arr, value)`, которая возвращает новый массив без элементов, равных `value` (строгое `===`).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p79",
+      "title": "colSums",
+      "prompt": "Реализуйте функцию `colSums(matrix)`, которая возвращает массив сумм по каждому столбцу. Если строки разной длины — отсутствующие элементы считать как 0.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p80",
+      "title": "rotateMatrixRight",
+      "prompt": "Напишите функцию `rotateMatrixRight(matrix)`, которая поворачивает квадратную матрицу на 90° вправо и возвращает новую матрицу. Если матрица не квадратная — вернуть `null`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p81",
+      "title": "getTopN",
+      "prompt": "Реализуйте функцию `getTopN(items, n, selector)`, где `selector(item)` возвращает число. Вернуть массив из N элементов с максимальными значениями. Исходный массив не мутировать. При равенстве — сохранять относительный порядок.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p82",
+      "title": "getById",
+      "prompt": "Реализуйте функцию `getById(list, id)`, где `list` — массив объектов `{id, ...}`. Вернуть объект или `null`, если не найден. Нельзя использовать `filter`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p83",
+      "title": "createEventBus",
+      "prompt": "Реализуйте функцию `createEventBus()`, возвращающую объект с методами `on(event, handler)`, `off(event, handler)`, `emit(event, payload)`. Хранить обработчики в объекте, где ключ — имя события, значение — массив функций. Это должно использовать замыкание для приватного хранилища.",
+      "maxPoints": 7
+    },
+    {
+      "id": "b_p84",
+      "title": "compose",
+      "prompt": "Напишите функцию `compose(functions)`, аналогично `pipe`, но справа налево. Убедитесь, что работает с функциями, возвращающими массивы.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p85",
+      "title": "secondMin",
+      "prompt": "Напишите функцию `secondMin(arr)`, аналогично — второй минимальный элемент без сортировки.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p86",
+      "title": "mapObject",
+      "prompt": "Напишите функцию `mapObject(obj, mapper)`, которая возвращает новый объект с теми же ключами, но значениями `mapper(value, key)`. Используйте `Object.keys`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p87",
+      "title": "validateUser",
+      "prompt": "Реализуйте функцию `validateUser(user)`, возвращающую объект `{ok, errors}` где `errors` — массив строк. Проверки: `name` непустая строка, `age` число и >= 0, `email` содержит `\"@\"`. Ничего не выбрасывать — только собирать ошибки.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p88",
+      "title": "transposeMatrix",
+      "prompt": "Напишите функцию `transpose(matrix)`, которая возвращает транспонированную матрицу. Если строки разной длины — недостающие элементы заполнять `null`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p89",
+      "title": "stablePartition",
+      "prompt": "Напишите функцию `stablePartition(arr, predicate)`, возвращающую объект `{yes, no}` — два массива, сохраняя порядок. `predicate` — функция.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p90",
+      "title": "secondMax",
+      "prompt": "Реализуйте функцию `secondMax(arr)`, которая возвращает второй по величине элемент (без сортировки). Если второго нет (массив < 2) — `null`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p91",
+      "title": "sumIf",
+      "prompt": "Напишите функцию `sumIf(arr, predicate)`, которая суммирует элементы массива чисел, но учитывает только те, где `predicate(value, index)` истинно. `predicate` — функция.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p92",
+      "title": "minOdd",
+      "prompt": "Напишите функцию `minOdd(arr)`, которая возвращает минимальный нечётный элемент. Если нечётных нет — `null`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p93",
+      "title": "calculateLeaderboard",
+      "prompt": "Реализуйте функцию `calculateLeaderboard(games)`, где `games` — массив матчей `{home, away, homeGoals, awayGoals}`. Вернуть массив команд `{team, points, scored, conceded}`. Победа 3, ничья 1, поражение 0. Отсортировать по points, затем разнице мячей, затем по имени.",
+      "maxPoints": 7
+    },
+    {
+      "id": "b_p94",
+      "title": "addComputedKey",
+      "prompt": "Реализуйте функцию `addComputedKey(obj, keyBase, index, value)`, которая добавляет вычисляемое свойство, например ключ `${keyBase}_${index}`. Вернуть объект. Покажите использование вычисляемого свойства.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p95",
+      "title": "removeLast",
+      "prompt": "Реализуйте функцию `removeLast(arr, value)`, которая удаляет последнее вхождение `value` и возвращает новый массив.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p96",
+      "title": "createIIFEConfig",
+      "prompt": "Реализуйте функцию `createIIFEConfig()`, где внутри IIFE создаётся приватный объект конфигурации `{mode, version}` и возвращаются методы `get(key)` и `set(key, value)`. Нужно показать, как IIFE изолирует переменные и не загрязняет внешнюю область видимости.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p97",
+      "title": "pick",
+      "prompt": "Напишите функцию `pick(obj, keys)`, где `keys` — массив строк. Вернуть новый объект, содержащий только перечисленные ключи, которые реально присутствуют в `obj` (используйте `in`). Значения переносить как есть.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p98",
+      "title": "parseCSVLine",
+      "prompt": "Реализуйте функцию `parseCSVLine(line)`, где `line` — строка с полями через `;` без кавычек. Вернуть массив значений, где числа приводятся к Number (если не NaN), иначе остаются строкой.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p99",
+      "title": "buildQuery",
+      "prompt": "Напишите функцию `buildQuery(params)`, где `params` — объект с примитивными значениями. Вернуть строку вида `key1=value1&key2=value2` только для ключей, где значение не `null` и не `undefined`. Значения преобразовывать через `String()`. Порядок — как в `Object.keys`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p100",
+      "title": "mergeStats",
+      "prompt": "Напишите функцию `mergeStats(a, b)`, где `a` и `b` — объекты с числовыми полями. Вернуть объект, где для каждого ключа сумма `a[key] + b[key]`, отсутствующие считать 0. Использовать оператор `in` для проверки.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p101",
+      "title": "sumArguments",
+      "prompt": "Напишите функцию `sumArguments()`, которая принимает любое количество аргументов и суммирует только те, которые после `Number()` являются валидными числами. Вернуть число. Использовать `arguments` (не rest).",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p102",
+      "title": "differenceArrays",
+      "prompt": "Реализуйте функцию `difference(a, b)`, которая возвращает элементы из `a`, которых нет в `b`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p103",
+      "title": "makeIdGenerator",
+      "prompt": "Напишите функцию `makeIdGenerator(prefix)`, которая возвращает функцию, создающую идентификаторы вида `prefix-1`, `prefix-2`, … и возвращающую объект `{id, createdAt}` где `createdAt` — счётчик (инкремент) как \"время\".",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p104",
+      "title": "normalizeRows",
+      "prompt": "Напишите функцию `normalizeRows(matrix)`, которая возвращает новую матрицу, где каждая строка делится на сумму своей строки. Если сумма строки равна 0 — строку вернуть как массив нулей той же длины.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p105",
+      "title": "validateAndTransform",
+      "prompt": "Напишите функцию `validateAndTransform(list, validator, transformer)`, где `validator(item)` возвращает boolean, `transformer(item)` возвращает новый объект. Вернуть объект `{valid: [], invalid: []}` где в valid лежат трансформированные элементы.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p106",
+      "title": "buildHistogram",
+      "prompt": "Реализуйте функцию `buildHistogram(nums, step)`, где `step` — размер интервала. Вернуть массив объектов `{from, to, count}`. Например step=10: 0-9, 10-19... для неотрицательных чисел. Некорректные числа игнорировать.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p107",
+      "title": "unique",
+      "prompt": "Напишите функцию `unique(arr)`, которая возвращает новый массив уникальных элементов, сохраняя порядок. Нельзя использовать `Set`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p108",
+      "title": "buildPermissions",
+      "prompt": "Напишите функцию `buildPermissions(userRoles, rolePermissions)`, где `userRoles` — массив строк ролей, `rolePermissions` — объект `{role: [perm1, perm2]}`. Вернуть массив уникальных прав (строки) в порядке добавления. Нельзя использовать Set.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p109",
+      "title": "pathToRoot",
+      "prompt": "Напишите функцию `pathToRoot(items, id)`, где `items` — массив `{id, parentId}`. Вернуть массив id от указанного узла до корня (включительно). Если есть разрыв — остановиться. Решение можно циклом.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p110",
+      "title": "unzip",
+      "prompt": "Напишите функцию `unzip(pairs)`, принимающую массив пар и возвращающую объект `{a: [], b: []}`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p111",
+      "title": "findPairWithSum",
+      "prompt": "Реализуйте функцию `findPairWithSum(arr, target)`, которая возвращает пару индексов `[i, j]`, где `arr[i] + arr[j] === target` (i < j). Если нет — `null`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p112",
+      "title": "calcWithOperator",
+      "prompt": "Напишите функцию `calcWithOperator(a, b, op)`, где `op` — строка `\"+\", \"-\", \"*\", \"/\", \"%\", \"**\"`. Вернуть число или `null` если оператор неизвестен. Использовать `switch`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p113",
+      "title": "indexBy",
+      "prompt": "Напишите функцию `indexBy(list, key)`, где `list` — массив объектов. Верните объект-индекс: `result[item[key]] = item`. Элементы без `key` пропускать.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p114",
+      "title": "updateScores",
+      "prompt": "Напишите функцию `updateScores(users, delta)`, где `users` — массив объектов `{name, score}`. `delta` — либо число, либо объект `{name: delta}`. Вернуть новый массив с обновлёнными score: если `delta` число — всем прибавить, если объект — точечно по имени.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p115",
+      "title": "parseKeyValuePairs",
+      "prompt": "Напишите функцию `parseKeyValuePairs(text)`, где `text` — строка вида `\"a=1;b=hello;c=true\"`. Вернуть объект, пытаясь привести значения: `\"true\"`/`\"false\"` в boolean, числа — в Number, иначе строка.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p116",
+      "title": "slidingWindowSum",
+      "prompt": "Реализуйте функцию `slidingWindowSum(arr, size)`, которая возвращает массив сумм для каждого \"окна\" длины `size`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p117",
+      "title": "isSortedDesc",
+      "prompt": "Реализуйте функцию `isSortedDesc(arr)`, которая проверяет сортировку по убыванию (нестрого).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p118",
+      "title": "findFirstMatch",
+      "prompt": "Напишите функцию `findFirstMatch(items, predicate)`, где `items` — массив, `predicate` — функция-проверка. Верните первый элемент, для которого `predicate` вернул `true`, иначе `undefined`. Нельзя использовать `Array.prototype.find` (реализуйте цикл).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p119",
+      "title": "safeDivide",
+      "prompt": "Реализуйте функцию `safeDivide(a, b)`, которая возвращает объект `{result, error}`. Если `b` равен `0` или не число (после приведения к Number), вернуть `{result: null, error: \"Division error\"}`. Иначе вернуть результат деления и `error: null`. Обязательно показать явное преобразование типов.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p120",
+      "title": "renameKey",
+      "prompt": "Напишите функцию `renameKey(obj, from, to)`. Если `from` существует в объекте — создать `to` со старым значением и удалить `from`. Вернуть `true`, если переименование произошло, иначе `false`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p121",
+      "title": "removeFalsyProps",
+      "prompt": "Реализуйте функцию `removeFalsyProps(obj)`, которая удаляет из объекта все свойства со значениями `false`, `0`, `\"\"`, `null`, `undefined`, `NaN`. Возвращает количество удалённых свойств. Работает мутирующе.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p122",
+      "title": "removeFirst",
+      "prompt": "Напишите функцию `removeFirst(arr, value)`, которая возвращает новый массив, удалив только первое вхождение `value`. Если не найдено — вернуть копию исходного массива.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p123",
+      "title": "rankUsers",
+      "prompt": "Реализуйте функцию `rankUsers(users)`, где каждый `{name, score}`. Вернуть массив объектов `{name, score, rank}` с местом в рейтинге (1 — лучший). При равных score ранги одинаковые (например 1,1,3…). Исходный массив не мутировать.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p124",
+      "title": "insertAfter",
+      "prompt": "Реализуйте функцию `insertAfter(arr, afterValue, newValue)`, которая возвращает новый массив: после каждого вхождения `afterValue` вставить `newValue`. Сравнение строгое.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p125",
+      "title": "countOccurrences",
+      "prompt": "Реализуйте функцию `countOccurrences(arr)`, возвращающую объект `{valueAsString: count}` для всех элементов массива (значения ключей приводить к строке). Для объектов ключом использовать `\"[object Object]\"` (стандартное приведение).",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p126",
+      "title": "sanitizeStrings",
+      "prompt": "Напишите функцию `sanitizeStrings(arr)`, принимающую массив строк. Вернуть новый массив: обрезать пробелы, заменить множественные пробелы внутри на один, удалить пустые строки. Всё сделать без regex (циклом).",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p127",
+      "title": "memoizeLast",
+      "prompt": "Напишите функцию `memoizeLast(fn)`, которая кеширует результат только для последних аргументов (примитивы). При совпадении аргументов возвращает прошлый результат, иначе пересчитывает. Продемонстрируйте на функции, которая обрабатывает массив (например считает сумму).",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p128",
+      "title": "reverseCopy",
+      "prompt": "Напишите функцию `reverseCopy(arr)`, которая возвращает новый массив в обратном порядке, не используя `reverse()`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p129",
+      "title": "countDown",
+      "prompt": "Реализуйте функцию `countDown(n, onTick)`, которая вызывает `onTick(current)` для n, n-1, …, 0 и возвращает массив всех значений, которые вернул `onTick`. `onTick` — функция. Использовать цикл.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p130",
+      "title": "miniTemplate",
+      "prompt": "Реализуйте функцию `miniTemplate(template, data)`, где `template` — строка с плейсхолдерами вида `{{key}}`, а `data` — объект значений. Нужно вернуть строку, где плейсхолдеры заменены на `String(data[key])`, а если ключа нет — оставить как есть. Реализовать без регулярных выражений: пройтись по строке и собрать результат вручную.",
+      "maxPoints": 7
+    },
+    {
+      "id": "b_p131",
+      "title": "makeCache",
+      "prompt": "Напишите функцию `makeCache(maxSize)`, возвращающую объект `{get(key), set(key, value), size()}`. Хранилище — массив пар или объект + массив ключей. При превышении maxSize удалять самый старый ключ. Не использовать Map/Set.",
+      "maxPoints": 7
+    },
+    {
+      "id": "b_p132",
+      "title": "normalizePhone",
+      "prompt": "Напишите функцию `normalizePhone(book)`, где `book` — массив объектов `{name, phone}`. Нужно вернуть новый массив объектов `{name, phone}`, где телефон приведён к формату `+7XXXXXXXXXX`: удалить пробелы/скобки/дефисы, заменить ведущую `8` на `+7`, если номер 10-значный — добавить `+7`. Неверные номера оставить как `null`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p133",
+      "title": "countByCellType",
+      "prompt": "Реализуйте функцию `countByCellType(matrix)`, где `matrix` — двумерный массив любых значений. Вернуть объект с количеством типов: `{number, string, boolean, object, undefined, function, symbol, bigint, null}`.",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p134",
+      "title": "countGreaterThan",
+      "prompt": "Напишите функцию `countGreaterThan(arr, x)`, которая возвращает количество элементов массива, строго больших `x`.",
+      "maxPoints": 3
+    },
+    {
+      "id": "b_p135",
+      "title": "groupBy",
+      "prompt": "Реализуйте функцию `groupBy(items, key)`, где `items` — массив объектов, `key` — строка. Верните объект, где ключи — значения `item[key]`, а значения — массивы элементов. Если у элемента нет такого ключа, складывать в группу `\"__unknown__\"`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p136",
+      "title": "swapMinMax",
+      "prompt": "Реализуйте функцию `swapMinMax(arr)`, которая возвращает новый массив, где местами поменяны минимальный и максимальный элементы (только первые найденные). Исходный массив не менять.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p137",
+      "title": "everyMatch",
+      "prompt": "Реализуйте функцию `everyMatch(items, predicate)`, аналог `every`, но вручную. Возвращает `true/false`. При первом `false` — завершайте цикл (используйте `break`/`return`).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p138",
+      "title": "rotateRight",
+      "prompt": "Реализуйте функцию `rotateRight(arr, k)`, аналогично — вправо.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p139",
+      "title": "runningSumArray",
+      "prompt": "Напишите функцию `runningSum(arr)`, которая возвращает массив накопительных сумм: `[a0, a0+a1, a0+a1+a2, ...]`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p140",
+      "title": "detectChanges",
+      "prompt": "Напишите функцию `detectChanges(oldObj, newObj)`, возвращающую массив изменений `{key, from, to}` для всех ключей, которые есть хотя бы в одном объекте и имеют разные значения (`!==`). Проверять только верхний уровень, без глубины.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p141",
+      "title": "zipArrays",
+      "prompt": "Напишите функцию `zip(a, b)`, которая объединяет два массива в массив пар `[[a0,b0],[a1,b1],…]` до минимальной длины.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p142",
+      "title": "isRectangular",
+      "prompt": "Напишите функцию `isRectangular(matrix)`, которая возвращает `true`, если все строки имеют одинаковую длину, иначе `false`.",
+      "maxPoints": 3
+    },
+    {
+      "id": "b_p143",
+      "title": "maxAtOddIndexes",
+      "prompt": "Реализуйте функцию `maxAtOddIndexes(arr)`, которая находит максимум среди элементов на нечётных индексах. Если таких нет — `null`.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p144",
+      "title": "stringMetrics",
+      "prompt": "Реализуйте функцию `stringMetrics(str)`, возвращающую объект `{length, letters, digits, spaces}`. Посчитать символы по категориям. Не использовать регулярные выражения (делать через перебор).",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p145",
+      "title": "mostFrequent",
+      "prompt": "Напишите функцию `mostFrequent(arr)`, которая возвращает элемент, встречающийся чаще всего. Если несколько — вернуть тот, что встретился раньше. Если массив пуст — `null`.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p146",
+      "title": "multiplyMatrixByScalar",
+      "prompt": "Реализуйте функцию `multiplyMatrixByScalar(matrix, k)`, возвращающую новую матрицу, где каждый элемент умножен на `k` (привести к Number). Исходную не менять.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p147",
+      "title": "isSortedAsc",
+      "prompt": "Реализуйте функцию `isSortedAsc(arr)`, которая проверяет, отсортирован ли массив по возрастанию (нестрого: допускаются равные).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p148",
+      "title": "strictSum",
+      "prompt": "Напишите функцию `strictSum(arr)`, которая работает в `\"use strict\"` внутри функции и суммирует числа массива, но при встрече нечислового элемента выбрасывает ошибку `Error(\"Not a number\")`. Вызов функции должен быть обёрнут снаружи в try/catch в примере использования.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p149",
+      "title": "pipe",
+      "prompt": "Реализуйте функцию `pipe(functions)`, где `functions` — массив функций. Вернуть функцию, которая принимает значение и прогоняет его через все функции слева направо. Проверить на преобразовании массива объектов (например добавить поле).",
+      "maxPoints": 6
+    },
+    {
+      "id": "b_p150",
+      "title": "productOfPositives",
+      "prompt": "Реализуйте функцию `productOfPositives(arr)`, которая перемножает все положительные числа. Если положительных нет — вернуть `1` (как нейтральный элемент).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p151",
+      "title": "diagonal",
+      "prompt": "Напишите функцию `diagonal(matrix)`, возвращающую массив элементов главной диагонали (min(rows, cols)). Матрица — двумерный массив.",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p152",
+      "title": "repeat",
+      "prompt": "Напишите функцию `repeat(fn, times)`, которая вызывает функцию `fn(index)` `times` раз и возвращает массив результатов. `times` привести к целому, при неверном — вернуть [].",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p153",
+      "title": "sumAtEvenIndexes",
+      "prompt": "Напишите функцию `sumAtEvenIndexes(arr)`, которая суммирует элементы, стоящие на чётных индексах (0,2,4,…).",
+      "maxPoints": 4
+    },
+    {
+      "id": "b_p154",
+      "title": "countWords",
+      "prompt": "Реализуйте функцию `countWords(text)`, возвращающую объект `{word: count}`. Разделители — пробелы и запятые. Регистр игнорировать. Пустые элементы не учитывать.",
+      "maxPoints": 5
+    },
+    {
+      "id": "b_p155",
+      "title": "splitEvenOdd",
+      "prompt": "Напишите функцию `splitEvenOdd(nums)`, которая принимает массив чисел и возвращает объект `{even: [], odd: []}`. Ноль считать чётным. Не использовать `filter`.",
+      "maxPoints": 4
+    }
+  ]
+},
     {
       "id": "js_advanced",
       "title": "JS Продвинутый",
