@@ -810,9 +810,9 @@
             throw new Error(`data.json: practice элемент должен быть объектом (test=${t.id})`);
           }
           if(!p.id || !p.title || !p.prompt) throw new Error(`data.json: practice должен иметь id/title/prompt (test=${t.id})`);
-          if(p.maxPoints == null) p.maxPoints = 5;
-          if(typeof p.maxPoints !== "number" || p.maxPoints < 0 || p.maxPoints > 5) {
-            throw new Error(`data.json: practice.maxPoints должен быть числом 0..5 (task=${p.id})`);
+          if(p.maxPoints == null) p.maxPoints = 7;
+          if(typeof p.maxPoints !== "number" || p.maxPoints < 0 || p.maxPoints > 7) {
+            throw new Error(`data.json: practice.maxPoints должен быть числом 0..7 (task=${p.id})`);
           }
         }
       }
@@ -976,7 +976,7 @@
         prompt: p.prompt,
         answerText: "",
         teacherPoints: null,
-        maxPoints: (typeof p.maxPoints === "number" ? p.maxPoints : 5)
+        maxPoints: (typeof p.maxPoints === "number" ? p.maxPoints : 7)
       }));
 
       return {
@@ -1002,7 +1002,7 @@
         sections: { theory: pickedTheory, practice: pickedPractice },
         totals: {
           theoryAuto: { points: 0, max: pickedTheory.length },
-          practiceTeacher: { points: 0, max: pickedPractice.reduce((s,x)=>s+(x.maxPoints||5),0) },
+          practiceTeacher: { points: 0, max: pickedPractice.reduce((s,x)=>s+(x.maxPoints||7),0) },
           total: { points: 0, max: 0, percent: 0 }
         }
       };
