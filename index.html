@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Тестирование: Ученик / Преподаватель</title>
+  <title>Тестирование (40 вопросов)</title>
 
   <style>
     :root{
@@ -16,7 +16,6 @@
       --primary:#2563eb;
       --danger:#dc2626;
       --ok:#16a34a;
-      --warn:#d97706;
 
       --radius: 12px;
       --maxw: 980px;
@@ -32,281 +31,117 @@
       --text:#111827;
       --muted:#6b7280;
       --border:#e5e7eb;
-
       --primary:#2563eb;
       --danger:#dc2626;
       --ok:#16a34a;
-      --warn:#d97706;
-
       --focus: 0 0 0 3px rgba(37,99,235,.25);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0;
-      font-family: var(--font);
-      color: var(--text);
-      background: var(--bg);
-    }
+    body{margin:0;font-family:var(--font);color:var(--text);background:var(--bg);}
 
-    .container{
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 12px 12px 40px;
-    }
+    .container{max-width:var(--maxw);margin:0 auto;padding:12px 12px 40px;}
+    header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border);}
+    .headerRow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;}
+    .brand{display:flex;align-items:center;gap:10px;min-width:200px;}
+    .logo{width:36px;height:36px;border-radius:10px;background:var(--primary);display:grid;place-items:center;flex:0 0 auto;}
+    .logo svg{width:20px;height:20px;fill:#fff}
+    .brand h1{font-size:14px;margin:0;font-weight:800;line-height:1.2;}
+    .brand .sub{font-size:12px;color:var(--muted);margin-top:2px;display:block;line-height:1.35;}
+    .top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
 
-    header{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .headerRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      padding: 10px 0;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width: 200px;
-    }
-    .logo{
-      width:36px;height:36px;border-radius:10px;
-      background: var(--primary);
-      display:grid; place-items:center;
-      flex: 0 0 auto;
-    }
-    .logo svg{width:20px;height:20px; fill:#fff}
-    .brand h1{
-      font-size: 14px;
-      margin:0;
-      font-weight: 800;
-      line-height:1.2;
-    }
-    .brand .sub{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-      display:block;
-      line-height: 1.35;
-    }
-    .top-actions{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .stack{display:flex; flex-direction:column; gap: 12px;}
-    .card{
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px;
-    }
-    .card h2{
-      margin:0 0 8px;
-      font-size: 14px;
-      font-weight: 800;
-    }
-    .muted{color: var(--muted)}
-    .divider{height:1px; background: var(--border); margin: 12px 0;}
+    .stack{display:flex;flex-direction:column;gap:12px;}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:12px;}
+    .card h2{margin:0 0 8px;font-size:14px;font-weight:800;}
+    .muted{color:var(--muted)}
+    .divider{height:1px;background:var(--border);margin:12px 0;}
 
     .btn{
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text);
-      border-radius: 10px;
-      padding: 10px 12px;
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      border-radius:10px;
+      padding:10px 12px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap: 8px;
+      gap:8px;
       cursor:pointer;
       user-select:none;
       text-decoration:none;
-      font-weight: 700;
-      line-height: 1;
-      min-height: 40px;
+      font-weight:700;
+      line-height:1;
+      min-height:40px;
     }
     .btn:hover{border-color: color-mix(in oklab, var(--border), #fff 12%)}
     .btn:active{transform: translateY(1px)}
     .btn:focus{outline:none; box-shadow: var(--focus)}
+    .btn.primary{background:var(--primary);border-color:var(--primary);color:#fff;}
+    .btn.danger{background:var(--danger);border-color:var(--danger);color:#fff;}
 
-    .btn.primary{background: var(--primary); border-color: var(--primary); color:#fff;}
-    .btn.danger{background: var(--danger); border-color: var(--danger); color:#fff;}
-
-    .icon{width:16px;height:16px; display:inline-block; flex:0 0 auto; fill: currentColor;}
+    .icon{width:16px;height:16px;display:inline-block;flex:0 0 auto;fill:currentColor;}
 
     .pill{
       display:inline-flex;
       align-items:center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text);
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      width:100%;
+      justify-content:space-between;
     }
     .pill strong{font-weight:800}
-    .pill small{color: var(--muted)}
-    .timer{ font-family: var(--mono); font-weight: 800; letter-spacing: .2px; }
+    .timer{font-family:var(--mono);font-weight:800;letter-spacing:.2px;}
 
-    .row{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:flex-end;
-    }
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}
     .row.center{align-items:center}
     .row.between{justify-content:space-between}
 
-    label{
-      font-size: 12px;
-      color: var(--muted);
-      display:block;
-      margin: 0 0 6px;
-    }
-    .field{flex:1; min-width: 220px;}
+    label{font-size:12px;color:var(--muted);display:block;margin:0 0 6px;}
+    .field{flex:1;min-width:220px;}
 
-    input[type="text"], input[type="number"], select, textarea{
+    input[type="text"], select{
       width:100%;
-      padding: 11px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text);
-      font-family: var(--font);
-      outline: none;
+      padding:11px 12px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      font-family:var(--font);
+      outline:none;
     }
     select{cursor:pointer}
-    textarea{min-height: 120px; resize: vertical; font-family: var(--mono); line-height: 1.35;}
-    input:focus, select:focus, textarea:focus{box-shadow: var(--focus)}
-    .help{font-size: 12px; color: var(--muted); margin-top: 6px; line-height:1.4;}
+    input:focus, select:focus{box-shadow:var(--focus)}
+    .help{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4;}
 
-    .q{
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px;
-      background: transparent;
-    }
-    .qhead{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
-      margin-bottom: 10px;
-    }
-    .qtitle{font-weight: 800; font-size: 14px; line-height: 1.25; margin:0;}
-    .qmeta{font-size: 12px; color: var(--muted); margin-top: 6px;}
+    .q{border:1px solid var(--border);border-radius:var(--radius);padding:12px;background:transparent;}
+    .qhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px;}
+    .qtitle{font-weight:800;font-size:14px;line-height:1.25;margin:0;}
+    .qmeta{font-size:12px;color:var(--muted);margin-top:6px;}
 
     .badge{
-      display:inline-flex; align-items:center; gap:6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 12px;
-      white-space:nowrap;
-      font-weight: 700;
-      background: transparent;
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;border-radius:999px;border:1px solid var(--border);
+      color:var(--text);font-size:12px;white-space:nowrap;font-weight:700;background:transparent;
     }
-    .badge.warn{border-color: color-mix(in oklab, var(--warn), var(--border) 65%); }
-    .badge.ok{border-color: color-mix(in oklab, var(--ok), var(--border) 65%); }
-    .badge.danger{border-color: color-mix(in oklab, var(--danger), var(--border) 65%); }
 
     .opt{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: transparent;
+      display:flex;gap:10px;align-items:flex-start;
+      padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;
     }
-    .opt input{margin-top: 3px}
-    .opt .ot{font-size: 13px; line-height: 1.35}
+    .opt input{margin-top:3px}
+    .opt .ot{font-size:13px;line-height:1.35}
 
     .hidden{display:none !important}
     .right{margin-left:auto}
-    .mono{font-family: var(--mono)}
+    .mono{font-family:var(--mono)}
     .small{font-size:12px}
 
-    /* sticky bar on wide screens only */
     .stickybar{ position: sticky; top: 58px; z-index: 10; }
-
-    .table{
-      width:100%;
-      border-collapse:collapse;
-      overflow:hidden;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: transparent;
-    }
-    .table th, .table td{
-      padding: 10px 10px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-      text-align:left;
-      font-size: 13px;
-    }
-    .table th{color: var(--muted); font-weight: 800; font-size: 12px;}
-    .table tr:last-child td{border-bottom:none}
-    .scoreInput{ width: 96px; }
-
-    .modalOverlay{
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      z-index: 9000;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      padding: 16px 10px;
-    }
-    [data-theme="light"] .modalOverlay{background: rgba(17,24,39,0.25)}
-
-    .modal{
-      width: min(var(--maxw), 100%);
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px;
-    }
-    .modalHeader{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      justify-content:space-between;
-    }
-    .seg{
-      display:flex;
-      gap:8px;
-      padding: 4px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: transparent;
-    }
-    .seg button{
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--text);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-weight: 800;
-      cursor:pointer;
-      min-width: 110px;
-    }
-    .seg button.active{
-      background: var(--panel);
-      border-color: var(--border);
-    }
 
     .toast{
       position: fixed;
@@ -329,7 +164,6 @@
       .brand .sub{ display:none; }
       .stickybar{ position: static; top:auto; }
       .btn{ width: 100%; }
-      .pill{ width: 100%; justify-content:space-between; }
       .field{ min-width: 100%; }
     }
   </style>
@@ -347,7 +181,7 @@
           </div>
           <div>
             <h1>Веб‑тестирование</h1>
-            <span class="sub" id="headerSub">Ученик / Преподаватель · импорт/экспорт JSON · 1 час 50 минут на тест</span>
+            <span class="sub">Только тест: 40 вопросов · 1:50:00 · импорт/экспорт JSON</span>
           </div>
         </div>
 
@@ -356,41 +190,18 @@
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14,12.94a7.43,7.43,0,0,0,.05-.94,7.43,7.43,0,0,0-.05-.94l2.11-1.65a.5.5,0,0,0,.12-.63l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.28,7.28,0,0,0-1.63-.94l-.38-2.65A.5.5,0,0,0,13.8,2H10.2a.5.5,0,0,0-.49.42L9.33,5.07a7.28,7.28,0,0,0-1.63.94l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.63L4.86,11.06a7.43,7.43,0,0,0,0,1.88L2.75,14.59a.5.5,0,0,0-.12.63l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.28,7.28,0,0,0,1.63.94l.38,2.65a.5.5,0,0,0,.49.42h3.6a.5.5,0,0,0,.49-.42l.38-2.65a7.28,7.28,0,0,0,1.63-.94l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.63ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
             Настройки
           </button>
-
-          <button class="btn" id="btnHome" title="На главный экран">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            Главная
-          </button>
         </div>
       </div>
     </header>
 
-    <!-- HOME -->
-    <section id="viewHome" class="stack">
+    <section class="stack">
       <div class="card">
-        <h2>Выберите режим</h2>
-        <div class="muted small" style="line-height:1.55">
-          <div><b>Ученик</b> — тест: <b>40</b> вопросов + <b>2</b> задачи, таймер <b>1:50:00</b>.</div>
-          <div><b>Преподаватель</b> — импорт JSON ученика, проверка практики (0–5), итог.</div>
-        </div>
-
-        <div class="row center" style="margin-top:12px">
-          <button class="btn primary" id="btnGoStudent">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            Я Ученик
-          </button>
-          <button class="btn" id="btnGoTeacher">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm-1 7h2v5h-2v-5z"/></svg>
-            Я Преподаватель
-          </button>
-        </div>
-
-        <div class="divider"></div>
+        <h2>Данные</h2>
 
         <div class="row center">
           <div class="pill" title="Статус данных">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
-            <strong>data.json</strong> <small id="dataStatus">проверка…</small>
+            <span class="muted">data.json</span>
+            <strong id="dataStatus">проверка…</strong>
           </div>
 
           <button class="btn" id="btnLoadData">
@@ -410,12 +221,9 @@
           загрузку <span class="mono">./data.json</span>. Тогда используйте «Выбрать файл…».
         </div>
       </div>
-    </section>
 
-    <!-- STUDENT -->
-    <section id="viewStudent" class="hidden stack">
       <div class="card">
-        <h2>Ученик</h2>
+        <h2>Тест</h2>
 
         <div class="row">
           <div class="field">
@@ -430,19 +238,16 @@
             <select id="testSelect">
               <option value="" selected disabled>Выберите тест…</option>
             </select>
-            <div class="help">
-              Формирование: <b>40</b> вопросов (<b>минимум 1</b> из каждого топика) + <b>2</b> задачи.
-              Варианты ответов перемешиваются.
-            </div>
+            <div class="help">Берутся только вопросы: ровно <b>40</b> (или меньше, если в банке меньше). Варианты ответов перемешиваются.</div>
           </div>
 
           <div class="field">
             <label>Общее время</label>
-            <div class="pill" style="justify-content:space-between; width:100%">
+            <div class="pill">
               <span class="muted">Таймер</span>
               <span class="timer" id="studentTimer">01:50:00</span>
             </div>
-            <div class="help">Ровно 1 час 50 минут. По истечении — авто‑завершение и формирование JSON.</div>
+            <div class="help">По истечении времени — авто‑завершение и формирование JSON.</div>
           </div>
         </div>
 
@@ -470,14 +275,12 @@
         <div class="stickybar">
           <div class="card" style="padding:12px">
             <div class="row center">
-              <div class="pill">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm1-16h-2v6l5.25 3.15 1-1.73-4.25-2.52V6z"/></svg>
+              <div class="pill" style="max-width:360px">
                 <span class="muted">Осталось</span>
                 <strong class="timer" id="studentTimerSticky">01:50:00</strong>
               </div>
 
               <div class="pill">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
                 <span class="muted">Тест</span>
                 <strong id="activeTestName">—</strong>
               </div>
@@ -491,16 +294,8 @@
         </div>
 
         <div class="card">
-          <h2 id="theoryTitle">Часть 1: Теория (40 вопросов)</h2>
+          <h2 id="theoryTitle">Теория (40 вопросов)</h2>
           <div id="theoryList" class="stack"></div>
-        </div>
-
-        <div class="card">
-          <h2 id="practiceTitle">Часть 2: Практика (2 задачи)</h2>
-          <div class="muted small" style="margin:-2px 0 10px; line-height:1.45">
-            Решения вводите текстом. Баллы выставит преподаватель.
-          </div>
-          <div id="practiceList" class="stack"></div>
         </div>
 
         <div class="card">
@@ -510,104 +305,11 @@
       </div>
     </section>
 
-    <!-- TEACHER -->
-    <section id="viewTeacher" class="hidden stack">
-      <div class="card">
-        <h2>Преподаватель</h2>
-
-        <div class="row">
-          <div class="field" style="min-width: 280px">
-            <label>Импорт JSON ответов ученика</label>
-            <input id="teacherImportFile" type="file" accept="application/json" />
-            <div class="help">Импортируйте файл, который ученик скачал после завершения.</div>
-          </div>
-
-          <div class="field" style="min-width: 280px">
-            <label>data.json (необязательно)</label>
-            <div class="row center">
-              <button class="btn" id="btnLoadDataTeacher">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h14v-2H5v2zM12 2l-5.5 5.5 1.42 1.42L11 5.84V16h2V5.84l3.08 3.08 1.42-1.42L12 2z"/></svg>
-                Перезагрузить
-              </button>
-
-              <button class="btn" id="btnPickDataFileTeacher" title="Если fetch недоступен (file://), выберите файл вручную">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 7V3.5L18.5 9H15zM8 13h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
-                Выбрать файл…
-              </button>
-              <input id="dataFileInputTeacher" type="file" accept="application/json" class="hidden" />
-
-              <div class="pill">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
-                <strong>data.json</strong> <small id="dataStatusTeacher">проверка…</small>
-              </div>
-            </div>
-            <div class="help">
-              Проверка возможна и без <span class="mono">data.json</span>, т.к. правильные ответы входят в JSON попытки.
-            </div>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div id="teacherStatus" class="muted small">Импортируйте JSON ученика для начала проверки…</div>
-
-        <div id="teacherWorkArea" class="hidden stack">
-          <div class="row center">
-            <div class="pill">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              <span class="muted">Ученик</span>
-              <strong id="tStudentName">—</strong>
-            </div>
-
-            <div class="pill">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
-              <span class="muted">Тест</span>
-              <strong id="tTestName">—</strong>
-            </div>
-
-            <div class="pill">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 11H7v-2h6V7h2v6z"/></svg>
-              <span class="muted">Длительность</span>
-              <strong id="tDuration">—</strong>
-            </div>
-
-            <button class="btn right" id="btnExportReviewed">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 7V3.5L18.5 9H15zM8 13h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
-              Скачать итоговый JSON
-            </button>
-          </div>
-
-          <div class="card" style="padding:12px">
-            <h2 style="margin:0 0 10px">Итоги</h2>
-            <div class="row center">
-              <div class="pill"><span class="muted">Теория</span> <strong id="sumTheory">0/0</strong></div>
-              <div class="pill"><span class="muted">Практика</span> <strong id="sumPractice">0/0</strong></div>
-              <div class="pill"><span class="muted">Итого</span> <strong id="sumTotal">0/0</strong></div>
-              <div class="pill"><span class="muted">%</span> <strong id="sumPercent">0%</strong></div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h2>Проверка практики (0–5)</h2>
-            <div class="muted small" style="margin-top:-4px; line-height:1.45">
-              Теория уже оценена автоматически. Здесь выставьте баллы за практику.
-            </div>
-            <div id="teacherPracticeTableWrap" style="margin-top:10px"></div>
-          </div>
-
-          <div class="card">
-            <h2>Просмотр ответов по теории</h2>
-            <div id="teacherTheoryReview" class="stack" style="margin-top:10px"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- SETTINGS MODAL -->
     <section id="settingsModal" class="hidden" aria-modal="true" role="dialog">
-      <div class="modalOverlay" id="settingsOverlay">
-        <div class="modal">
-          <div class="modalHeader">
+      <div class="modalOverlay" id="settingsOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9000;display:flex;align-items:flex-start;justify-content:center;padding:16px 10px;">
+        <div class="card" style="width:min(var(--maxw), 100%);">
+          <div class="row between center">
             <div>
               <div style="font-weight:900; margin-bottom:6px">Настройки</div>
               <div class="muted small">Тема сохраняется в браузере.</div>
@@ -625,24 +327,21 @@
               <div style="font-weight:800">Тема</div>
               <div class="muted small">Светлая / Тёмная</div>
             </div>
-            <div class="seg" role="tablist" aria-label="Тема">
-              <button id="themeDark2" class="active" type="button" role="tab">Тёмная</button>
-              <button id="themeLight2" type="button" role="tab">Светлая</button>
+            <div style="display:flex;gap:8px;padding:4px;border:1px solid var(--border);border-radius:12px;">
+              <button id="themeDark2" class="btn" type="button" style="min-width:110px">Тёмная</button>
+              <button id="themeLight2" class="btn" type="button" style="min-width:110px">Светлая</button>
             </div>
           </div>
 
           <div class="divider"></div>
 
-          <h2 style="margin-top:0">Генерация теста</h2>
           <div class="muted small" style="line-height:1.55">
-            <div><b>Теория:</b> <b>40</b> вопросов. Минимум 1 вопрос из каждого топика (определяется по префиксу id).</div>
-            <div><b>Практика:</b> случайно <b>2</b> задачи.</div>
-            <div><b>Ответы:</b> варианты всегда перемешиваются.</div>
+            <div><b>Тест:</b> ровно <b>40</b> вопросов (если в банке меньше — берём сколько есть).</div>
+            <div><b>Ответы:</b> варианты перемешиваются.</div>
           </div>
         </div>
       </div>
     </section>
-
   </div>
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite">
@@ -723,16 +422,8 @@
       document.documentElement.setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
       const isDark = theme === "dark";
-      $("#themeDark2").classList.toggle("active", isDark);
-      $("#themeLight2").classList.toggle("active", !isDark);
-    }
-
-    // Views
-    function showView(name){
-      $("#viewHome").classList.toggle("hidden", name !== "home");
-      $("#viewStudent").classList.toggle("hidden", name !== "student");
-      $("#viewTeacher").classList.toggle("hidden", name !== "teacher");
-      window.scrollTo({top:0, behavior:"instant"});
+      $("#themeDark2").classList.toggle("primary", isDark);
+      $("#themeLight2").classList.toggle("primary", !isDark);
     }
 
     // Data
@@ -773,13 +464,10 @@
       if(!Array.isArray(json.tests)) throw new Error("data.json: ожидается поле tests (array)");
 
       for(const t of json.tests){
-        if(!t || typeof t !== "object"){
-          throw new Error("data.json: элемент tests должен быть объектом");
-        }
+        if(!t || typeof t !== "object") throw new Error("data.json: элемент tests должен быть объектом");
         if(!t.id || !t.title) throw new Error("data.json: у теста должны быть id и title");
 
         t.theory = normalizeTheory(t.theory, t.id);
-        if(!Array.isArray(t.practice)) t.practice = [];
 
         for(let i=0; i<t.theory.length; i++){
           const q = t.theory[i];
@@ -804,24 +492,11 @@
             }
           }
         }
-
-        for(const p of t.practice){
-          if(!p || typeof p !== "object"){
-            throw new Error(`data.json: practice элемент должен быть объектом (test=${t.id})`);
-          }
-          if(!p.id || !p.title || !p.prompt) throw new Error(`data.json: practice должен иметь id/title/prompt (test=${t.id})`);
-          if(p.maxPoints == null) p.maxPoints = 7;
-          if(typeof p.maxPoints !== "number" || p.maxPoints < 0 || p.maxPoints > 7) {
-            throw new Error(`data.json: practice.maxPoints должен быть числом 0..7 (task=${p.id})`);
-          }
-        }
       }
     }
 
     function updateDataStatus(){
-      const ok = !!DATA;
-      $("#dataStatus").textContent = ok ? "загружен" : "не загружен";
-      $("#dataStatusTeacher").textContent = ok ? "загружен" : "не загружен";
+      $("#dataStatus").textContent = DATA ? "загружен" : "не загружен";
     }
 
     function populateTestsSelect(){
@@ -847,8 +522,7 @@
         updateDataStatus();
         populateTestsSelect();
         return true;
-      }catch(err){
-        console.warn(err);
+      }catch{
         DATA = null;
         updateDataStatus();
         populateTestsSelect();
@@ -856,53 +530,11 @@
       }
     }
 
-    // Rules
+    // Rules (без задач и без режима преподавателя)
     const TEST_TOTAL_SECONDS = 6600; // 1h 50m
     const THEORY_COUNT = 40;
-    const PRACTICE_COUNT = 2;
 
     const STUDENT = { active:false, startedAt:null, endsAt:null, timerInt:null, attempt:null, test:null };
-
-    function getTopicFromQuestionId(id){
-      const m = String(id).match(/topic(\d+)/i);
-      return m ? String(Number(m[1])) : "unknown";
-    }
-
-    function groupByTopic(questions){
-      const map = new Map();
-      for(const q of questions){
-        const t = getTopicFromQuestionId(q.id);
-        if(!map.has(t)) map.set(t, []);
-        map.get(t).push(q);
-      }
-      return map;
-    }
-
-    function pickTheoryWithMinPerTopic(bankTheory, totalCount){
-      const topics = groupByTopic(bankTheory);
-      const mandatoryTopics = [...topics.keys()].filter(t => t !== "unknown").sort((a,b)=>Number(a)-Number(b));
-
-      if(mandatoryTopics.length > totalCount){
-        throw new Error(`Невозможно: топиков (${mandatoryTopics.length}) больше, чем вопросов в тесте (${totalCount}).`);
-      }
-
-      const chosen = [];
-      const chosenIds = new Set();
-
-      for(const t of mandatoryTopics){
-        const pool = topics.get(t);
-        if(!pool || pool.length === 0) continue;
-        const pick = sampleN(pool, 1)[0];
-        chosen.push(pick);
-        chosenIds.add(pick.id);
-      }
-
-      const remaining = totalCount - chosen.length;
-      const allPool = bankTheory.filter(q => !chosenIds.has(q.id));
-
-      if(allPool.length < remaining) return chosen.concat(allPool);
-      return chosen.concat(sampleN(allPool, remaining));
-    }
 
     function setStudentTimerDisplay(remainingSec){
       const text = formatHMS(Math.max(0, remainingSec));
@@ -923,7 +555,7 @@
       }, 300);
     }
 
-    function resetStudentUI(){
+    function resetUI(){
       $("#btnFinishTest").classList.add("hidden");
       $("#btnFinishTestTop").classList.add("hidden");
       $("#btnExportStudentJson").classList.add("hidden");
@@ -934,7 +566,6 @@
 
       $("#studentTestArea").classList.add("hidden");
       $("#theoryList").innerHTML = "";
-      $("#practiceList").innerHTML = "";
       $("#activeTestName").textContent = "—";
 
       setStudentTimerDisplay(TEST_TOTAL_SECONDS);
@@ -943,24 +574,18 @@
     function updateStudentProgress(){
       if(!STUDENT.attempt) return;
       const th = STUDENT.attempt.sections.theory;
-      const pr = STUDENT.attempt.sections.practice;
-
       const answeredTheory = th.filter(q => (q.answer||[]).length>0).length;
-      const filledPractice = pr.filter(p => (p.answerText||"").trim().length>0).length;
-
-      $("#studentProgressText").textContent =
-        `Теория: ${answeredTheory}/${th.length} · Практика: ${filledPractice}/${pr.length}`;
+      $("#studentProgressText").textContent = `Ответы: ${answeredTheory}/${th.length}`;
     }
 
-    function buildStudentAttempt(test, studentName){
-      const pickedTheoryRaw = pickTheoryWithMinPerTopic(test.theory, THEORY_COUNT);
+    function buildAttempt(test, studentName){
+      const pickedTheoryRaw = sampleN(test.theory, THEORY_COUNT);
 
       const pickedTheory = pickedTheoryRaw.map(q => {
         const opts = shuffleInPlace(q.options.slice()).map(o => ({id:o.id, text:o.text}));
         return {
           id: q.id,
           type: q.type,
-          topic: getTopicFromQuestionId(q.id),
           question: q.question,
           options: opts,
           correct: q.correct,
@@ -970,40 +595,17 @@
         };
       });
 
-      const pickedPractice = sampleN(test.practice, PRACTICE_COUNT).map(p => ({
-        id: p.id,
-        title: p.title,
-        prompt: p.prompt,
-        answerText: "",
-        teacherPoints: null,
-        maxPoints: (typeof p.maxPoints === "number" ? p.maxPoints : 7)
-      }));
-
       return {
-        schema: "studentAttempt.v6",
+        schema: "studentAttempt.v7_theoryOnly",
         attemptId: uid("attempt"),
         createdAt: nowIso(),
         student: { name: studentName || "" },
         test: { id: test.id, title: test.title },
-
-        generation: {
-          rules: {
-            theoryCount: THEORY_COUNT,
-            practiceCount: PRACTICE_COUNT,
-            shuffleOptions: true,
-            timeSeconds: TEST_TOTAL_SECONDS,
-            minOnePerTopic: true,
-            topicDetection: "question.id contains topic<N> (regex /topic(\\d+)/i)"
-          },
-          topicsUsed: [...new Set(pickedTheory.map(q=>q.topic))].sort()
-        },
-
         timing: { startedAt: nowIso(), durationSeconds: TEST_TOTAL_SECONDS, endedAt: null, autoFinished: false },
-        sections: { theory: pickedTheory, practice: pickedPractice },
+        sections: { theory: pickedTheory },
         totals: {
           theoryAuto: { points: 0, max: pickedTheory.length },
-          practiceTeacher: { points: 0, max: pickedPractice.reduce((s,x)=>s+(x.maxPoints||7),0) },
-          total: { points: 0, max: 0, percent: 0 }
+          total: { points: 0, max: pickedTheory.length, percent: 0 }
         }
       };
     }
@@ -1017,15 +619,14 @@
       head.className = "qhead";
 
       const title = document.createElement("div");
-      const topicText = (q.topic && q.topic !== "unknown") ? `Топик: <span class="mono">${escapeHtml(q.topic)}</span> · ` : "";
       title.innerHTML = `
         <div class="qtitle">${idx+1}. ${escapeHtml(q.question)}</div>
-        <div class="qmeta">${topicText}Тип: <span class="mono">${q.type === "single" ? "один ответ" : "несколько ответов"}</span></div>
+        <div class="qmeta">Тип: <span class="mono">${q.type === "single" ? "один ответ" : "несколько ответов"}</span></div>
       `;
 
       const badge = document.createElement("div");
       badge.className = "badge";
-      badge.innerHTML = `Теория`;
+      badge.textContent = "Теория";
 
       head.appendChild(title);
       head.appendChild(badge);
@@ -1067,53 +668,6 @@
       return wrap;
     }
 
-    function renderPracticeTask(p, idx){
-      const wrap = document.createElement("div");
-      wrap.className = "q";
-      wrap.dataset.pid = p.id;
-
-      const head = document.createElement("div");
-      head.className = "qhead";
-
-      const title = document.createElement("div");
-      title.innerHTML = `
-        <div class="qtitle">${idx+1}. ${escapeHtml(p.title)}</div>
-        <div class="qmeta">Оценка преподавателем: <span class="mono">0–${escapeHtml(String(p.maxPoints))}</span></div>
-      `;
-
-      const badge = document.createElement("div");
-      badge.className = "badge warn";
-      badge.textContent = "Практика";
-
-      head.appendChild(title);
-      head.appendChild(badge);
-
-      const prompt = document.createElement("div");
-      prompt.className = "muted small";
-      prompt.style.whiteSpace = "pre-wrap";
-      prompt.style.lineHeight = "1.45";
-      prompt.textContent = p.prompt;
-
-      const taLabel = document.createElement("label");
-      taLabel.className = "small muted";
-      taLabel.style.marginTop = "10px";
-      taLabel.textContent = "Ответ / решение:";
-
-      const ta = document.createElement("textarea");
-      ta.placeholder = "Введите решение (код/текст)…";
-      ta.addEventListener("input", ()=>{
-        const target = STUDENT.attempt.sections.practice.find(x=>x.id===p.id);
-        target.answerText = ta.value;
-        updateStudentProgress();
-      });
-
-      wrap.appendChild(head);
-      wrap.appendChild(prompt);
-      wrap.appendChild(taLabel);
-      wrap.appendChild(ta);
-      return wrap;
-    }
-
     function autoGradeTheory(attempt){
       let pts = 0;
       for(const q of attempt.sections.theory){
@@ -1125,23 +679,12 @@
       }
       attempt.totals.theoryAuto.points = pts;
       attempt.totals.theoryAuto.max = attempt.sections.theory.length;
-    }
 
-    function computeTotals(attempt){
-      const thPts = attempt.totals.theoryAuto.points;
-      const thMax = attempt.totals.theoryAuto.max;
-
-      const prMax = attempt.sections.practice.reduce((s,x)=>s+(x.maxPoints||5),0);
-      const prPts = attempt.sections.practice.reduce((s,x)=> s + (typeof x.teacherPoints === "number" ? x.teacherPoints : 0), 0);
-
-      attempt.totals.practiceTeacher.points = prPts;
-      attempt.totals.practiceTeacher.max = prMax;
-
-      const totalPts = thPts + prPts;
-      const totalMax = thMax + prMax;
-      attempt.totals.total.points = totalPts;
-      attempt.totals.total.max = totalMax;
-      attempt.totals.total.percent = totalMax > 0 ? Math.round((totalPts/totalMax)*100) : 0;
+      attempt.totals.total.points = pts;
+      attempt.totals.total.max = attempt.sections.theory.length;
+      attempt.totals.total.percent = attempt.totals.total.max > 0
+        ? Math.round((attempt.totals.total.points/attempt.totals.total.max)*100)
+        : 0;
     }
 
     function finishTest(auto=false){
@@ -1154,165 +697,30 @@
       STUDENT.attempt.timing.autoFinished = !!auto;
 
       autoGradeTheory(STUDENT.attempt);
-      computeTotals(STUDENT.attempt);
 
       const thPts = STUDENT.attempt.totals.theoryAuto.points;
       const thMax = STUDENT.attempt.totals.theoryAuto.max;
-      const thPercent = thMax ? Math.round((thPts/thMax)*100) : 0;
+      const thPercent = STUDENT.attempt.totals.total.percent;
 
       $("#studentStatus").innerHTML =
-        `Тест завершён. Теория: <b>${thPts}/${thMax}</b> (${thPercent}%). Практика проверит преподаватель.`;
+        `Тест завершён. Результат: <b>${thPts}/${thMax}</b> (${thPercent}%).`;
 
       $("#btnExportStudentJson").classList.remove("hidden");
       $("#btnFinishTest").classList.add("hidden");
       $("#btnFinishTestTop").classList.add("hidden");
       $("#btnStartTest").classList.remove("hidden");
 
-      $$("#studentTestArea input, #studentTestArea textarea").forEach(el => el.disabled = true);
-      toast("Скачайте JSON и отправьте преподавателю.");
+      $$("#studentTestArea input").forEach(el => el.disabled = true);
+      toast("Можно скачать JSON результата.");
     }
 
-    // Teacher
-    const TEACHER = { attempt: null };
-
-    function formatDuration(attempt){
-      const s = attempt.timing?.startedAt ? Date.parse(attempt.timing.startedAt) : null;
-      const e = attempt.timing?.endedAt ? Date.parse(attempt.timing.endedAt) : null;
-      if(!s || !e || !Number.isFinite(s) || !Number.isFinite(e) || e < s) return "—";
-      const sec = Math.round((e - s)/1000);
-      return formatHMS(sec);
-    }
-
-    function updateTeacherSummary(attempt){
-      $("#sumTheory").textContent = `${attempt.totals.theoryAuto.points}/${attempt.totals.theoryAuto.max}`;
-      $("#sumPractice").textContent = `${attempt.totals.practiceTeacher.points}/${attempt.totals.practiceTeacher.max}`;
-      $("#sumTotal").textContent = `${attempt.totals.total.points}/${attempt.totals.total.max}`;
-      $("#sumPercent").textContent = `${attempt.totals.total.percent}%`;
-    }
-
-    function renderTeacher(attempt){
-      $("#teacherWorkArea").classList.remove("hidden");
-      $("#teacherStatus").classList.add("hidden");
-
-      $("#tStudentName").textContent = attempt.student?.name ? attempt.student.name : "—";
-      $("#tTestName").textContent = attempt.test?.title ? attempt.test.title : "—";
-      $("#tDuration").textContent = formatDuration(attempt);
-
-      const wrap = $("#teacherPracticeTableWrap");
-      wrap.innerHTML = "";
-
-      const table = document.createElement("table");
-      table.className = "table";
-      table.innerHTML = `
-        <thead>
-          <tr>
-            <th style="width:52px">№</th>
-            <th>Задача</th>
-            <th>Ответ ученика</th>
-            <th style="width:160px">Баллы</th>
-            <th style="width:120px">Максимум</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      `;
-      const tb = table.querySelector("tbody");
-
-      attempt.sections.practice.forEach((p, idx)=>{
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${idx+1}</td>
-          <td>
-            <div style="font-weight:800">${escapeHtml(p.title)}</div>
-            <div class="muted small" style="white-space:pre-wrap; margin-top:6px">${escapeHtml(p.prompt)}</div>
-          </td>
-          <td><pre class="mono" style="white-space:pre-wrap; margin:0">${escapeHtml((p.answerText||"").trim() || "—")}</pre></td>
-          <td></td>
-          <td>${escapeHtml(String(p.maxPoints ?? 5))}</td>
-        `;
-        const tdScore = tr.children[3];
-        const inp = document.createElement("input");
-        inp.className = "scoreInput";
-        inp.type = "number";
-        inp.min = 0;
-        inp.max = p.maxPoints ?? 5;
-        inp.step = 1;
-        inp.value = (typeof p.teacherPoints === "number") ? String(p.teacherPoints) : "";
-        inp.placeholder = `0..${p.maxPoints ?? 5}`;
-        inp.addEventListener("input", ()=>{
-          const v = inp.value.trim();
-          if(v === ""){
-            p.teacherPoints = null;
-          }else{
-            let n = Number(v);
-            if(!Number.isFinite(n)) n = 0;
-            const max = (typeof p.maxPoints === "number") ? p.maxPoints : 5;
-            n = Math.max(0, Math.min(max, Math.round(n)));
-            p.teacherPoints = n;
-            inp.value = String(n);
-          }
-          computeTotals(attempt);
-          updateTeacherSummary(attempt);
-        });
-        tdScore.appendChild(inp);
-        tb.appendChild(tr);
-      });
-
-      wrap.appendChild(table);
-
-      const thWrap = $("#teacherTheoryReview");
-      thWrap.innerHTML = "";
-
-      attempt.sections.theory.forEach((q, idx)=>{
-        const div = document.createElement("div");
-        div.className = "q";
-
-        const ok = (q.autoPoints||0) === 1;
-        const badgeClass = ok ? "ok" : "danger";
-        const badgeText = ok ? `1/1` : `0/1`;
-
-        const selected = new Set(q.answer || []);
-        const correct = new Set(q.correct || []);
-
-        div.innerHTML = `
-          <div class="qhead">
-            <div>
-              <div class="qtitle">${idx+1}. ${escapeHtml(q.question)}</div>
-              <div class="qmeta">
-                Ответ: <span class="mono">${escapeHtml((q.answer||[]).join(", ") || "—")}</span> ·
-                Правильно: <span class="mono">${escapeHtml((q.correct||[]).join(", ") || "—")}</span>
-              </div>
-            </div>
-            <div class="badge ${badgeClass}">${badgeText}</div>
-          </div>
-          <div class="stack" style="gap:8px">
-            ${q.options.map(o=>{
-              const isSel = selected.has(o.id);
-              const isCor = correct.has(o.id);
-              const marker = isCor ? "✓" : (isSel ? "×" : "•");
-              const color = isCor ? "style='color:var(--ok)'" : (isSel ? "style='color:var(--danger)'" : "");
-              return `<div class="opt"><div class="ot"><span class="mono" ${color}>${escapeHtml(marker)} ${escapeHtml(o.id)}</span> — ${escapeHtml(o.text)}</div></div>`;
-            }).join("")}
-          </div>
-        `;
-        thWrap.appendChild(div);
-      });
-
-      computeTotals(attempt);
-      updateTeacherSummary(attempt);
+    function confirmFinish(){
+      if(!STUDENT.active) return;
+      const ok = confirm("Завершить тест сейчас? Теория будет проверена автоматически, сформируется JSON.");
+      if(ok) finishTest(false);
     }
 
     // Events
-    $("#btnGoStudent").addEventListener("click", ()=>{
-      showView("student");
-      resetStudentUI();
-      if(!DATA) toast("data.json не загружен. На главной нажмите «Перезагрузить» или «Выбрать файл…».");
-    });
-    $("#btnGoTeacher").addEventListener("click", ()=>{
-      showView("teacher");
-      if(!DATA) toast("Если нужно, загрузите data.json (необязательно).");
-    });
-    $("#btnHome").addEventListener("click", ()=> showView("home"));
-
     $("#btnSettings").addEventListener("click", ()=> $("#settingsModal").classList.remove("hidden"));
     $("#btnCloseSettings").addEventListener("click", ()=> $("#settingsModal").classList.add("hidden"));
     $("#settingsOverlay").addEventListener("click", (e)=>{
@@ -1329,7 +737,6 @@
         populateTestsSelect();
         toast("data.json загружен (fetch).");
       }catch(err){
-        console.error(err);
         DATA = null;
         updateDataStatus();
         populateTestsSelect();
@@ -1347,36 +754,6 @@
         populateTestsSelect();
         toast("data.json загружен из файла.");
       }catch(err){
-        console.error(err);
-        toast(err.message || "Ошибка чтения data.json");
-      }finally{
-        e.target.value = "";
-      }
-    });
-
-    $("#btnLoadDataTeacher").addEventListener("click", async ()=>{
-      try{
-        DATA = await loadDataJsonByFetch();
-        updateDataStatus();
-        populateTestsSelect();
-        toast("data.json загружен (fetch).");
-      }catch(err){
-        console.error(err);
-        toast(err?.message || "Ошибка загрузки data.json");
-      }
-    });
-
-    $("#btnPickDataFileTeacher").addEventListener("click", ()=> $("#dataFileInputTeacher").click());
-    $("#dataFileInputTeacher").addEventListener("change", async (e)=>{
-      const file = e.target.files?.[0];
-      if(!file) return;
-      try{
-        DATA = await loadDataJsonFromFile(file);
-        updateDataStatus();
-        populateTestsSelect();
-        toast("data.json загружен из файла.");
-      }catch(err){
-        console.error(err);
         toast(err.message || "Ошибка чтения data.json");
       }finally{
         e.target.value = "";
@@ -1385,7 +762,7 @@
 
     $("#btnStartTest").addEventListener("click", ()=>{
       if(!DATA){
-        toast("Сначала загрузите data.json (главная → «Перезагрузить» или «Выбрать файл…»).");
+        toast("Сначала загрузите data.json.");
         return;
       }
       const studentName = $("#studentName").value.trim();
@@ -1398,35 +775,19 @@
       if(!test){ toast("Тест не найден в data.json."); return; }
 
       const bankTheoryCount = test.theory?.length || 0;
-      const bankPracticeCount = test.practice?.length || 0;
-
       if(bankTheoryCount < 2){
         toast("В банке теории должно быть минимум 2 вопроса.");
         return;
       }
-
-      const topics = [...groupByTopic(test.theory).keys()].filter(t => t !== "unknown");
-      if(topics.length === 0){
-        toast("Вопросы не содержат topic<N> в id. Минимум 1 из каждого топика обеспечить нельзя. Пример id: b_t_topic7_q1");
-        return;
-      }
-      if(topics.length > THEORY_COUNT){
-        toast(`Слишком много топиков (${topics.length}) для ${THEORY_COUNT} вопросов. Увеличьте THEORY_COUNT или сократите топики.`);
-        return;
-      }
-
       if(bankTheoryCount < THEORY_COUNT){
         toast(`Внимание: в банке теории меньше ${THEORY_COUNT}. Будет взято ${Math.min(THEORY_COUNT, bankTheoryCount)}.`);
-      }
-      if(bankPracticeCount < PRACTICE_COUNT){
-        toast(`Внимание: в банке практики меньше ${PRACTICE_COUNT}. Будет взято ${Math.min(PRACTICE_COUNT, bankPracticeCount)}.`);
       }
 
       STUDENT.active = true;
       STUDENT.test = test;
       STUDENT.startedAt = Date.now();
       STUDENT.endsAt = STUDENT.startedAt + TEST_TOTAL_SECONDS*1000;
-      STUDENT.attempt = buildStudentAttempt(test, studentName);
+      STUDENT.attempt = buildAttempt(test, studentName);
 
       $("#activeTestName").textContent = test.title;
       $("#studentStatus").textContent = "Тест запущен. Заполните ответы и нажмите «Завершить».";
@@ -1436,16 +797,12 @@
       $("#btnExportStudentJson").classList.add("hidden");
       $("#btnStartTest").classList.add("hidden");
 
-      $("#theoryTitle").textContent = `Часть 1: Теория (${STUDENT.attempt.sections.theory.length} вопросов)`;
-      $("#practiceTitle").textContent = `Часть 2: Практика (${STUDENT.attempt.sections.practice.length} задачи)`;
-
+      $("#theoryTitle").textContent = `Теория (${STUDENT.attempt.sections.theory.length} вопросов)`;
       $("#theoryList").innerHTML = "";
-      $("#practiceList").innerHTML = "";
 
       STUDENT.attempt.sections.theory.forEach((q, idx)=> $("#theoryList").appendChild(renderTheoryQuestion(q, idx)));
-      STUDENT.attempt.sections.practice.forEach((p, idx)=> $("#practiceList").appendChild(renderPracticeTask(p, idx)));
 
-      $$("#studentTestArea input, #studentTestArea textarea").forEach(el => el.disabled = false);
+      $$("#studentTestArea input").forEach(el => el.disabled = false);
 
       updateStudentProgress();
       setStudentTimerDisplay(TEST_TOTAL_SECONDS);
@@ -1453,75 +810,15 @@
       window.scrollTo({top:0, behavior:"instant"});
     });
 
-    function confirmFinish(){
-      if(!STUDENT.active) return;
-      const ok = confirm("Завершить тест сейчас? Теория будет проверена автоматически, сформируется JSON.");
-      if(ok) finishTest(false);
-    }
     $("#btnFinishTest").addEventListener("click", confirmFinish);
     $("#btnFinishTestTop").addEventListener("click", confirmFinish);
 
     $("#btnExportStudentJson").addEventListener("click", ()=>{
       if(!STUDENT.attempt){ toast("Нет данных для экспорта."); return; }
-      computeTotals(STUDENT.attempt);
+      autoGradeTheory(STUDENT.attempt);
       const st = STUDENT.attempt.student?.name ? STUDENT.attempt.student.name.replaceAll(" ","_") : "student";
       const test = STUDENT.attempt.test?.id || "test";
       downloadJson(`attempt_${test}_${st}.json`, STUDENT.attempt);
-    });
-
-    $("#teacherImportFile").addEventListener("change", async (e)=>{
-      const file = e.target.files?.[0];
-      if(!file) return;
-
-      try{
-        const text = await file.text();
-        const obj = JSON.parse(text);
-
-        if(!obj || !obj.schema || !String(obj.schema).startsWith("studentAttempt.")){
-          throw new Error("Неверный формат JSON (ожидается studentAttempt.*).");
-        }
-        if(!obj.sections || !Array.isArray(obj.sections.theory) || !Array.isArray(obj.sections.practice)){
-          throw new Error("Неверная структура attempt.sections.");
-        }
-
-        for(const p of obj.sections.practice){
-          if(typeof p.maxPoints !== "number") p.maxPoints = 5;
-          if(p.teacherPoints !== null && typeof p.teacherPoints !== "number") p.teacherPoints = null;
-          if(typeof p.teacherPoints === "number"){
-            p.teacherPoints = Math.max(0, Math.min(p.maxPoints, Math.round(p.teacherPoints)));
-          }
-        }
-        for(const q of obj.sections.theory){
-          if(typeof q.maxPoints !== "number") q.maxPoints = 1;
-          if(typeof q.autoPoints !== "number") q.autoPoints = 0;
-          if(!Array.isArray(q.answer)) q.answer = [];
-          if(!Array.isArray(q.correct)) q.correct = [];
-          if(!Array.isArray(q.options)) q.options = [];
-        }
-
-        autoGradeTheory(obj);
-        computeTotals(obj);
-
-        TEACHER.attempt = obj;
-        renderTeacher(TEACHER.attempt);
-        toast("JSON ученика импортирован.");
-      }catch(err){
-        console.error(err);
-        $("#teacherWorkArea").classList.add("hidden");
-        $("#teacherStatus").classList.remove("hidden");
-        $("#teacherStatus").textContent = "Ошибка импорта. Проверьте JSON.";
-        toast(err.message || "Ошибка импорта JSON");
-      }finally{
-        e.target.value = "";
-      }
-    });
-
-    $("#btnExportReviewed").addEventListener("click", ()=>{
-      if(!TEACHER.attempt){ toast("Нет данных для экспорта."); return; }
-      computeTotals(TEACHER.attempt);
-      const st = TEACHER.attempt.student?.name ? TEACHER.attempt.student.name.replaceAll(" ","_") : "student";
-      const test = TEACHER.attempt.test?.id || "test";
-      downloadJson(`reviewed_${test}_${st}.json`, TEACHER.attempt);
     });
 
     // Init
@@ -1529,15 +826,11 @@
       const saved = localStorage.getItem("theme");
       setTheme(saved === "light" ? "light" : "dark");
 
-      $("#headerSub").textContent = "Ученик / Преподаватель · импорт/экспорт JSON · 1 час 50 минут на тест";
       updateDataStatus();
       populateTestsSelect();
-      resetStudentUI();
-      showView("home");
+      resetUI();
 
-      const ok = await ensureDataLoadedSilently();
-      $("#dataStatus").textContent = ok ? "загружен" : "не загружен";
-      $("#dataStatusTeacher").textContent = ok ? "загружен" : "не загружен";
+      await ensureDataLoadedSilently();
     })();
   </script>
 </body>
